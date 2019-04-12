@@ -1,6 +1,7 @@
 package fr.umontpellier.iut.dominion;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.OutputStream;
@@ -20,6 +21,7 @@ class FullGameTest {
 
     }
 
+    @Disabled
     @Test
     void testFullGameTwoPlayers() {
         String[] playerNames = new String[]{"Toto", "Titi"};
@@ -33,6 +35,7 @@ class FullGameTest {
         assertEquals(6 + 6 * 8, score0 + score1);
     }
 
+    @Disabled
     @Test
     void testFullGameThreePlayers() {
         String[] playerNames = new String[]{"Toto", "Titi", "Tutu"};
@@ -49,6 +52,7 @@ class FullGameTest {
     }
 
 
+    @Disabled
     @Test
     void testFullGameFourPlayers() {
         String[] playerNames = new String[]{"Toto", "Titi", "Tutu", "Lolo"};

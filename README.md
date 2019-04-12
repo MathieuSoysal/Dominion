@@ -24,7 +24,7 @@ _Dominion_ est un jeu de cartes inventé par Donald X. Vaccarino pour 2 à 4 jou
 
 Dans ce projet nous considérerons la [_Seconde Edition_](http://wiki.dominionstrategy.com/index.php/Second_Edition) du jeu où 6 cartes du jeu initial ont été remplacées par 7 autres cartes. Vous pouvez consulter les règles du jeu en ligne :
  * http://wiki.dominionstrategy.com/index.php/Gameplay - pour les règles de base
- * http://wiki.dominionstrategy.com/index.php/Second_Edition - les modifications
+ * http://wiki.dominionstrategy.com/index.php/Second_Edition - es modifications mineures adaptées à notre version
 
 **Vous êtes encouragés à lire ces règles avant de poursuivre la lecture du sujet.**
 
@@ -50,13 +50,13 @@ Par ailleurs, l'ensemble des cartes utilisées est déterminé en début de part
 
 #### La classe `Card` et ses sous-classes
 
-Les cartes du jeu sont représentées par des objets de la classe `Card`. Pour chacune des cartes "physique" (de la boîte du jeu _Dominion_) on associe une instance de `Card` correspondante. Ainsi, au démarrage de la partie, tous les objets `Card` sont créés et conservés durant toute la partie. Il n'y a donc pas de _création_ (ni _destruction_) de nouvelles cartes après le démarrage de la partie.
+Les cartes du jeu sont représentées par des objets de la classe `Card`. Pour chacune des cartes "physiques" (de la boîte du jeu _Dominion_) on associe une instance de `Card` correspondante. Ainsi, au démarrage de la partie, tous les objets `Card` sont créés et conservés durant toute la partie. Il n'y a donc pas de _création_ (ni _destruction_) de nouvelles cartes après le démarrage de la partie.
 
 Étant donné que le _type_ d'une carte influe fortement sur la façon d'utiliser la carte, on définit une sous-classe de `Card` pour chacun des types de carte possibles. Voici un diagramme de classe **partiel** de l'hiérarchie de cartes : 
 
 ![Diagramme de classes de la hiérarchie représentant les cartes](ressources/sujet/cardsClassDiagram.png)
 
-Pour des raisons de lisibilité, on ne représente pas toutes les classes de cartes sur ce dessin, mais vous devez toutes les compléter.
+Pour des raisons de lisibilité, on ne représente pas toutes les classes de cartes sur ce dessin, mais elles sont toutes présentes dans le dépôt et vous devez toutes les programmer.
 
 **Important** : votre code devra respecter la sémantique de cette architecture logicielle mais au besoin vous pouvez ajouter d'autres classes à ce diagramme.
 
@@ -67,11 +67,11 @@ Afin de simplifier les tâches couramment effectuées par le jeu sur des ensembl
 
 Cette classe hérite de `ArrayList<Card>` ce qui permet de l'utiliser comme un `ArrayList` (constructeurs, accesseurs, méthodes) et d'ajouter des méthodes lorsque c'est utile.
 
-La classe `CardList` est fournie avec un certain nombre de méthodes supplémentaires déjà implémentées mais vous pouvez éventuellement ajouter des méthodes si vous le jugez nécessaire.
+La classe `CardList` est fournie avec un certain nombre de méthodes supplémentaires déjà implémentées mais vous pouvez éventuellement ajouter d'autres méthodes si vous le jugez nécessaire.
 
 #### Les types de cartes
 
-Pour représenter correctement les différents types possibles des cartes, un [type énuméré](https://docs.oracle.com/javase/tutorial/java/javaOO/enum.html) `CardType` est fourni contenant les constantes  
+Pour représenter correctement les différents types possibles des cartes, un [type énuméré](https://docs.oracle.com/javase/tutorial/java/javaOO/enum.html) `CardType` est fourni. Il contient les constantes  
 * `Treasure`
 * `Action`
 * `Victory`
@@ -79,7 +79,7 @@ Pour représenter correctement les différents types possibles des cartes, un [t
 * `Reaction`
 * `Attack`
 
-C'est un `ArrayList` d'éléments de ce type qui est renvoyé par la méthode `getTypes()` de la classe `Card` (les cartes du jeu de base peuvent avoir un ou deux types).
+La méthode `getTypes()` de la classe `Card` retourne un `List<CardType>` d'éléments de ce type. Remarquez que les cartes du jeu de base peuvent avoir un ou deux types.
 
 
 ### Les joueurs
@@ -92,7 +92,7 @@ Les joueurs de la partie sont identifiés par un nom (de type `String`). À tout
 * la liste des cartes actuellement _en jeu_ (_in play_).
 
 
-L'ensemble des cartes possédées par le joueur (dans l'un des emplacements précédemment cités) constitue le _deck_ du joueur. Chaque joueur commence la partie avec 3 cartes _Estate_ et 7 cartes _Copper_ dans sa défausse (et en pioche immédiatement 5 en main).
+L'ensemble des cartes possédées par le joueur (dans l'un des emplacements précédemment cités) constitue le _deck_ du joueur. Chaque joueur commence la partie avec 3 cartes _Estate_ et 7 cartes _Copper_ toutes mélangées et cachées dans sa défausse. Ensuite il pioche immédiatement en main 5 cartes de cette défausse de manière arbitraire.
 
 En plus de ses cartes, un joueur a différents compteurs de ressources :
 
@@ -102,9 +102,9 @@ En plus de ses cartes, un joueur a différents compteurs de ressources :
 
 #### La classe `Player`
 
-Les joueurs participant à une partie de _Dominion_ sont représentés par des instances d'une classe `Player`. Le nom, les compteurs (actions, argent, achats), les différentes piles de cartes du joueur ainsi que la partie dans laquelle il se trouve sont représentés par des attributs.
+Les joueurs participant à une partie de _Dominion_ sont représentés par des instances d'une classe `Player`. Le nom, les compteurs (actions, argent, achats), les différentes piles de cartes du joueur ainsi que la partie dans laquelle il se trouve sont représentés par des attributs de cette classe.
 
-La figure ci-dessous illustre les attributs et méthodes qui doivent être implémentés dans la classe `Player` (vu plus haut) illustre le code fourni pour les spécifications de chaque méthode). Vous pouvez cependant ajouter des méthodes si vous le jugez nécessaire.
+La figure ci-dessous illustre les attributs de la classe `Player`. Les méthodes sont nombreuseuses et c'est pour cette raison elles ne sont pas illustrées ici mais vous pouvez les voir directement dans le code et dessiner le diagramme de classes par vous-même. Beaucoup de ces méthodes sont à implémenter, lisez donc attentivement leur documentation. Vous pouvez évidemment ajouter des méthodes (publiques ou privées) si vous le jugez nécessaire.
 
 ![Diagramme de classes `Player`](ressources/sujet/Player.png)
 
@@ -117,30 +117,30 @@ La figure ci-dessous illustre les attributs et méthodes qui doivent être impl�
 
 Le tour d'un joueur s'exécute en plusieurs étapes
 
-  **Préparation** Les compteurs du joueur sont remis aux valeurs indiquées par les règles : 1 pour les actions et les achats, et 0 pour l'argent.
+  **Préparation.** Les compteurs du joueur sont remis aux valeurs indiquées par les règles : 1 pour les actions et les achats, et 0 pour l'argent.
   
-  **Action** Le joueur peut jouer des cartes _Action_ de sa main tant que son compteur d'actions est supérieur ou égal à 1. Lorsqu'une carte _Action_ est jouée, le compteur d'actions du joueur est décrémenté de 1, la carte jouée est marquée comme étant _en jeu_ et l'action de la carte est exécutée. Le joueur peut choisir de passer à la phase suivante même s'il lui reste des actions qu'il peut jouer.
+  **Action.** Le joueur peut jouer des cartes _Action_ de sa main tant que son compteur d'actions est supérieur ou égal à 1. Lorsqu'une carte _Action_ est jouée, le compteur d'actions du joueur est décrémenté de 1, la carte jouée est marquée comme étant _en jeu_ et l'action de la carte est exécutée. Le joueur peut choisir de passer à la phase suivante même s'il lui reste des actions qu'il peut jouer.
 
-  **Trésors** Le joueur peut jouer des cartes _Trésor_ de sa main. Dans le jeu de base, il n'y a aucune situation ou le joueur aurait un intérêt à conserver des trésors dans sa main. On pourra donc considérer ici que le joueur joue automatiquement tous les trésors qu'il a en main.
+  **Trésors.** Le joueur peut jouer des cartes _Trésor_ de sa main. Dans le jeu de base, il n'y a aucune situation ou le joueur aurait un intérêt à conserver des trésors dans sa main. On pourra donc considérer ici que le joueur joue automatiquement tous les trésors qu'il a en main.
 
-  **Achats** Le joueur peut acheter des cartes de la réserve en utilisant l'argent qu'il a amassé pendant les phases précédentes. Le joueur peut acheter une carte s'il lui reste au moins un achat et que le prix de la carte est inférieur à la somme dont il dispose. Lorsqu'il achète une carte, son compteur d'achats est décrémenté de 1, son argent de la valeur de la carte achetée et la carte achetée est déplacée dans la défausse du joueur. Le joueur peut choisir de terminer cette phase même s'il peut encore acheter des cartes.
+  **Achats.** Le joueur peut acheter des cartes de la réserve en utilisant l'argent qu'il a amassé pendant les phases précédentes. Le joueur peut acheter une carte s'il lui reste au moins un achat et que le prix de la carte est inférieur à la somme dont il dispose. Lorsqu'il achète une carte, son compteur d'achats est décrémenté de 1, son argent est décrémenté de la valeur de la carte achetée et la carte achetée est déplacée dans la défausse du joueur. Le joueur peut choisir de terminer cette phase même s'il peut encore acheter des cartes.
 
-  **Fin** À la fin du tour toutes les cartes de la main du joueur et en jeu sont défaussées, les compteurs du joueur sont remis à 0 et le joueur pioche 5 nouvelles cartes en main.
+  **Fin.** À la fin du tour toutes les cartes (de la main du joueur et en jeu) sont défaussées, les compteurs du joueur sont remis à 0 et le joueur pioche 5 nouvelles cartes en main.
 \end{description}
 
-**Remarque** Il est important que les cartes en main soient piochées à la fin du tour car la main peut être affectée pendant le tour d'un autre joueur (cf. _Militia_ ou _Moat_ par exemple).
+**Remarque :** Il est important que les cartes en main soient piochées à la fin du tour car la main peut être affectée pendant le tour d'un autre joueur (cf. _Militia_ ou _Moat_ par exemple).
 
 
 ### La partie
 
-Une partie de _Dominion_ est représentée par une instance de la classe `Game`. C'est la partie qui gère la liste des joueurs, l'ensemble des cartes communes et qui contrôle le déroulement de la partie : mise en place, alternance des tours des joueurs et fin de partie lorsque les conditions de fin sont remplies.
+Une partie de _Dominion_ est représentée par une instance de la classe `Game`. C'est la partie qui gère la liste des joueurs et l'ensemble des cartes communes. Cette classe contrôle également le déroulement de la partie : mise en place, alternance des tours des joueurs et fin de partie lorsque les conditions de fin sont remplies.
 
-Pour démarrer une partie, il faut spécifier le nombre de joueurs qui y participent ainsi que la liste des cartes à utiliser comme piles de réserve. Le constructeur de la classe `Game` prend donc deux arguments :
+Pour démarrer une partie, il faut spécifier le nombre de joueurs qui y participent ainsi que la liste des cartes à utiliser comme piles de réserve. Le code du constructeur de la classe `Game` vous est entièrement fourni (vous n'avez pas à le modifier). Il prend deux arguments en paramètres :
 
-  **`String[] playerNames`**: la liste des noms des joueurs qui participent à la partie (c'est le constructeur de `Game` qui construit les instances de `Player` correspondantes)
+  **`String[] playerNames`**: la liste des noms des joueurs qui participent à la partie (c'est le constructeur de `Game` qui construit les instances de `Player` correspondantes)  
   **`List<CardList> kingdomStacks`**: une liste de piles de réserve à utiliser comme cartes _Royaume_ dans la partie. Les règles du jeu prévoient 10 piles _Royaume_ mais la partie peut fonctionner avec un nombre différent. Le constructeur de `Game` doit ajouter à ces piles les piles de réserve communes (cartes _Trésor_, _Victoire_ et _Malédiction_)
 
-La classe `Game` est relativement simple (par rapport à `Player`). Le diagramme de classes donné ci-dessous illustre les attributs et méthodes qu'il vous est demandé d'écrire. Comme précédemment, vous pouvez ajouter des méthodes si cela vous semble nécessaire.
+La classe `Game` est relativement simple (par rapport à `Player`). Le diagramme de classes donné ci-dessous illustre ses attributs et méthodes. Certaines d'entre vous vous sont données et les autres vous aurez à les écrire. Comme précédemment, vous pouvez ajouter d'autres méthodes si cela vous semble nécessaire.
 
 ![Diagramme de classes `Player`](ressources/sujet/Game.png)
 
@@ -150,12 +150,11 @@ La classe `Game` est relativement simple (par rapport à `Player`). Le diagramme
 L'interface utilisateur que vous aurez à gérer sera entièrement en ligne de commandes. Les informations du jeu seront affichées à l'écran en utilisant la sortie standard et les choix des joueurs se feront par lecture sur l'entrée standard (clavier). Une fois la partie lancée, toutes les interactions avec l'utilisateur se feront donc dans le terminal. Dans une partie à plusieurs joueurs, un même processus demande successivement aux joueurs de jouer leur tour dans le même terminal.
 
 #### Interface graphique (web)
- Ultérieurement, une fois que votre projet aura suffisamment avancé, une interface graphique vous sera fournie. Cette interface interpretera la saisie console et affichera le jeu de manière plus proche d'un utilisateur non-informaticien. Vous n'aurez pas à 
- la modifier (ni à adapter votre code), cette partie étant complètement indépendante de votre projet. Cette interface permettra de rendre votre projet plus ludique et pour que votre jeu rassemble à un _vrai_ jeu.
+ Ultérieurement, une fois que votre projet aura suffisamment avancé, une interface graphique vous sera fournie. Cette interface interpretera la saisie console et affichera le jeu de manière plus proche d'un utilisateur non-informaticien. Vous n'aurez pas à la modifier (ni à adapter votre code), cette partie étant complètement indépendante de votre projet. Cette interface permettra de rendre votre projet plus ludique et pour que votre jeu rassemble à un _vrai_ jeu.
  
- **Important** : Une méthode spéciale `String toJSON()` a été ajoutée aux classes `Game`, `ListOfCards` et `Player`. Elle est nécessaire pour l'IHM qui sera ajoutée ultérieurement. **Vous ne devriez pas la modifier !**
+ **Important** : Des méthodes spéciales `String toJSON()` et `promptAsJSON()` ont été ajoutées aux classes `Game`, `ListOfCards` et `Player`. Elle sont nécessaires pour l'IHM qui sera ajoutée ultérieurement. **Vous ne devriez pas les modifier !**
  
- **Important** : L'interface graphique est compatible que sur Linux et MacOS. Sur les autres systèmes d'exploitation, le comportement n'est pas garanti. 
+ **Important** : L'interface graphique sera compatible sur Linux et MacOS. Sur les autres systèmes d'exploitation, le comportement de l'IHM ne sera pas garanti. 
 
 #### Choix
 
@@ -165,14 +164,15 @@ Pour indiquer qu'il souhaite _passer_ (par exemple parce qu'il ne souhaite pas j
 
 Enfin, lorsqu'il doit faire un choix parmi deux possibilités (par exemple choisir s'il veut défausser son deck après avoir joué un _Chancellier_, ou s'il veut défausser une carte _Action_ piochée après avoir joué une _Biliothèque_), il répondra à une question posée en entrant `"y"` pour oui et `"n"` pour non.
 
+Le code des méthodes qui gèrent les choix vous est donné dans la classe `Player` (`choose()`, `chooseOption(...)`, `chooseCard(...)` ) et vous n'aurez pas à le modifier. (_lorsque l'IHM vous sera fournie, il faudra tout de même remplacer quelques lignes de code de ces fonctions, et on vous dira par quoi le moment venu_)
 
 ### Rendu attendu
 
 L'intégralité du code source du projet doit résider dans le dépôt GitHub associé à votre équipe de projet. À priori vous n'avez qu'à compléter les fichiers `.java` qui vous ont été donnés.
 
-Toutes les méthodes indiquées dans le code fourni doivent être complétées selon les spécifications (en respectant les noms et les paramètres indiqués). Vous pouvez éventuellement ajouter des attributs et méthodes aux classes, lorsque cela vous semble nécessaire.
+Toutes les méthodes qui lèvent une exception avec l'instruction `throw new RuntimeException("Not Implemented")` doivent être complétées selon les spécifications (en respectant les noms et les paramètres indiqués). Vous pouvez éventuellement ajouter des attributs et méthodes aux classes, lorsque cela vous semble nécessaire. **Sauf indication de la part des enseignants, il est interdit de modifier les signatures des méthodes/attributs.**
 
-L'exécution de la méthode `main(String args[])` de la classe `AppDominion` (à la racine du projet) doit démarrer une partie avec un ensemble de 10 cartes _Royaume_ de votre choix (cette fonction servira simplement à tester manuellement la bonne exécution d'une partie, mais l'ensemble des cartes sera évalué par la suite de manière automatique, indépendamment du choix de cartes pour la partie exécutée par la méthode `main(String args[])`).
+L'exécution de la méthode `main(String args[])` de la classe `AppDominion` (à la racine du projet) doit démarrer une partie avec un ensemble de 10 cartes _Royaume_ de votre choix. Cette fonction servira simplement à exécuter manuellement une partie et à faire des petites simulations. L'ensemble des cartes et différentes actions du jeu seront évaluées de manière automatique à l'aide des tests unitaires. Ces tests sont faits indépendamment du choix de cartes pour la partie exécutée par la méthode `main(String args[])`. Un premier jeu de tests unitaires vous est fourni dans le répertoire `src/test/java`.
 
 #### Évaluation
 

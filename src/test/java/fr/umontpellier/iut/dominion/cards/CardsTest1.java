@@ -6,6 +6,7 @@ import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.base.*;
 import fr.umontpellier.iut.dominion.cards.common.Silver;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.OutputStream;
@@ -40,6 +41,7 @@ class CardsTest1 {
         player = minimalGame.getPlayer(1);
     }
 
+    @Disabled
     @Test
     void testInitialState() {
         assertEquals(5, player.getHand().size());
@@ -50,6 +52,7 @@ class CardsTest1 {
         assertEquals(0, player.getMoney());
     }
 
+    @Disabled
     @Test
     void testMoatAction() {
         player.getHand().add(new Moat());
@@ -61,6 +64,7 @@ class CardsTest1 {
         assertEquals(3, player.getDraw().size());
     }
 
+    @Disabled
     @Test
     void testVillage() {
         player.getHand().add(new Village());
@@ -71,6 +75,7 @@ class CardsTest1 {
         assertEquals(4, player.getDraw().size());
     }
 
+    @Disabled
     @Test
     void testGardens() {
         assertEquals(3, player.getVictoryPoints());  // le joueur a initialement 10 cartes
@@ -91,6 +96,7 @@ class CardsTest1 {
         assertEquals(7, player.getVictoryPoints());  // le joueur a 21 cartes (2 Gardens)
     }
 
+    @Disabled
     @Test
     void testSmithy() {
         player.getHand().add(new Smithy());
@@ -99,6 +105,7 @@ class CardsTest1 {
         assertEquals(2, player.getDraw().size());
     }
 
+    @Disabled
     @Test
     void testFestival() {
         player.getHand().add(new Festival());
@@ -109,6 +116,7 @@ class CardsTest1 {
         assertEquals(5, player.getHand().size());
     }
 
+    @Disabled
     @Test
     void testLaboratory() {
         player.getHand().add(new Laboratory());
@@ -117,6 +125,7 @@ class CardsTest1 {
         assertEquals(1, player.getNumberOfActions());
     }
 
+    @Disabled
     @Test
     void testMarket() {
         player.getHand().add(new Market());

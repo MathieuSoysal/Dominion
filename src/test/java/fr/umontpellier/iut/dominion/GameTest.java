@@ -2,6 +2,7 @@ package fr.umontpellier.iut.dominion;
 
 import fr.umontpellier.iut.dominion.cards.Card;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.OutputStream;
@@ -30,23 +31,27 @@ class GameTest {
         minimalGame = new Game(playerNames, new String[0]);
     }
 
+    @Disabled
     @Test
     void testNbPlayers() {
         assertEquals(3, minimalGame.getNumberOfPlayers());
     }
 
+    @Disabled
     @Test
     void testGetPlayer() {
         Player p = minimalGame.getPlayer(1);
         assertEquals("Titi", p.getName());
     }
 
+    @Disabled
     @Test
     void testOtherPlayersSize() {
         Player p = minimalGame.getPlayer(1);
         assertEquals(2, minimalGame.otherPlayers(p).size());
     }
 
+    @Disabled
     @Test
     void testOtherPlayersNames() {
         Player p = minimalGame.getPlayer(1);
@@ -54,16 +59,19 @@ class GameTest {
         assertEquals("Toto", minimalGame.otherPlayers(p).get(1).getName());
     }
 
+    @Disabled
     @Test
     void testGetFromSupply() {
         assertEquals("Gold", minimalGame.getFromSupply("Gold").getName());
     }
 
+    @Disabled
     @Test
     void testGetNotInSupply() {
         assertNull(minimalGame.getFromSupply("Blop"));
     }
 
+    @Disabled
     @Test
     void testRemoveFromSupply() {
         for (int i = 0; i < 12; i++)
@@ -72,11 +80,13 @@ class GameTest {
         assertNull(minimalGame.removeFromSupply("Duchy"));
     }
 
+    @Disabled
     @Test
     void testRemoveNotInSupply() {
         assertNull(minimalGame.removeFromSupply("Blop"));
     }
 
+    @Disabled
     @Test
     void testNbAvailableSupplies() {
         assertEquals(7, minimalGame.availableSupplyCards().size());
@@ -86,6 +96,7 @@ class GameTest {
         assertEquals(6, minimalGame.availableSupplyCards().size());
     }
 
+    @Disabled
     @Test
     void testNbCardsInSupplies() {
         for (int i = 0; i < 12; i++) {
@@ -120,6 +131,7 @@ class GameTest {
         assertNull(minimalGame.removeFromSupply("Gold"));
     }
 
+    @Disabled
     @Test
     void testEndGame3Stack() {
         assertFalse(minimalGame.isFinished());
@@ -137,6 +149,7 @@ class GameTest {
         assertTrue(minimalGame.isFinished());
     }
 
+    @Disabled
     @Test
     void testEndGameProvince() {
         for (int i = 0; i < 12; i++)

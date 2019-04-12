@@ -411,7 +411,7 @@ public class Player {
             }
     }
 
-    public String choose_option(String instruction, List<String> choices, boolean canPass) {
+    public String chooseOption(String instruction, List<String> choices, boolean canPass) {
         return choose(instruction, choices, canPass, true);
     }
 

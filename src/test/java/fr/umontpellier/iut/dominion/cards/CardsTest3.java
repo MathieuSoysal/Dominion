@@ -7,6 +7,7 @@ import fr.umontpellier.iut.dominion.cards.common.Duchy;
 import fr.umontpellier.iut.dominion.cards.common.Gold;
 import fr.umontpellier.iut.dominion.cards.common.Silver;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.OutputStream;
@@ -40,6 +41,7 @@ class CardsTest3 {
         player = game.getPlayer(1);
     }
 
+    @Disabled
     @Test
     void testMoatReaction() {
         Player p0 = game.getPlayer(0);
@@ -57,6 +59,7 @@ class CardsTest3 {
     }
 
 
+    @Disabled
     @Test
     void testThroneRoom() {
         player.getHand().add(new ThroneRoom());
@@ -74,6 +77,7 @@ class CardsTest3 {
         assertEquals(7, player.getHand().size());
     }
 
+    @Disabled
     @Test
     void testLibrary() {
         player.getDraw().clear();

@@ -5,6 +5,7 @@ import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.base.*;
 import fr.umontpellier.iut.dominion.cards.common.*;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.OutputStream;
@@ -40,6 +41,7 @@ class CardsTest2 {
         player = game.getPlayer(2);
     }
 
+    @Disabled
     @Test
     void testCellar() {
         player.getHand().add(new Cellar());
@@ -56,6 +58,7 @@ class CardsTest2 {
         assertNull(player.getHand().getCard("Duchy"));
     }
 
+    @Disabled
     @Test
     void testChapel() {
         player.getHand().add(new Chapel());
@@ -68,6 +71,7 @@ class CardsTest2 {
         assertEquals(0, player.getDiscard().size());
     }
 
+    @Disabled
     @Test
     void testWorkshop() {
         player.getHand().add(new Workshop());
@@ -77,6 +81,7 @@ class CardsTest2 {
         assertNotNull(player.getDiscard().getCard("Silver"));
     }
 
+    @Disabled
     @Test
     void testBureaucrat() {
         Player p0 = game.getPlayer(0);
@@ -103,6 +108,7 @@ class CardsTest2 {
         assertEquals(3, p2.getHand().size());            // p0 a toujours les mêmes cartes en main
     }
 
+    @Disabled
     @Test
     void testMilitia() {
         Player p0 = game.getPlayer(0);
@@ -135,6 +141,7 @@ class CardsTest2 {
         assertTrue(hasCards(p0.getDiscard(), "Silver", "Silver", "Duchy"));
     }
 
+    @Disabled
     @Test
     void testMoneylenderWithCopper() {
         player.getHand().clear();
@@ -149,6 +156,7 @@ class CardsTest2 {
         assertTrue(hasCards(player.getHand(), "Silver", "Silver"));
     }
 
+    @Disabled
     @Test
     void testMoneylenderNoCopper() {
         player.getHand().clear();
@@ -162,6 +170,7 @@ class CardsTest2 {
         assertTrue(hasCards(player.getHand(), "Silver", "Silver"));
     }
 
+    @Disabled
     @Test
     void testRemodel() {
         player.getHand().add(new Remodel());
@@ -174,6 +183,7 @@ class CardsTest2 {
         assertNull(player.getHand().getCard("Silver"));
     }
 
+    @Disabled
     @Test
     void testCouncilRoom() {
         Player p0 = game.getPlayer(0);
@@ -189,6 +199,7 @@ class CardsTest2 {
         assertEquals(6, p2.getHand().size());
     }
 
+    @Disabled
     @Test
     void testMine() {
         player.getHand().clear();
@@ -204,6 +215,7 @@ class CardsTest2 {
         assertEquals(0, player.getDiscard().size());
     }
 
+    @Disabled
     @Test
     void testWitch() {
         Player p0 = game.getPlayer(0);

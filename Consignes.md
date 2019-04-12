@@ -16,9 +16,10 @@ esthétiques, les IDE vous fournissent tous des outils de nettoyage, veillez à 
 
     1. En écrivant vos propres tests unitaires.
     
-    2. En exécutant les tests unitaires qui vous ont été fournis dans le repertoire `src/test` :
-        * Tous ces tests sont annotés `@Disabled`.
-        * Au fur et à mesure de l'avancement de votre projet vous supprimerez les annotations  `@Disabled` et vérifierez que les tests passent.
+    2. En exécutant les tests unitaires qui vous ont été fournis dans le repertoire `src/test/java` :
+        * Tous ces tests sont annotés `@Disabled` et donc pour l'instant ils sont ignorés.
+        * Au fur et à mesure de l'avancement de votre projet vous activerez chaque test (en supprimant l'annotation `@Disabled`) et vérifierez qu'il passe.
+        * **Attention** : n'essayez pas de passer tous les tests en même temps ((principe _BabySteps_)
         * Ne faites pas de add/commit tant que des tests non-annotés `@Disabled` ne passent pas.
         * **Remarque** : soyez vigilants même si votre programme passe tous les tests car en règle générale un programme ne peut **jamais** être suffisamment testé...
 
@@ -26,6 +27,6 @@ esthétiques, les IDE vous fournissent tous des outils de nettoyage, veillez à 
 * Surveillez l'activité sur [le forum](https://piazza.com/class/jpv7gf0lltk4kc), les nouvelles informations y seront mentionnées. N'hésitez pas à y poser également des questions surtout si vous pensez que ça peut intéresser les autres équipes.
 
 ### Conseils concernant la gestion de version
-* Chaque commit devrait accompagné d'un message permettant de comprendre l'objet de la modification.
+* Chaque commit devrait être accompagné d'un message permettant de comprendre l'objet de la modification.
 * Vos _commits_ doivent être les plus petits possible. Un commit qui fait 10 modifications de code sans lien entre elles, devra être découpé en 10 _commits_.
-* On vous conseille d'utiliser des _branches_ différentes (cf. le tutoriel vu en [TP1](https://github.com/IUTInfoMontp-M2103/TP1)) lors du développement d'une fonctionnalité importante. Le nom de la branche doit être au maximum porteur de sens.
+* On vous conseille d'utiliser des _branches_ différentes (cf. le tutoriel vu en [TP1](https://github.com/IUTInfoMontp-M2103/TP1)) lors du développement d'une fonctionnalité importante. Le nom de la branche doit être au maximum porteur de sens. Une fois que vous pensez que le code de la fonctionnalité est fini (tous les tests associés à celle-ci passent), vous fusionerez le code de sa branche avec la branche `master`.

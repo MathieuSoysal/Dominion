@@ -12,5 +12,4 @@ public class Moneylender extends Card {
     public Moneylender() {
         super("Moneylender", 4);
     }
-
 }

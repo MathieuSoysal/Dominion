@@ -1,7 +1,6 @@
 package fr.umontpellier.iut.dominion.cards;
 
 import fr.umontpellier.iut.dominion.Game;
-import fr.umontpellier.iut.dominion.ListOfCards;
 import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.base.*;
 import fr.umontpellier.iut.dominion.cards.common.Silver;
@@ -11,8 +10,6 @@ import org.junit.jupiter.api.Test;
 
 import java.io.OutputStream;
 import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -36,7 +33,6 @@ class CardsTest1 {
     @BeforeEach
     void setUp() {
         String[] playerNames = new String[]{"Toto", "Titi", "Tutu"};
-        List<ListOfCards> kingdomStacks = new ArrayList<>();
         Game minimalGame = new Game(playerNames, new String[0]);
         player = minimalGame.getPlayer(1);
     }

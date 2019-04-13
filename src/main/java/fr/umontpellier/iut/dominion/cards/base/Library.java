@@ -12,5 +12,4 @@ public class Library extends Card {
     public Library() {
         super("Library", 5);
     }
-
 }

@@ -13,5 +13,4 @@ public class Moat extends Card {
     public Moat() {
         super("Moat", 2);
     }
-
 }

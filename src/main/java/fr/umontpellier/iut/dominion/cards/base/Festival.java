@@ -13,5 +13,4 @@ public class Festival extends Card {
     public Festival() {
         super("Festival", 5);
     }
-
 }

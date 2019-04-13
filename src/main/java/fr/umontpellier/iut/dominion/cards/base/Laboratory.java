@@ -12,5 +12,4 @@ public class Laboratory extends Card {
     public Laboratory() {
         super("Laboratory", 5);
     }
-
 }

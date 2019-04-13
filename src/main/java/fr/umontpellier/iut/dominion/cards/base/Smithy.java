@@ -11,5 +11,4 @@ public class Smithy extends Card {
     public Smithy() {
         super("Smithy", 4);
     }
-
 }

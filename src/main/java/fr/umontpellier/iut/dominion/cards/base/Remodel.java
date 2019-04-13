@@ -12,5 +12,4 @@ public class Remodel extends Card {
     public Remodel() {
         super("Remodel", 4);
     }
-
 }

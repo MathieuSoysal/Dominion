@@ -12,5 +12,4 @@ public class ThroneRoom extends Card {
     public ThroneRoom() {
         super("Throne Room", 4);
     }
-
 }

@@ -11,5 +11,4 @@ public class Chapel extends Card {
     public Chapel() {
         super("Chapel", 2);
     }
-
 }

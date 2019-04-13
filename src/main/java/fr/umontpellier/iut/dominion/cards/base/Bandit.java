@@ -4,13 +4,12 @@ import fr.umontpellier.iut.dominion.cards.Card;
 
 /**
  * Carte Bandit
- * +1 Pièce
- * Tous les autres joueurs révélent les deux premières cartes de leur deck, écartent un Trésor révélé autre
- * que Cuivre et défaussent le reste.
+ *
+ * Gagnez un Or.
+ * Chaque joueur révèle les deux premières cartes de son deck, écarte un trésor autre que Cuivre et défausse le reste.
  */
 public class Bandit extends Card {
-
-    public Bandit(String name, int cost) {
-        super(name, cost);
+    public Bandit() {
+        super("Bandit", 5);
     }
 }

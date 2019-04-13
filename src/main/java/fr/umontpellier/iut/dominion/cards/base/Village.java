@@ -12,5 +12,4 @@ public class Village extends Card {
     public Village() {
         super("Village", 3);
     }
-
 }

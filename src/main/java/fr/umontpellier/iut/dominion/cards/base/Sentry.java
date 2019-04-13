@@ -3,15 +3,15 @@ package fr.umontpellier.iut.dominion.cards.base;
 import fr.umontpellier.iut.dominion.cards.Card;
 
 /**
- * Carte Sentinelle
- * +1 Action.
+ * Carte Sentinelle (Sentry)
+ *
  * +1 Carte.
- * Regardez les 2 premières cartes de votre deck. Écartez et/ou défaussez certaines d'entre elles.
- * Placez le reste au-dessus dans n'importe quel ordre.
+ * +1 Action.
+ * Regardez les 2 premières cartes de votre deck. Écartez et/ou défaussez celles que vous voulez.
+ * Replacez le sur votre deck dans l'ordre de votre choix.
  */
 public class Sentry extends Card {
-
-    public Sentry(String name, int cost) {
-        super(name, cost);
+    public Sentry() {
+        super("Sentry", 5);
     }
 }

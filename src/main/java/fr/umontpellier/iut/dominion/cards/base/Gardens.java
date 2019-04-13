@@ -11,5 +11,4 @@ public class Gardens extends Card {
     public Gardens() {
         super("Gardens", 4);
     }
-
 }

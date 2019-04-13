@@ -13,5 +13,4 @@ public class Bureaucrat extends Card {
     public Bureaucrat() {
         super("Bureaucrat", 4);
     }
-
 }

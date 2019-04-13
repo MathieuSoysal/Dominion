@@ -9,8 +9,7 @@ import fr.umontpellier.iut.dominion.cards.Card;
  * Défaussez la première carte de votre deck. Si c'est une carte Action, vous pouvez la jouer.
  */
 public class Vassal extends Card {
-
-    public Vassal(String name, int cost) {
-        super(name, cost);
+    public Vassal() {
+        super("Vassal", 3);
     }
 }

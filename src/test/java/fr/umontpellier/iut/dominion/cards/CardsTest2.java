@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CardsTest2 {
     private IOGame game;
-    private Player player;
+    private Player p0, p1, p2;
 
     @BeforeEach
     void disableConsole() {
@@ -38,55 +38,54 @@ class CardsTest2 {
     void setUp() {
         String[] playerNames = new String[]{"Toto", "Titi", "Tutu"};
         game = new IOGame(playerNames, new String[0]);
-        player = game.getPlayer(2);
+        p0 = game.getPlayer(0);
+        p1 = game.getPlayer(1);
+        p2 = game.getPlayer(2);
     }
 
     @Disabled
     @Test
     void testCellar() {
-        player.getHand().add(new Cellar());
-        player.getHand().add(new Duchy());
-        player.getHand().add(new Duchy());
+        p2.getHand().add(new Cellar());
+        p2.getHand().add(new Duchy());
+        p2.getHand().add(new Duchy());
 
         game.setInput("Duchy", "Silver", "Duchy", "");
-        player.playCard("Cellar");
+        p2.playCard("Cellar");
 
-        assertEquals(1, player.getNumberOfActions());
-        assertEquals(7, player.getHand().size());
-        assertEquals(2, player.getDiscard().size());
-        assertEquals(3, player.getDraw().size());
-        assertNull(player.getHand().getCard("Duchy"));
+        assertEquals(1, p2.getNumberOfActions());
+        assertEquals(7, p2.getHand().size());
+        assertEquals(2, p2.getDiscard().size());
+        assertEquals(3, p2.getDraw().size());
+        assertNull(p2.getHand().getCard("Duchy"));
     }
 
     @Disabled
     @Test
     void testChapel() {
-        player.getHand().add(new Chapel());
-        player.getHand().add(new Duchy());
-        player.getHand().add(new Silver());
+        p2.getHand().add(new Chapel());
+        p2.getHand().add(new Duchy());
+        p2.getHand().add(new Silver());
 
         game.setInput("Duchy", "Gold", "Silver", "");
-        player.playCard("Chapel");
-        assertEquals(5, player.getHand().size());
-        assertEquals(0, player.getDiscard().size());
+        p2.playCard("Chapel");
+        assertEquals(5, p2.getHand().size());
+        assertEquals(0, p2.getDiscard().size());
     }
 
     @Disabled
     @Test
     void testWorkshop() {
-        player.getHand().add(new Workshop());
+        p2.getHand().add(new Workshop());
         game.setInput("Gold", "Silver");
-        player.playCard("Workshop");
-        assertNull(player.getDiscard().getCard("Gold"));
-        assertNotNull(player.getDiscard().getCard("Silver"));
+        p2.playCard("Workshop");
+        assertNull(p2.getDiscard().getCard("Gold"));
+        assertNotNull(p2.getDiscard().getCard("Silver"));
     }
 
     @Disabled
     @Test
     void testBureaucrat() {
-        Player p0 = game.getPlayer(0);
-        Player p1 = game.getPlayer(1);
-        Player p2 = game.getPlayer(2);
         p0.getHand().clear();
         p0.getHand().add(new Estate());
         p0.getHand().add(new Duchy());
@@ -111,10 +110,6 @@ class CardsTest2 {
     @Disabled
     @Test
     void testMilitia() {
-        Player p0 = game.getPlayer(0);
-        Player p1 = game.getPlayer(1);
-        Player p2 = game.getPlayer(2);
-
         p0.getHand().clear();
         p0.getHand().add(new Silver());
         p0.getHand().add(new Silver());
@@ -144,52 +139,48 @@ class CardsTest2 {
     @Disabled
     @Test
     void testMoneylenderWithCopper() {
-        player.getHand().clear();
-        player.getHand().add(new Moneylender());
-        player.getHand().add(new Silver());
-        player.getHand().add(new Silver());
-        player.getHand().add(new Copper());
+        p2.getHand().clear();
+        p2.getHand().add(new Moneylender());
+        p2.getHand().add(new Silver());
+        p2.getHand().add(new Silver());
+        p2.getHand().add(new Copper());
 
-        player.playCard("Moneylender");
+        p2.playCard("Moneylender");
 
-        assertEquals(3, player.getMoney());
-        assertTrue(hasCards(player.getHand(), "Silver", "Silver"));
+        assertEquals(3, p2.getMoney());
+        assertTrue(hasCards(p2.getHand(), "Silver", "Silver"));
     }
 
     @Disabled
     @Test
     void testMoneylenderNoCopper() {
-        player.getHand().clear();
-        player.getHand().add(new Moneylender());
-        player.getHand().add(new Silver());
-        player.getHand().add(new Silver());
+        p2.getHand().clear();
+        p2.getHand().add(new Moneylender());
+        p2.getHand().add(new Silver());
+        p2.getHand().add(new Silver());
 
-        player.playCard("Moneylender");
+        p2.playCard("Moneylender");
 
-        assertEquals(0, player.getMoney());
-        assertTrue(hasCards(player.getHand(), "Silver", "Silver"));
+        assertEquals(0, p2.getMoney());
+        assertTrue(hasCards(p2.getHand(), "Silver", "Silver"));
     }
 
     @Disabled
     @Test
     void testRemodel() {
-        player.getHand().add(new Remodel());
-        player.getHand().add(new Silver());
+        p2.getHand().add(new Remodel());
+        p2.getHand().add(new Silver());
         game.setInput("Silver", "Province", "Duchy");
-        player.playCard("Remodel");
+        p2.playCard("Remodel");
 
-        assertNull(player.getDiscard().getCard("Province"));
-        assertNotNull(player.getDiscard().getCard("Duchy"));
-        assertNull(player.getHand().getCard("Silver"));
+        assertNull(p2.getDiscard().getCard("Province"));
+        assertNotNull(p2.getDiscard().getCard("Duchy"));
+        assertNull(p2.getHand().getCard("Silver"));
     }
 
     @Disabled
     @Test
     void testCouncilRoom() {
-        Player p0 = game.getPlayer(0);
-        Player p1 = game.getPlayer(1);
-        Player p2 = game.getPlayer(2);
-
         p1.getHand().add(new CouncilRoom());
         p1.playCard("Council Room");
 
@@ -202,26 +193,22 @@ class CardsTest2 {
     @Disabled
     @Test
     void testMine() {
-        player.getHand().clear();
-        player.getHand().add(new Mine());
-        player.getHand().add(new Estate());
-        player.getHand().add(new Copper());
-        player.getHand().add(new Silver());
+        p2.getHand().clear();
+        p2.getHand().add(new Mine());
+        p2.getHand().add(new Estate());
+        p2.getHand().add(new Copper());
+        p2.getHand().add(new Silver());
 
         game.setInput("Estate", "Copper", "Gold", "Silver");
-        player.playCard("Mine");
+        p2.playCard("Mine");
 
-        assertTrue(hasCards(player.getHand(), "Estate", "Silver", "Silver"));
-        assertEquals(0, player.getDiscard().size());
+        assertTrue(hasCards(p2.getHand(), "Estate", "Silver", "Silver"));
+        assertEquals(0, p2.getDiscard().size());
     }
 
     @Disabled
     @Test
     void testWitch() {
-        Player p0 = game.getPlayer(0);
-        Player p1 = game.getPlayer(1);
-        Player p2 = game.getPlayer(2);
-
         p1.getHand().add(new Witch());
         p1.playCard("Witch");
 
@@ -229,5 +216,76 @@ class CardsTest2 {
         assertNull(p1.getDiscard().getCard("Curse"));
         assertNotNull(p2.getDiscard().getCard("Curse"));
         assertEquals(7, p1.getHand().size());
+    }
+
+    @Disabled
+    @Test
+    void testPoacher() {
+        p1.getHand().add(new Poacher());
+        Card duchy1 = new Duchy();
+        Card duchy2 = new Duchy();
+        p1.getHand().add(duchy1);
+        p1.getHand().add(duchy2);
+        for (int i = 0; i < 99; i++) { game.removeFromSupply("Silver"); }   // vider la pile de Silver
+        for (int i = 0; i < 99; i++) { game.removeFromSupply("Gold"); }     // vider la pile de Gold
+
+        game.setInput("Duchy", "Province", "Duchy");
+
+        p1.playCard("Poacher");
+        assertEquals(6, p1.getHand().size());
+        assertEquals(1, p1.getMoney());
+        assertTrue(p1.getDiscard().contains(duchy1));
+        assertTrue(p1.getDiscard().contains(duchy2));
+    }
+
+    @Disabled
+    @Test
+    void testArtisan() {
+        Card silver = new Silver();
+        p1.getHand().add(new Artisan());
+        p1.getHand().add(silver);
+
+        // - essaie d'acheter un Gold (pas autorisé) puis un Duchy (ok)
+        // - repose le Silver de sa main sur son deck
+        game.setInput("Gold", "Duchy", "Silver");
+
+        p1.playCard("Artisan");
+
+        assertNull(p1.getHand().getCard("Gold"));       // Gold n'a pas été gagné
+        assertNotNull(p1.getHand().getCard("Duchy"));   // Duchy a été gagné en main
+        assertFalse(p1.getHand().contains(silver));     // Silver n'est plus en main
+        assertEquals(silver, p1.getDraw().get(0));      // Silver est sur le deck
+    }
+
+    @Disabled
+    @Test
+    void testVassalPlayAction() {
+        p1.getHand().add(new Vassal());
+        Card village = new Village();
+        p1.getDraw().add(0, village);
+
+        game.setInput("y");     // joue le Village
+
+        p1.playCard("Vassal");
+
+        assertEquals(2, p1.getMoney());
+        assertEquals(2, p1.getNumberOfActions());   // +2 actions du Village
+        assertEquals(6, p1.getHand().size());       // +1 carte du Village
+        assertTrue(p1.getInPlay().contains(village));
+    }
+
+    @Disabled
+    @Test
+    void testVassalNotAction() {
+        p1.getHand().add(new Vassal());
+        Card gold = new Gold();
+        p1.getDraw().add(0, gold);
+
+        game.setInput("y");     // ne devrait pas être lu
+
+        p1.playCard("Vassal");
+
+        assertEquals(2, p1.getMoney());
+        assertTrue(p1.getDiscard().contains(gold));
     }
 }

@@ -13,5 +13,4 @@ public class Cellar extends Card {
     public Cellar() {
         super("Cellar", 2);
     }
-
 }

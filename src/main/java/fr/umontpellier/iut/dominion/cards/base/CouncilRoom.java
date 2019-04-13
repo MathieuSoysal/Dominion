@@ -13,5 +13,4 @@ public class CouncilRoom extends Card {
     public CouncilRoom() {
         super("Council Room", 5);
     }
-
 }

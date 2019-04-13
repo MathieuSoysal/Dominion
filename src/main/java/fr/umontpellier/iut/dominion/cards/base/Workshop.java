@@ -11,5 +11,4 @@ public class Workshop extends Card {
     public Workshop() {
         super("Workshop", 3);
     }
-
 }

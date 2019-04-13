@@ -12,5 +12,4 @@ public class Militia extends Card {
     public Militia() {
         super("Militia", 4);
     }
-
 }

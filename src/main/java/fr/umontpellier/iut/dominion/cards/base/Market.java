@@ -14,5 +14,4 @@ public class Market extends Card {
     public Market() {
         super("Market", 5);
     }
-
 }

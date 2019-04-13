@@ -12,5 +12,4 @@ public class Witch extends Card {
     public Witch() {
         super("Witch", 5);
     }
-
 }

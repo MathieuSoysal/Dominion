@@ -12,5 +12,4 @@ public class Mine extends Card {
     public Mine() {
         super("Mine", 5);
     }
-
 }

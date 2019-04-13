@@ -67,7 +67,7 @@ public abstract class Card {
      *
      * @param p joueur qui exécute l'effet de la carte
      *
-     *          L'action de cette méthode dépend de la classe de la carte.
+     * L'action de cette méthode dépend de la classe de la carte.
      */
     public void play(Player p) {
 
@@ -81,9 +81,8 @@ public abstract class Card {
      * @param p joueur qui possède la carte (la valeur d'une carte peut dépendre du joueur qui la possède,
      *          c'est le cas des cartes Gardens)
      *
-     *          Toutes les cartes qui ne sont pas de type Victoire ont une valeur de 0
-     *          (la méthode devra donc être redéfinie pour les cartes ayant une valeur
-     *          non nulle).
+     * Toutes les cartes qui ne sont pas de type Victoire ont une valeur de 0
+     * (la méthode devra donc être redéfinie pour les cartes ayant une valeur non nulle).
      */
     public int getVictoryValue(Player p) {
         return 0;

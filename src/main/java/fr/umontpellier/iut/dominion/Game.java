@@ -57,7 +57,7 @@ public class Game {
         scanner = new Scanner(System.in);
 
         // Création des piles de réserve
-        supplyStacks = new ArrayList<ListOfCards>();
+        supplyStacks = new ArrayList<>();
         for (String cardName : kingdomStacks) {
             supplyStacks.add(FactoryListOfCards.createCardList(10, cardName));
         }
@@ -147,7 +147,7 @@ public class Game {
      *
      * On pourrait par exemple avoir l'affichage suivant:
      *
-     * -- Toto's Turn --
+     *      -- Toto's Turn --
      * Cellar x10 (2)   [Empty stack]   Moat x10 (2)
      * Workshop x7 (3)   [Empty stack]   Bureaucrat x3 (4)
      * Gardens x6 (4)   Militia x2 (4)   Festival x8 (5)
@@ -158,16 +158,16 @@ public class Game {
     @Override
     public String toString() {
         Player currentPlayer = players.get(currentPlayerIndex);
-        String r = String.format("     -- %s's Turn --\n", currentPlayer.getName());
+        String title = String.format("     -- %s's Turn --\n", currentPlayer.getName());
+        StringJoiner joiner = new StringJoiner("   ");
         for (List<Card> stack : supplyStacks)
             if (stack.isEmpty())
-                r += "[Empty stack]   ";
+                joiner.add("[Empty stack]");
             else {
                 Card c = stack.get(0);
-                r += String.format("%s x%d(%d)   ", c.getName(), stack.size(), c.getCost());
+                joiner.add(String.format("%s x%d(%d)", c.getName(), stack.size(), c.getCost()));
             }
-        r += "\n";
-        return r;
+        return title + joiner.toString() + "\n";
     }
 
     /**

@@ -63,12 +63,12 @@ public class Player {
      * @param name: le nom du joueur
      * @param game: le jeu en cours
      *
-     *              Indications: On peut utiliser la méthode {@code endTurn()} pour
-     *              préparer la main du joueur après avoir placé les cartes dans la défausse.
-     *              Par ailleurs, les cartes Copper et Estate peuvent soit être instanciées
-     *              directement dans cette méthode soit être prises dans la réserve du jeu
-     *              (dont la réserve doit alors être préparée avant les joueurs) à l'aide de
-     *              la méthode {@code gainFromSupply(String cardName)}.
+     * Indications: On peut utiliser la méthode {@code endTurn()} pour
+     * préparer la main du joueur après avoir placé les cartes dans la défausse.
+     * Par ailleurs, les cartes Copper et Estate peuvent soit être instanciées
+     * directement dans cette méthode soit être prises dans la réserve du jeu
+     * (dont la réserve doit alors être préparée avant les joueurs) à l'aide de
+     * la méthode {@code gainFromSupply(String cardName)}.
      */
     public Player(String name, Game game) {
         throw new RuntimeException("Not Implemented");
@@ -243,7 +243,7 @@ public class Player {
      *
      * On pourrait par exemple avoir l'affichage suivant:
      *
-     * -- Toto --
+     *      -- Toto --
      * Actions: 2     Money: 4     Buys: 1     Draw: 7     Discard: 3
      * In play: Village, Copper, Silver, Copper
      * Hand: Estate, Province
@@ -280,10 +280,10 @@ public class Player {
      *
      * @param c carte à jouer
      *
-     *          Cette méthode ne vérifie pas que le joueur a le droit de jouer la carte,
-     *          ni même que la carte se trouve effectivement dans sa main.
-     *          La méthode retire la carte de la main du joueur, la place dans la liste
-     *          {@code inPlay} et exécute la méthode {@code play(Player p)} de la carte.
+     * Cette méthode ne vérifie pas que le joueur a le droit de jouer la carte,
+     * ni même que la carte se trouve effectivement dans sa main.
+     * La méthode retire la carte de la main du joueur, la place dans la liste
+     * {@code inPlay} et exécute la méthode {@code play(Player p)} de la carte.
      */
     private void playCard(Card c) {
         throw new RuntimeException("Not Implemented");
@@ -294,10 +294,10 @@ public class Player {
      *
      * @param cardName nom de la carte à jouer
      *
-     *                 S'il existe une carte dans la main du joueur dont le nom est égal au
-     *                 paramètre, la carte est jouée à l'aide de la méthode
-     *                 {@code playCard(Card c)}. Si aucune carte ne correspond, la méthode ne
-     *                 fait rien.
+     * S'il existe une carte dans la main du joueur dont le nom est égal au
+     * paramètre, la carte est jouée à l'aide de la méthode
+     * {@code playCard(Card c)}. Si aucune carte ne correspond, la méthode ne
+     * fait rien.
      */
     public void playCard(String cardName) {
         throw new RuntimeException("Not Implemented");
@@ -308,9 +308,9 @@ public class Player {
      *
      * @param c carte à gagner (éventuellement {@code null})
      *
-     *          Si la carte n'est pas {@code null}, elle est placée sur la défausse du
-     *          joueur. On suppose que la carte a correctement été retirée de son
-     *          emplacement précédent au préalable.
+     * Si la carte n'est pas {@code null}, elle est placée sur la défausse du
+     * joueur. On suppose que la carte a correctement été retirée de son
+     * emplacement précédent au préalable.
      */
     public void gain(Card c) {
         throw new RuntimeException("Not Implemented");
@@ -382,12 +382,11 @@ public class Player {
      *
      * Exemple d'utilisation pour demander à un joueur de répondre à une
      * question :
-     * <pre>
+     *
      * {@code
-     * List<String> choices = Arrays.asList("y", "n");
-     * String input = p.choose("Do you want to ...? (y/n)", choices, false);
+     *   List<String> choices = Arrays.asList("y", "n");
+     *   String input = p.choose("Do you want to ...? (y/n)", choices, false);
      * }
-     * </pre>
      */
     public String choose(String instruction, List<String> choices, boolean canPass, boolean show_choices) {
         // La liste de choix est convertie en ensemble pour éviter les doublons
@@ -428,25 +427,24 @@ public class Player {
      *                    faire de choix. S'il est autorisé à passer, c'est la chaîne de
      *                    caractères vide ("") qui signifie qu'il désire passer.
      *
-     *                    La méthode commence par construire une liste de tous les noms des cartes
-     *                    dans {@code choices} puis appelle la méthode précédente pour faire
-     *                    choisir un nom parmi cette liste à l'utilisateur.
+     * La méthode commence par construire une liste de tous les noms des cartes
+     * dans {@code choices} puis appelle la méthode précédente pour faire
+     * choisir un nom parmi cette liste à l'utilisateur.
      *
-     *                    Exemple d'utilisation pour faire choisir le nom d'une carte Action de sa
-     *                    main à un joueur (dans cet exemple le joueur n'a pas le droit de passer
-     *                    s'il a au moins une carte Action en main, mais la méthode peut quand
-     *                    même renvoyer {@code ""} s'il n'a aucune carte Action en main) :
-     *                    <pre>
-     *                                       {@code
-     *                                       ListOfCards choices = new ListOfCards();
-     *                                       for (Card c: p.getCardsInHand()) {
-     *                                         if (c.getTypes().contains(CardType.Action)) {
-     *                                           choices.add(c);
-     *                                         }
-     *                                       }
-     *                                       String input = p.chooseCard("Choose an Action cards.",
-     *                                       choices, false);
-     *                                       </pre>
+     * Exemple d'utilisation pour faire choisir le nom d'une carte Action de sa
+     * main à un joueur (dans cet exemple le joueur n'a pas le droit de passer
+     * s'il a au moins une carte Action en main, mais la méthode peut quand
+     * même renvoyer {@code ""} s'il n'a aucune carte Action en main) :
+     * {@code
+     *   ListOfCards choices = new ListOfCards();
+     *   for (Card c: p.getCardsInHand()) {
+     *     if (c.getTypes().contains(CardType.Action)) {
+     *       choices.add(c);
+     *     }
+     *   }
+     *   String input = p.chooseCard("Choose an Action cards.",
+     *   choices, false);
+     * }
      */
     public String chooseCard(String instruction, ListOfCards choices, boolean canPass) {
         // liste de noms de cartes

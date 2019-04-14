@@ -12,7 +12,7 @@ class AppDominion {
 
         // Changer les noms des classes selon les cartes à utiliser dans la partie.
         String[] kingdomCards = {"Cellar", "Chapel", "Moat", "Village", "Workshop",
-                "Feast", "Militia", "ThroneRoom", "Laboratory", "Witch"};
+                "Militia", "Smithy", "ThroneRoom", "Laboratory", "Witch"};
 
         // Instancie et exécute une partie
         Game g = new Game(playerNames, kingdomCards);

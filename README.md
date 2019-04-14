@@ -22,9 +22,7 @@ Le but de ce projet est de produire une implémentation en _Java_ du jeu de cart
 
 _Dominion_ est un jeu de cartes inventé par Donald X. Vaccarino pour 2 à 4 joueurs. C'est un jeu de _construction de deck_ où les joueurs doivent à tour de rôle jouer des cartes de leur main pour obtenir de nouvelles cartes parmi un ensemble commun disponible. Lorsque la partie s'arrête le joueur possédant le plus de points de victoire dans son deck est déclaré vainqueur.
 
-Dans ce projet nous considérerons la [_Seconde Edition_](http://wiki.dominionstrategy.com/index.php/Second_Edition) du jeu où 6 cartes du jeu initial ont été remplacées par 7 autres cartes. Vous pouvez consulter les règles du jeu en ligne :
- * http://wiki.dominionstrategy.com/index.php/Gameplay - pour les règles de base
- * http://wiki.dominionstrategy.com/index.php/Second_Edition - les modifications mineures adaptées à notre version
+Le fichier [règles de base](ressources/sujet/Dominion-Regles-1ere-edition.pdf) contient les règles principales du jeu (première édition). Dans ce projet nous considérerons la [_Seconde Edition_](http://wiki.dominionstrategy.com/index.php/Second_Edition) du jeu où 6 cartes du jeu initial ont été remplacées par 7 autres cartes. Mis à part le changement des cartes mentionnées, les règles de base restent inchangées.
 
 **Vous êtes encouragés à lire ces règles avant de poursuivre la lecture du sujet.**
 

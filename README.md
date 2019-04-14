@@ -24,7 +24,7 @@ _Dominion_ est un jeu de cartes inventé par Donald X. Vaccarino pour 2 à 4 jou
 
 Dans ce projet nous considérerons la [_Seconde Edition_](http://wiki.dominionstrategy.com/index.php/Second_Edition) du jeu où 6 cartes du jeu initial ont été remplacées par 7 autres cartes. Vous pouvez consulter les règles du jeu en ligne :
  * http://wiki.dominionstrategy.com/index.php/Gameplay - pour les règles de base
- * http://wiki.dominionstrategy.com/index.php/Second_Edition - es modifications mineures adaptées à notre version
+ * http://wiki.dominionstrategy.com/index.php/Second_Edition - les modifications mineures adaptées à notre version
 
 **Vous êtes encouragés à lire ces règles avant de poursuivre la lecture du sujet.**
 
@@ -164,7 +164,7 @@ Lorsqu'un joueur doit choisir parmi un ensemble de cartes (par exemple la carte 
 
 Pour indiquer qu'il souhaite _passer_ (par exemple parce qu'il ne souhaite pas jouer de carte _Action_, qu'il ne veut rien acheter en fin de tour ou encore s'il ne veut plus écarter de cartes après avoir joué une _Chapelle_), le joueur entrera la chaîne de caractères vide `""`.
 
-Enfin, lorsqu'il doit faire un choix parmi deux possibilités (par exemple choisir s'il veut défausser son deck après avoir joué un _Chancellier_, ou s'il veut défausser une carte _Action_ piochée après avoir joué une _Biliothèque_), il répondra à une question posée en entrant `"y"` pour oui et `"n"` pour non.
+Enfin, lorsqu'il doit faire un choix parmi deux possibilités (par exemple choisir s'il veut défausser son deck après avoir joué un _Chancellier_, ou s'il veut défausser une carte _Action_ piochée après avoir joué une _Bibliothèque_), il répondra à une question posée en entrant `"y"` pour oui et `"n"` pour non.
 
 Le code des méthodes qui gèrent les choix vous est donné dans la classe `Player` (`choose()`, `chooseOption(...)`, `chooseCard(...)` ) et vous n'aurez pas à le modifier. (_lorsque l'IHM vous sera fournie, il faudra tout de même remplacer quelques lignes de code de ces fonctions, et on vous dira par quoi le moment venu_)
 
@@ -172,7 +172,7 @@ Le code des méthodes qui gèrent les choix vous est donné dans la classe `Play
 
 L'intégralité du code source du projet doit résider dans le dépôt GitHub associé à votre équipe de projet. À priori vous n'avez qu'à compléter les fichiers `.java` qui vous ont été donnés.
 
-Toutes les méthodes qui lèvent une exception avec l'instruction `throw new RuntimeException("Not Implemented")` doivent être complétées selon les spécifications (en respectant les noms et les paramètres indiqués). Vous pouvez éventuellement ajouter des attributs et méthodes aux classes, lorsque cela vous semble nécessaire. **Sauf indication de la part des enseignants, il est interdit de de moifier : **
+Toutes les méthodes qui lèvent une exception avec l'instruction `throw new RuntimeException("Not Implemented")` doivent être complétées selon les spécifications (en respectant les noms et les paramètres indiqués). Vous pouvez éventuellement ajouter des attributs et méthodes aux classes, lorsque cela vous semble nécessaire. **Sauf indication de la part des enseignants, il est interdit de de moifier :**
 1. **les signatures des méthodes/attributs.**
 2. **le code des méthodes déjà écrites (celles qui n'ont pas de `throw new RuntimeException("Not Implemented")`)**
 

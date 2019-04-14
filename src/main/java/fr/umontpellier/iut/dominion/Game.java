@@ -9,7 +9,7 @@ import java.util.Scanner;
 import java.util.StringJoiner;
 
 /**
- * Class représentant une partie de Dominion
+ * Classe représentant une partie de Dominion
  */
 public class Game {
     /**

@@ -5,7 +5,7 @@ import fr.umontpellier.iut.dominion.cards.Card;
 import java.util.*;
 
 /**
- * Un joueur de Dominion
+ * Modélise un joueur de Dominion
  */
 public class Player {
     /**

@@ -6,7 +6,15 @@ import fr.umontpellier.iut.dominion.cards.common.*;
 
 import java.util.HashMap;
 
-public abstract class FactoryListOfCards {
+/**
+ * Classe de fabrication de listes de cartes
+ */
+
+public final class FactoryListOfCards {
+
+    /**
+     * dictionnaire de cartes
+     */
     private static final HashMap<String, Class<? extends Card>> dicoCards = new HashMap<>();
 
     static {
@@ -45,6 +53,13 @@ public abstract class FactoryListOfCards {
         dicoCards.put("Artisan", Artisan.class);
     }
 
+    /**
+     * Renvoie une liste de cartes
+     *
+     * @param number : le nombre de cartes de la liste
+     * @param nameOfCardClass: le nom de la classe à instancier
+     * @return une liste de cartes de même type
+     */
     public static ListOfCards createCardList(int number, String nameOfCardClass) {
         ListOfCards stack = new ListOfCards();
         for (int i = 0; i < number; i++) {

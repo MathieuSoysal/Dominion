@@ -284,7 +284,7 @@ public class Game {
     /**
      * Envoie une chaîne de caractères à l'interface graphique
      *
-     * Cette méthode ne fait rien pour le moment et vous ne devez pas l'utiliser (ni la modifier).
+     * Cette méthode ne fait rien pour le moment et VOUS NE DEVEZ PAS L'UTILISER (NI LA MODIFIER).
      * Elle sera implémentée plus tard dans une sous-classe de Game qui vous sera fournie pour l'interface graphique.
      *
      * @param message chaîne de caractères à envoyer

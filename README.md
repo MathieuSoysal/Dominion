@@ -147,12 +147,14 @@ La classe `Game` est relativement simple (par rapport à `Player`). Le diagramme
 
 ### Interface utilisateur
 
-L'interface utilisateur que vous aurez à gérer sera entièrement en ligne de commandes. Les informations du jeu seront affichées à l'écran en utilisant la sortie standard et les choix des joueurs se feront par lecture sur l'entrée standard (clavier). Une fois la partie lancée, toutes les interactions avec l'utilisateur se feront donc dans le terminal. Dans une partie à plusieurs joueurs, un même processus demande successivement aux joueurs de jouer leur tour dans le même terminal.
+L'interface utilisateur que vous aurez à gérer sera entièrement en ligne de commandes. Les informations du jeu seront affichées à l'écran en utilisant la sortie standard et les choix des joueurs se feront par lecture sur l'entrée standard (clavier). Une fois la partie lancée, toutes les interactions avec l'utilisateur se feront donc dans le terminal. Dans une partie à plusieurs joueurs, un même processus demande successivement aux joueurs de jouer leur tour dans le même terminal.  
+ **Important** : le code gérant l'ensemble d'affichages utilisateur vous est fourni et vous ne devez pas le modifier.  
+
 
 #### Interface graphique (web)
  Ultérieurement, une fois que votre projet aura suffisamment avancé, une interface graphique vous sera fournie. Cette interface interpretera la saisie console et affichera le jeu de manière plus proche d'un utilisateur non-informaticien. Vous n'aurez pas à la modifier (ni à adapter votre code), cette partie étant complètement indépendante de votre projet. Cette interface permettra de rendre votre projet plus ludique et pour que votre jeu rassemble à un _vrai_ jeu.
  
- **Important** : Des méthodes spéciales `String toJSON()` et `promptAsJSON()` ont été ajoutées aux classes `Game`, `ListOfCards` et `Player`. Elle sont nécessaires pour l'IHM qui sera ajoutée ultérieurement. **Vous ne devriez pas les modifier !**
+ **Important** : Des méthodes spéciales `String toJSON()` et `void prompt()` ont été ajoutées aux classes `Game`, `ListOfCards` et `Player`. Elle sont nécessaires pour l'IHM qui sera ajoutée ultérieurement. **Vous ne devriez pas les modifier !**
  
  **Important** : L'interface graphique sera compatible sur Linux et MacOS. Sur les autres systèmes d'exploitation, le comportement de l'IHM ne sera pas garanti. 
 
@@ -170,7 +172,9 @@ Le code des méthodes qui gèrent les choix vous est donné dans la classe `Play
 
 L'intégralité du code source du projet doit résider dans le dépôt GitHub associé à votre équipe de projet. À priori vous n'avez qu'à compléter les fichiers `.java` qui vous ont été donnés.
 
-Toutes les méthodes qui lèvent une exception avec l'instruction `throw new RuntimeException("Not Implemented")` doivent être complétées selon les spécifications (en respectant les noms et les paramètres indiqués). Vous pouvez éventuellement ajouter des attributs et méthodes aux classes, lorsque cela vous semble nécessaire. **Sauf indication de la part des enseignants, il est interdit de modifier les signatures des méthodes/attributs.**
+Toutes les méthodes qui lèvent une exception avec l'instruction `throw new RuntimeException("Not Implemented")` doivent être complétées selon les spécifications (en respectant les noms et les paramètres indiqués). Vous pouvez éventuellement ajouter des attributs et méthodes aux classes, lorsque cela vous semble nécessaire. **Sauf indication de la part des enseignants, il est interdit de de moifier : **
+1. **les signatures des méthodes/attributs.**
+2. **le code des méthodes déjà écrites (celles qui n'ont pas de `throw new RuntimeException("Not Implemented")`)**
 
 L'exécution de la méthode `main(String args[])` de la classe `AppDominion` (à la racine du projet) doit démarrer une partie avec un ensemble de 10 cartes _Royaume_ de votre choix. Cette fonction servira simplement à exécuter manuellement une partie et à faire des petites simulations. L'ensemble des cartes et différentes actions du jeu seront évaluées de manière automatique à l'aide des tests unitaires. Ces tests sont faits indépendamment du choix de cartes pour la partie exécutée par la méthode `main(String args[])`. Un premier jeu de tests unitaires vous est fourni dans le répertoire `src/test/java`.
 

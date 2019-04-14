@@ -457,16 +457,17 @@ public class Player {
     }
 
     /**
-     * Affiche l'état de la partie aux joueurs avant de faire un choix
+     * Envoie l'état de la partie pour affichage aux joueurs et à l'UI avant de faire un choix
      *
      * @param instruction l'instruction qui est donnée au joueur
      * @param choices la liste des choix possibles
      * @param show_choices indique s'il faut afficher la liste des choix (true) ou non (false)
      */
     public void prompt(String instruction, List<String> choices, boolean show_choices) {
-        System.out.println();
-        System.out.println(this.game.toString());
-        System.out.println(this.toString());
+        // Prépare la version affichée à l'utilisateur
+        game.println("");
+        game.println(this.game.toString());
+        game.println(this.toString());
         String ligneInstruction = ">>> " + instruction;
         if (show_choices) {
             StringJoiner choicesJoiner = new StringJoiner(" / ");
@@ -477,13 +478,10 @@ public class Player {
         } else {
             ligneInstruction += " <<<";
         }
-        System.out.println(ligneInstruction);
-    }
+        // Envoie la version affichage aux joueurs
+        game.println(ligneInstruction);
 
-    /**
-     * Méthode utilitaire pour l'interface graphique (qui sera ajoutée ultérieurement). À NE PAS MODIFIER.
-     */
-    public void promptAsJSON(String instruction, List<String> choices, boolean show_choices) {
+        // Prépare la représentation envoyée à l'UI
         StringJoiner joiner = new StringJoiner(", ");
         joiner.add(String.format("\"game\": %s", game.toJSON()));
         joiner.add(String.format("\"active_player\": %s", toJSON()));
@@ -497,7 +495,8 @@ public class Player {
         } else {
             joiner.add("\"choices\": []");
         }
-        System.out.println("{" + joiner.toString() + "}");
+        // Envoie la version pour l'UI
+        game.printToUI("{" + joiner.toString() + "}\n");
     }
 
     /**

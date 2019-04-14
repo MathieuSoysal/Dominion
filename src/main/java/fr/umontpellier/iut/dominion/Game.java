@@ -264,6 +264,35 @@ public class Game {
     }
 
     /**
+     * Affiche une chaîne de caractères sur la sortie standard
+     *
+     * @param message chaîne de caractères à afficher
+     */
+    public void print(String message) {
+        System.out.print(message);
+    }
+
+    /**
+     * Affiche une ligne sur la sortie standard
+     *
+     * @param message chaîne de caractères à afficher (la fonction ajoute automatiquement un retour à la ligne après)
+     */
+    public void println(String message) {
+        print(message + "\n");
+    }
+
+    /**
+     * Envoie une chaîne de caractères à l'interface graphique
+     *
+     * Cette méthode ne fait rien pour le moment et vous ne devez pas l'utiliser (ni la modifier).
+     * Elle sera implémentée plus tard dans une sous-classe de Game qui vous sera fournie pour l'interface graphique.
+     *
+     * @param message chaîne de caractères à envoyer
+     */
+    public void printToUI(String message) {
+    }
+
+    /**
      * Lit une ligne de l'entrée standard
      *
      * C'est cette méthode qui doit être appelée à chaque fois qu'on veut lire

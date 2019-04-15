@@ -6,7 +6,7 @@
 * **Enseignants:** [Marin Bougeret](mailto:marin.bougeret@umontpellier.fr), [Sébastien Gagné](mailto:sebastien.gagne@umontpellier.fr), [Victor Poupet](mailto:victor.poupet@umontpellier.fr), [Petru Valicov](mailto:petru.valicov@umontpellier.fr)
 * Le [forum Piazza](https://piazza.com/class/jpv7gf0lltk4kc) de ce cours pour poser vos questions
 * [Email](mailto:petru.valicov@umontpellier.fr) pour une question d'ordre privée concernant le cours.
-* Le [sujet du projet](https://github.com/IUTInfoMontp-M2103/Projet-Dominion) en format .pdf téléchargeable et imprimable.
+* Le [sujet du projet](https://gitprint.com/IUTInfoMontp-M2103/Projet-Dominion) en format .pdf téléchargeable et imprimable.
 
 
 # Projet - _DOMINION_

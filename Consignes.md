@@ -2,7 +2,7 @@
 
 ### Consignes pour le fork
 Les étapes à suivre par chaque équipe pour organiser correctement votre projet :
-  1. Pour forker votre projet vous devez avoir consitué une équipe. __Un seul membre de l'équipe__ fera le fork (càd acceptera l'affectation du projet sur GitHub Classroom) : https://classroom.github.com/g/q0uQgVlr
+  1. Pour forker votre projet vous devez avoir consitué une équipe. __Un seul membre de l'équipe__ fera le fork (càd acceptera l'affectation du projet sur GitHub Classroom) : 
   2. Au moment de l'acceptation de l'invitation, ce membre d'équipe choisira un nom d'équipe. Ce nom sera constitué des noms de famille de chaque membre accolés par ordre alphabétique. Par exemple, si les noms sont Dupont, Martin, Durand et Cornet, alors l'équipe s'appellera : `CornetDupontDurantMartin`.
   3. Ensuite, une fois le projet forké, l'étudiant invitera les autres membres de l'équipe un par un comme collaborateurs extérieurs (_Outside collaborator_) à ce dépôt. À vous de choisir si vous voulez qu'un d'entre vous (ou tous) ait les droits d'administration. À partir de ce moment vous pourrez travailler de façon collaborative sur votre dépôt.
     

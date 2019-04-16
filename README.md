@@ -123,10 +123,7 @@ Le tour d'un joueur s'exécute en plusieurs étapes
 
   **Achats.** Le joueur peut acheter des cartes de la réserve en utilisant l'argent qu'il a amassé pendant les phases précédentes. Le joueur peut acheter une carte s'il lui reste au moins un achat et que le prix de la carte est inférieur à la somme dont il dispose. Lorsqu'il achète une carte, son compteur d'achats est décrémenté de 1, son argent est décrémenté de la valeur de la carte achetée et la carte achetée est déplacée dans la défausse du joueur. Le joueur peut choisir de terminer cette phase même s'il peut encore acheter des cartes.
 
-  **Fin.** À la fin du tour toutes les cartes (de la main du joueur et en jeu) sont défaussées, les compteurs du joueur sont remis à 0 et le joueur pioche 5 nouvelles cartes en main.
-\end{description}
-
-**Remarque :** Il est important que les cartes en main soient piochées à la fin du tour car la main peut être affectée pendant le tour d'un autre joueur (cf. _Militia_ ou _Moat_ par exemple).
+  **Fin.** À la fin du tour toutes les cartes (de la main du joueur et en jeu) sont défaussées, les compteurs du joueur sont remis à 0 et le joueur pioche 5 nouvelles cartes en main. Il est important que les soient piochées à la fin du tour car la main peut être affectée pendant le tour d'un autre joueur (cf. _Militia_ ou _Moat_ par exemple).
 
 
 ### La partie

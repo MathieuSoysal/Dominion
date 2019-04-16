@@ -204,6 +204,8 @@ public class Player {
      *
      * Cette méthode fait appel à la méthode {@code drawCard()} pour piocher une
      * carte et la place dans la main du joueur.
+     *
+     * @return la carte piochée, {@code null} si aucune carte disponible
      */
     public Card drawToHand() {
         throw new RuntimeException("Not Implemented");

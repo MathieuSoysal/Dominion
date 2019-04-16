@@ -65,10 +65,6 @@ public class Player {
      *
      * Indications: On peut utiliser la méthode {@code endTurn()} pour
      * préparer la main du joueur après avoir placé les cartes dans la défausse.
-     * Par ailleurs, les cartes Copper et Estate peuvent soit être instanciées
-     * directement dans cette méthode soit être prises dans la réserve du jeu
-     * (dont la réserve doit alors être préparée avant les joueurs) à l'aide de
-     * la méthode {@code gainFromSupply(String cardName)}.
      */
     public Player(String name, Game game) {
         throw new RuntimeException("Not Implemented");

@@ -132,9 +132,7 @@ public class Game {
      * @return une liste de cartes contenant la première carte de chaque pile
      * non-vide de la réserve (cartes royaume et cartes communes)
      */
-    public ListOfCards availableSupplyCards() {
-        throw new RuntimeException("Not Implemented");
-    }
+    public ListOfCards availableSupplyCards() {throw new RuntimeException("Not implemented");}
 
     /**
      * Renvoie une représentation de l'état de la partie sous forme d'une chaîne
@@ -204,7 +202,14 @@ public class Game {
      * ne correspond
      */
     public Card getFromSupply(String cardName) {
-        throw new RuntimeException("Not Implemented");
+        Card card = null;
+        for (ListOfCards cardList : supplyStacks) {
+            card = cardList.getCard(cardName);
+            if (card != null) {
+                return card;
+            }
+        }
+        return card;
     }
 
     /**

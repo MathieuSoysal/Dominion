@@ -65,10 +65,6 @@ public class Player {
      *
      * Indications: On peut utiliser la méthode {@code endTurn()} pour
      * préparer la main du joueur après avoir placé les cartes dans la défausse.
-     * Par ailleurs, les cartes Copper et Estate peuvent soit être instanciées
-     * directement dans cette méthode soit être prises dans la réserve du jeu
-     * (dont la réserve doit alors être préparée avant les joueurs) à l'aide de
-     * la méthode {@code gainFromSupply(String cardName)}.
      */
     public Player(String name, Game game) {
         throw new RuntimeException("Not Implemented");
@@ -208,6 +204,8 @@ public class Player {
      *
      * Cette méthode fait appel à la méthode {@code drawCard()} pour piocher une
      * carte et la place dans la main du joueur.
+     *
+     * @return la carte piochée, {@code null} si aucune carte disponible
      */
     public Card drawToHand() {
         throw new RuntimeException("Not Implemented");
@@ -380,13 +378,9 @@ public class Player {
      * automatiquement renvoyée par la méthode (indépendamment de la valeur de
      * {@code canPass}).
      *
-     * Exemple d'utilisation pour demander à un joueur de répondre à une
-     * question :
+     * Remarque: En général vous devriez plutôt utiliser les deux fonctions qui suivent (chooseCard(...)
+     * et chooseOption(...)) qui appellent celle-ci.
      *
-     * {@code
-     *   List<String> choices = Arrays.asList("y", "n");
-     *   String input = p.choose("Do you want to ...? (y/n)", choices, false);
-     * }
      */
     public String choose(String instruction, List<String> choices, boolean canPass, boolean show_choices) {
         // La liste de choix est convertie en ensemble pour éviter les doublons
@@ -410,6 +404,26 @@ public class Player {
             }
     }
 
+    /**
+     * Attend une entrée de la part du joueur et renvoie le choix du joueur.
+     * Dans cette méthode, la liste des choix correspond à des mots clés possibles (par
+     * exemple "y"/"n" pour un choix binaire). Les choix sont toujours affichés après
+     * l'instruction.
+     *
+     * @param instruction message à afficher à l'écran pour indiquer au joueur
+     *                    la nature du choix qui est attendu
+     * @param choices     liste des choix possibles (cette liste sera affiché après
+     *                    l'instruction)
+     * @param canPass     booléen indiquant si le joueur a le droit de passer sans
+     *                    faire de choix. S'il est autorisé à passer, c'est la chaîne de
+     *                    caractères vide ("") qui signifie qu'il désire passer.
+     *
+     * Exemple d'utilisation pour demander à l'utilisateur de choisir "y" ou "n"
+     * {@code
+     *   List<String> choices = Arrays.asList("y", "n");
+     *   String input = p.chooseOption("Do you want to ...?", choices, false);
+     * }
+     */
     public String chooseOption(String instruction, List<String> choices, boolean canPass) {
         return choose(instruction, choices, canPass, true);
     }

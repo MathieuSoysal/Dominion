@@ -62,15 +62,15 @@ public class Game {
             supplyStacks.add(FactoryListOfCards.createCardList(10, cardName));
         }
         // Ajout des piles communes à la réserve
-        // Le nombre d'exemplaires des cartes Trésor dépend du nombre de joueurs
-        int nbTreasures = nbPlayers <= 2 ? 8 : 12;
+        // Le nombre d'exemplaires des cartes Victoire dépend du nombre de joueurs
+        int nbVictory = nbPlayers <= 2 ? 8 : 12;
 
         supplyStacks.add(FactoryListOfCards.createCardList(60, "Copper"));
         supplyStacks.add(FactoryListOfCards.createCardList(40, "Silver"));
         supplyStacks.add(FactoryListOfCards.createCardList(30, "Gold"));
-        supplyStacks.add(FactoryListOfCards.createCardList(nbTreasures, "Estate"));
-        supplyStacks.add(FactoryListOfCards.createCardList(nbTreasures, "Duchy"));
-        supplyStacks.add(FactoryListOfCards.createCardList(nbTreasures, "Province"));
+        supplyStacks.add(FactoryListOfCards.createCardList(nbVictory, "Estate"));
+        supplyStacks.add(FactoryListOfCards.createCardList(nbVictory, "Duchy"));
+        supplyStacks.add(FactoryListOfCards.createCardList(nbVictory, "Province"));
         supplyStacks.add(FactoryListOfCards.createCardList(10 * (nbPlayers - 1), "Curse"));
 
 

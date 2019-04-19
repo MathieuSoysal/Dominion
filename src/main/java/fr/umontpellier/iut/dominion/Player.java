@@ -1,6 +1,8 @@
 package fr.umontpellier.iut.dominion;
 
 import fr.umontpellier.iut.dominion.cards.Card;
+import fr.umontpellier.iut.dominion.cards.common.Copper;
+import fr.umontpellier.iut.dominion.cards.common.Estate;
 
 import java.util.*;
 
@@ -69,6 +71,17 @@ public class Player {
     public Player(String name, Game game) {
         this.name = name;
         this.game = game;
+        this.discard = new ListOfCards();
+        this.hand = new ListOfCards();
+        this.inPlay = new ListOfCards();
+        this.draw = new ListOfCards();
+        for (int i = 0; i < 7; i++) {
+            discard.add(new Copper());
+        }
+        for (int i = 0; i < 3; i++) {
+            discard.add(new Estate());
+        }
+        endTurn();
     }
 
     /**
@@ -197,7 +210,16 @@ public class Player {
      * @return la carte piochée, {@code null} si aucune carte disponible
      */
     public Card drawCard() {
-        throw new RuntimeException("Not Implemented");
+        if (draw.isEmpty()) {
+            if (!discard.isEmpty()) {
+                discard.shuffle();
+                draw.addAll(discard);
+            } else {
+                return null;
+            }
+        }
+        Card card = draw.remove(0);
+        return card;
     }
 
     /**
@@ -209,7 +231,13 @@ public class Player {
      * @return la carte piochée, {@code null} si aucune carte disponible
      */
     public Card drawToHand() {
-        throw new RuntimeException("Not Implemented");
+        Card cardToAdd = drawCard();
+        if (drawCard() == null) {
+            return null;
+        } else {
+            hand.add(drawCard());
+        }
+        return cardToAdd;
     }
 
     /**
@@ -350,7 +378,7 @@ public class Player {
      * Ajoute une carte sur le dessus de la pioche du joueur
      */
     public void addToDraw(Card c) {
-        throw new RuntimeException("Not Implemented");
+        draw.add(0,c);
     }
 
     /**
@@ -522,7 +550,16 @@ public class Player {
      * - Le joueur pioche 5 cartes en main
      */
     public void endTurn() {
-        throw new RuntimeException("Not Implemented");
+        numberOfActions = 0;
+        money = 0;
+        numberOfBuys = 0;
+        discard.addAll(getHand());
+        hand.clear();
+        discard.addAll(getInPlay());
+        inPlay.clear();
+        for (int i = 0; i < 5; i++) {
+            drawToHand();
+        }
     }
 
     /**

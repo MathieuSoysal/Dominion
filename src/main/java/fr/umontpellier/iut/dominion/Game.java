@@ -132,7 +132,13 @@ public class Game {
      * @return une liste de cartes contenant la première carte de chaque pile
      * non-vide de la réserve (cartes royaume et cartes communes)
      */
-    public ListOfCards availableSupplyCards() {throw new RuntimeException("Not implemented");}
+    public ListOfCards availableSupplyCards() {
+        ListOfCards availableCards = new ListOfCards();
+        for (ListOfCards cardList : supplyStacks) {
+            availableCards.add(cardList.get(0));
+        }
+        return availableCards;
+    }
 
     /**
      * Renvoie une représentation de l'état de la partie sous forme d'une chaîne
@@ -220,9 +226,15 @@ public class Game {
      * ne correspond au nom passé en argument
      */
     public Card removeFromSupply(String cardName) {
-        throw new RuntimeException("Not Implemented");
+        Card card = null;
+        for (ListOfCards cardList : supplyStacks) {
+            card = cardList.getCard(cardName);
+            if (card != null) {
+                cardList.remove(card);
+            }
+        }
+        return card;
     }
-
     /**
      * Teste si la partie est terminée
      *

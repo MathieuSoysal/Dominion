@@ -3,6 +3,7 @@ package fr.umontpellier.iut.dominion;
 import fr.umontpellier.iut.dominion.cards.Card;
 import fr.umontpellier.iut.dominion.cards.FactoryListOfCards;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -119,7 +120,9 @@ public class Game {
      * premier).
      */
     public List<Player> otherPlayers(Player p) {
-        throw new RuntimeException("Not Implemented");
+        ArrayList<Player> adversaires = players;
+        adversaires.remove(p);
+        return adversaires;
     }
 
     /**

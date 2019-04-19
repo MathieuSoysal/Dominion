@@ -33,8 +33,7 @@ class GameTest {
 
     @Disabled
     @Test
-    void testNbPlayers() {
-        assertEquals(3, minimalGame.getNumberOfPlayers());
+    void testNbPlayers() { assertEquals(3, minimalGame.getNumberOfPlayers());
     }
 
     @Disabled
@@ -44,7 +43,7 @@ class GameTest {
         assertEquals("Titi", p.getName());
     }
 
-    @Disabled
+
     @Test
     void testOtherPlayersSize() {
         Player p = minimalGame.getPlayer(1);

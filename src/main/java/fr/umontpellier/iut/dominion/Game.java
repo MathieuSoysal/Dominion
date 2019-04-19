@@ -120,9 +120,9 @@ public class Game {
      * premier).
      */
     public List<Player> otherPlayers(Player p) {
-        ArrayList<Player> adversaires = players;
-        adversaires.remove(p);
-        return adversaires;
+        ArrayList<Player> opponents = players;
+        opponents.remove(p);
+        return opponents;
     }
 
     /**

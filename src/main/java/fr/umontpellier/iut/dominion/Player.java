@@ -67,7 +67,8 @@ public class Player {
      * préparer la main du joueur après avoir placé les cartes dans la défausse.
      */
     public Player(String name, Game game) {
-        throw new RuntimeException("Not Implemented");
+        this.name = name;
+        this.game = game;
     }
 
     /**

@@ -3,6 +3,7 @@ package fr.umontpellier.iut.dominion;
 import fr.umontpellier.iut.dominion.cards.Card;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Modélise un joueur de Dominion
@@ -378,27 +379,36 @@ public class Player {
      * automatiquement renvoyée par la méthode (indépendamment de la valeur de
      * {@code canPass}).
      *
-     * Remarque: En général vous devriez plutôt utiliser les deux fonctions qui suivent (chooseCard(...)
-     * et chooseOption(...)) qui appellent celle-ci.
-     *
+     * Exemple d'utilisation pour demander à un joueur de répondre à une
+     * question :
+     * <pre>
+     * {@code
+     * List<String> choices = Arrays.asList("y", "n");
+     * String input = p.choose("Do you want to ...? (y/n)", choices, false);
+     * }
+     * </pre>
      */
     public String choose(String instruction, List<String> choices, boolean canPass, boolean show_choices) {
-        // La liste de choix est convertie en ensemble pour éviter les doublons
-        Set<String> choiceSet = new HashSet<>(choices);
+        // on retire les doublons de la liste des choix
+        choices = choices.stream().distinct().collect(Collectors.toList());
         // Aucun choix disponible
-        if (choiceSet.isEmpty())
+        if (choices.isEmpty())
             return "";
         else // Un seul choix possible (renvoyer cet unique élément)
-            if (choiceSet.size() == 1 && !canPass)
-                return choiceSet.iterator().next();
+            if (choices.size() == 1 && !canPass)
+                return choices.get(0);
             else {
                 String input;
                 // Lit l'entrée de l'utilisateur jusqu'à obtenir un choix valide
                 while (true) {
-                    prompt(instruction, choices, show_choices);
+                    if (show_choices) {
+                        prompt(instruction, choices);
+                    } else {
+                        prompt(instruction, new ArrayList<>());
+                    }
                     input = game.readLine();
                     // si une réponse valide est obtenue, elle est renvoyée
-                    if (choiceSet.contains(input) || (canPass && input.equals("")))
+                    if (choices.contains(input) || (canPass && input.equals("")))
                         return input;
                 }
             }
@@ -474,41 +484,39 @@ public class Player {
      * Envoie l'état de la partie pour affichage aux joueurs et à l'UI avant de faire un choix
      *
      * @param instruction l'instruction qui est donnée au joueur
-     * @param choices la liste des choix possibles
-     * @param show_choices indique s'il faut afficher la liste des choix (true) ou non (false)
+     * @param choices la liste des choix possibles à afficher à l'utilisateur
      */
-    public void prompt(String instruction, List<String> choices, boolean show_choices) {
+    public void prompt(String instruction, List<String> choices) {
         // Prépare la version affichée à l'utilisateur
         game.println("");
-        game.println(this.game.toString());
-        game.println(this.toString());
+        game.println(game.toString());
+        game.println(toString());
         String ligneInstruction = ">>> " + instruction;
-        if (show_choices) {
+        if (choices.size() > 0) {
             StringJoiner choicesJoiner = new StringJoiner(" / ");
             for (String choice: choices) {
-                choicesJoiner.add("\"" + choice + "\"");
+                choicesJoiner.add(choice);
             }
             ligneInstruction += "(" + choicesJoiner.toString() + ") <<<";
         } else {
             ligneInstruction += " <<<";
         }
-        // Envoie la version affichage aux joueurs
         game.println(ligneInstruction);
 
         // Prépare la représentation envoyée à l'UI
         StringJoiner joiner = new StringJoiner(", ");
         joiner.add(String.format("\"game\": %s", game.toJSON()));
-        joiner.add(String.format("\"active_player\": %s", toJSON()));
-        joiner.add(String.format("\"instruction\": \"%s\"", instruction));
-        if (show_choices) {
-            StringJoiner choicesJoiner = new StringJoiner(", ");
-            for (String choice: choices) {
-                choicesJoiner.add("\"" + choice + "\"");
-            }
-            joiner.add(String.format("\"choices\": [%s]", choicesJoiner.toString()));
-        } else {
-            joiner.add("\"choices\": []");
+        int activePlayerIndex;
+        for (activePlayerIndex = 0; activePlayerIndex < game.getNumberOfPlayers(); activePlayerIndex++) {
+            if (game.getPlayer(activePlayerIndex) == this) { break; }
         }
+        joiner.add(String.format("\"active_player\": %d", activePlayerIndex));
+        joiner.add(String.format("\"instruction\": \"%s\"", instruction));
+        StringJoiner choicesJoiner = new StringJoiner(", ");
+        for (String choice: choices) {
+            choicesJoiner.add("\"" + choice + "\"");
+        }
+        joiner.add(String.format("\"choices\": [%s]", choicesJoiner.toString()));
         // Envoie la version pour l'UI
         game.printToUI("{" + joiner.toString() + "}\n");
     }
@@ -601,5 +609,18 @@ public class Player {
 
         // 5. (Fin)
         endTurn();
+    }
+
+    /**
+     * Regroupe toutes les cartes du joueur dans sa main (à n'utiliser qu'en fin de partie, pour afficher
+     * correctement toutes les cartes)
+     */
+    public void takeAllCardsInHand() {
+        hand.addAll(draw);
+        hand.addAll(inPlay);
+        hand.addAll(discard);
+        draw.clear();
+        inPlay.clear();
+        discard.clear();
     }
 }

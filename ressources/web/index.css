@@ -1,0 +1,162 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10pt;
+  font-family: Monaco, Consolas, "Lucida Console", monospace;
+  background: #6f6f6f url(images/bg.jpg) no-repeat center center fixed;
+  background-blend-mode: screen;
+  background-size: cover;
+  --pt: 1vw;
+}
+@media (min-width: 768px) {
+  html {
+    --pt: calc(768px / 100);
+  }
+}
+
+body {
+  margin: 10px 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+#main {
+  width: calc(100 * var(--pt));
+  padding: calc(1 * var(--pt));
+  background: url(images/green.jpg) repeat;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+}
+
+#kingdom_supply, #common_supply, .in_play, .hand {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#kingdom_supply, #common_supply {
+  justify-content: space-between;
+}
+
+#kingdom_supply {
+  --card-width: calc(19 * var(--pt));
+}
+
+#common_supply {
+  --card-width: calc(13.5 * var(--pt));
+}
+
+.in_play {
+  --card-width: calc(8 * var(--pt));
+  margin-top: 10px;
+}
+
+.hand {
+  --card-width: calc(12 * var(--pt));
+}
+
+.card {
+  width: var(--card-width);
+  height: calc(1.57 * var(--card-width));
+  position: relative;
+  margin-bottom: 10px;
+  background-size: cover;
+  border-radius: 6px;
+  box-shadow: 2px 2px 2px #333;
+}
+.card.half {
+  height: calc(0.84 * var(--card-width));
+}
+.card.phantom {
+  box-shadow: none;
+}
+.card .cost, .card .number {
+  position: absolute;
+  background-size: 100%;
+  font-family: Baskerville, "Baskerville Old Face", "Hoefler Text", Garamond, "Times New Roman", serif;
+  font-weight: bold;
+  text-align: center;
+  font-size: 1.2rem;
+}
+.card .cost {
+  background-image: url(images/coin.png);
+  background-size: cover;
+  width: 28px;
+  height: 28px;
+  line-height: 28px;
+  bottom: 0;
+  left: 0;
+}
+.card .number {
+  bottom: 3px;
+  right: 3px;
+  background-image: url(images/number.jpg);
+  width: 24px;
+  height: 24px;
+  border: 1px solid;
+  line-height: 24px;
+}
+
+.player {
+  margin-top: 10px;
+}
+.player.active {
+  background-color: #EEE5;
+}
+.player .player_info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.player .card {
+  margin-right: 3px;
+}
+.player .card.duplicate {
+  margin-right: calc(-.8 * var(--card-width));
+}
+.player .name {
+  font-weight: bolder;
+}
+.player .instruction {
+  visibility: hidden;
+}
+.player.active .instruction {
+  visibility: visible;
+  background-color: #EEE8;
+}
+
+button {
+  display: inline-block;
+  margin: 0 5px;
+  padding: 2px 5px;
+  line-height: 1;
+  text-align: center;
+  border-radius: 3px;
+  color: #000000;
+  background: #e7e5db;
+  border: solid 1px #000000;
+  width: 60px;
+  text-decoration: none;
+  user-select: none;
+}
+button:hover {
+  cursor: pointer;
+}
+
+#zoom {
+  width: calc(30 * var(--pt));
+  height: calc(1.57 * 30 * var(--pt));
+  border-radius: 13px;
+  background-size: cover;
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  pointer-events: none;
+}
+
+/*# sourceMappingURL=index.css.map */

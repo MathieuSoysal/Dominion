@@ -1,4 +1,4 @@
-package fr.umontpellier.iut.dominion.cards.gui;
+package fr.umontpellier.iut.dominion.gui;
 
 import fr.umontpellier.iut.dominion.Game;
 

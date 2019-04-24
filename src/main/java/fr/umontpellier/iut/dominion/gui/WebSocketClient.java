@@ -1,4 +1,4 @@
-package fr.umontpellier.iut.dominion.cards.gui;
+package fr.umontpellier.iut.dominion.gui;
 
 import javax.websocket.*;
 import javax.websocket.server.ServerEndpoint;

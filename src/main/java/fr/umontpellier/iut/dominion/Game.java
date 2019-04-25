@@ -181,11 +181,10 @@ public class Game {
      * Méthode utilitaire pour l'interface graphique (qui sera ajoutée ultérieurement). À NE PAS MODIFIER.
      */
     public String toJSON() {
-        Player currentPlayer = players.get(currentPlayerIndex);
         StringJoiner joiner = new StringJoiner(", ");
-        joiner.add("\"turn_player\": \"" + currentPlayer.getName() + "\"");
+        joiner.add("\"turn_player\": " + currentPlayerIndex);
         StringJoiner kingdomJoiner = new StringJoiner(", ");
-        for (List<Card> stack : supplyStacks) {
+        for (List<Card> stack: supplyStacks) {
             if (stack.isEmpty()) {
                 kingdomJoiner.add("{\"number\": 0}");
             } else {
@@ -195,10 +194,14 @@ public class Game {
                                 stack.size(), c.getCost()));
             }
         }
-        joiner.add("\"kingdom\": [" + kingdomJoiner.toString() + "]");
+        joiner.add("\"supply\": [" + kingdomJoiner.toString() + "]");
+        StringJoiner playersJoiner = new StringJoiner(", ");
+        for (Player p: players) {
+            playersJoiner.add(p.toJSON());
+        }
+        joiner.add("\"players\": [" + playersJoiner.toString() + "]");
         return "{" + joiner.toString() + "}";
     }
-
 
     /**
      * Renvoie une carte de la réserve dont le nom est passé en argument.
@@ -278,9 +281,12 @@ public class Game {
         }
         System.out.println("Game over.");
         // Affiche le score et les cartes de chaque joueur
-        for (Player p : players)
+        for (Player p : players) {
             System.out.println(String.format("%s: %d Points.\n%s\n", p.getName(), p.getVictoryPoints(),
                     p.getAllCards().toString()));
+            p.takeAllCardsInHand();
+        }
+        printToUI("{\"game\": " + toJSON() + "}");
     }
 
     /**

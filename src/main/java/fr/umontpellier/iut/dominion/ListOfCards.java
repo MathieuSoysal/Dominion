@@ -39,16 +39,17 @@ public class ListOfCards extends ArrayList<Card> {
      * Retire une carte de la liste dont le nom est égal à l'argument passé
      *
      * @param cardName le nom de la carte à retirer
-     * @return
+     * @return la carte retirée, {@code null} sinon
      */
     public Card remove(String cardName) {
-        for (Card currentCard : this) {
+        Card currentCard = null;
+        for (currentCard : this) {
             if (currentCard.getName().equals(cardName)) {
                 this.remove(currentCard);
-                return currentCard;
+                break;
             }
         }
-        return null;
+        return currentCard;
     }
 
     /**

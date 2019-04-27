@@ -42,14 +42,15 @@ public class ListOfCards extends ArrayList<Card> {
      * @return la carte retirée, {@code null} sinon
      */
     public Card remove(String cardName) {
-        Card currentCard = null;
-        for (currentCard : this) {
+        Card cardToRemove = null;
+        for (Card currentCard: this) {
             if (currentCard.getName().equals(cardName)) {
+                cardToRemove = currentCard;
                 this.remove(currentCard);
                 break;
             }
         }
-        return currentCard;
+        return cardToRemove;
     }
 
     /**

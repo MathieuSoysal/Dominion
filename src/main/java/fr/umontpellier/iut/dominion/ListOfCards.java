@@ -42,14 +42,8 @@ public class ListOfCards extends ArrayList<Card> {
      * @return la carte retirée, {@code null} sinon
      */
     public Card remove(String cardName) {
-        Card cardToRemove = null;
-        for (Card currentCard: this) {
-            if (currentCard.getName().equals(cardName)) {
-                cardToRemove = currentCard;
-                this.remove(currentCard);
-                break;
-            }
-        }
+        Card cardToRemove = this.getCard(cardName);
+        this.remove(cardToRemove);
         return cardToRemove;
     }
 
@@ -61,7 +55,12 @@ public class ListOfCards extends ArrayList<Card> {
      * {@code null} sinon
      */
     public Card getCard(String cardName) {
-        throw new RuntimeException("Not Implemented");
+        for (Card currentCard : this) {
+            if (cardName.equals(currentCard.getName())) {
+                return currentCard;
+            }
+        }
+        return null;
     }
 
     /**

@@ -314,7 +314,8 @@ public class Player {
      * {@code inPlay} et exécute la méthode {@code play(Player p)} de la carte.
      */
     private void playCard(Card c) {
-        throw new RuntimeException("Not Implemented");
+        inPlay.add(hand.remove(hand.indexOf(c)));
+        c.play(this);
     }
 
     /**

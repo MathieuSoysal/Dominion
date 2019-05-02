@@ -354,7 +354,9 @@ public class Player {
      * emplacement précédent au préalable.
      */
     public void gain(Card c) {
-        throw new RuntimeException("Not Implemented");
+        if ( c != null) {
+            discard.add(0,c);
+        }
     }
 
     /**

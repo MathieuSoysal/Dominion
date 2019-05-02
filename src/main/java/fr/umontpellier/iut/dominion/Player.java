@@ -391,9 +391,9 @@ public class Player {
      * lieu
      */
     public Card buyCard(String cardName) {
-        Card card = game.getFromSupply(cardName);
-        if (numberOfBuys != 0 && money >= card.getCost()) {
-            money -= card.getCost();
+        int cardCost = game.getFromSupply(cardName).getCost();
+        if (numberOfBuys != 0 && money >= cardCost) {
+            money -= cardCost;
             numberOfBuys--;
             return gainFromSupply(cardName);
         }

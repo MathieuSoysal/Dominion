@@ -391,7 +391,15 @@ public class Player {
      * lieu
      */
     public Card buyCard(String cardName) {
-        throw new RuntimeException("Not Implemented");
+        Card card = game.getFromSupply(cardName);
+        if (numberOfBuys != 0 && money >= card.getCost()) {
+            game.removeFromSupply(cardName);
+            money -= card.getCost();
+            numberOfBuys--;
+            gain(card);
+            return card;
+        }
+        return null;
     }
 
     /**

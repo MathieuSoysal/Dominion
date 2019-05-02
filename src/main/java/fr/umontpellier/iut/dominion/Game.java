@@ -233,7 +233,7 @@ public class Game {
         for (ListOfCards cardList : supplyStacks) {
             card = cardList.getCard(cardName);
             if (card != null) {
-                cardList.remove(card);
+                return cardList.remove(cardList.indexOf(card));
             }
         }
         return card;

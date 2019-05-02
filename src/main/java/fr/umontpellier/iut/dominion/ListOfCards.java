@@ -42,9 +42,7 @@ public class ListOfCards extends ArrayList<Card> {
      * @return la carte retirée, {@code null} sinon
      */
     public Card remove(String cardName) {
-        Card cardToRemove = this.getCard(cardName);
-        this.remove(cardToRemove);
-        return cardToRemove;
+        return this.remove(this.indexOf(this.getCard(cardName)));
     }
 
     /**

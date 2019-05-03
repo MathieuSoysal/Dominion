@@ -224,12 +224,12 @@ public class Player {
             if (!discard.isEmpty()) {
                 discard.shuffle();
                 draw.addAll(discard);
+                discard.clear();
             } else {
                 return null;
             }
         }
-        Card card = draw.remove(0);
-        return card;
+        return draw.remove(0);
     }
 
     /**
@@ -246,8 +246,8 @@ public class Player {
             return null;
         } else {
             hand.add(drawCard());
+            return cardToAdd;
         }
-        return cardToAdd;
     }
 
     /**
@@ -586,9 +586,9 @@ public class Player {
         numberOfActions = 0;
         money = 0;
         numberOfBuys = 0;
-        discard.addAll(getHand());
+        discard.addAll(hand);
         hand.clear();
-        discard.addAll(getInPlay());
+        discard.addAll(inPlay);
         inPlay.clear();
         for (int i = 0; i < 5; i++) {
             drawToHand();

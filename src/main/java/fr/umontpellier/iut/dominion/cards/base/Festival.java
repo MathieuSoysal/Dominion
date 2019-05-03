@@ -1,5 +1,6 @@
 package fr.umontpellier.iut.dominion.cards.base;
 
+import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.Card;
 
 /**
@@ -12,5 +13,12 @@ import fr.umontpellier.iut.dominion.cards.Card;
 public class Festival extends Card {
     public Festival() {
         super("Festival", 5);
+    }
+
+    @Override
+    public void play(Player p) {
+        p.incrementMoney(2);
+        p.incrementBuys(1);
+        p.incrementActions(2);
     }
 }

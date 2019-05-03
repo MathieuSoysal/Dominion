@@ -1,5 +1,6 @@
 package fr.umontpellier.iut.dominion.cards.base;
 
+import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.Card;
 
 /**
@@ -11,5 +12,13 @@ import fr.umontpellier.iut.dominion.cards.Card;
 public class Laboratory extends Card {
     public Laboratory() {
         super("Laboratory", 5);
+    }
+
+    @Override
+    public void play(Player p) {
+        for (int i = 0; i < 2; i++) {
+            p.drawToHand();
+        }
+        p.incrementActions(1);
     }
 }

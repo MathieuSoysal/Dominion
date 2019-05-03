@@ -48,7 +48,7 @@ class CardsTest1 {
         assertEquals(0, player.getMoney());
     }
 
-    @Disabled
+    
     @Test
     void testMoatAction() {
         player.getHand().add(new Moat());

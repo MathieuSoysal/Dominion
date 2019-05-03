@@ -1,5 +1,6 @@
 package fr.umontpellier.iut.dominion.cards.base;
 
+import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.Card;
 
 /**
@@ -12,5 +13,12 @@ import fr.umontpellier.iut.dominion.cards.Card;
 public class Moat extends Card {
     public Moat() {
         super("Moat", 2);
+    }
+
+    @Override
+    public void play(Player p) {
+        for (int i = 0; i < 2; i++) {
+            p.drawToHand();
+        }
     }
 }

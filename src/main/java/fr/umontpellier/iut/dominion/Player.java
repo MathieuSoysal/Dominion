@@ -242,12 +242,11 @@ public class Player {
      */
     public Card drawToHand() {
         Card cardToAdd = drawCard();
-        if (drawCard() == null) {
-            return null;
-        } else {
-            hand.add(drawCard()); // à commenter si on décommente endTurn()
-            return cardToAdd;
+        if (cardToAdd != null) {
+            hand.add(cardToAdd);
         }
+        return cardToAdd;
+
     }
 
     /**

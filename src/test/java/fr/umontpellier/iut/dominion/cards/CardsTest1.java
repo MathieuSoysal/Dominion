@@ -71,7 +71,7 @@ class CardsTest1 {
         assertEquals(4, player.getDraw().size());
     }
 
-    @Disabled
+
     @Test
     void testGardens() {
         assertEquals(3, player.getVictoryPoints());  // le joueur a initialement 10 cartes

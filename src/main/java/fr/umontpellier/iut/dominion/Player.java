@@ -245,7 +245,7 @@ public class Player {
         if (drawCard() == null) {
             return null;
         } else {
-            hand.add(drawCard());
+            hand.add(drawCard()); // à commenter si on décommente endTurn()
             return cardToAdd;
         }
     }
@@ -590,9 +590,12 @@ public class Player {
         hand.clear();
         discard.addAll(inPlay);
         inPlay.clear();
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 5; i++) { //if a commenter si décommente le while
             drawToHand();
         }
+        /*while (hand.size() < 5) {
+            hand.add(drawToHand());
+        }*/
     }
 
     /**

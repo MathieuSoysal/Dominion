@@ -1,5 +1,6 @@
 package fr.umontpellier.iut.dominion.cards.common;
 
+import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.Card;
 
 /**
@@ -12,4 +13,8 @@ public class Curse extends Card {
         super("Curse", 0);
     }
 
+    @Override
+    public int getVictoryValue(Player p) {
+        return -1;
+    }
 }

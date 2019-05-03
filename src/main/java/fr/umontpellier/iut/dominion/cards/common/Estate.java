@@ -1,5 +1,6 @@
 package fr.umontpellier.iut.dominion.cards.common;
 
+import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.Card;
 
 /**
@@ -10,6 +11,11 @@ import fr.umontpellier.iut.dominion.cards.Card;
 public class Estate extends Card {
     public Estate() {
         super("Estate", 2);
+    }
+
+    @Override
+    public int getVictoryValue(Player p) {
+        return 1;
     }
 
 }

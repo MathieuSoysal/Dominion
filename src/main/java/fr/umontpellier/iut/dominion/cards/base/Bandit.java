@@ -1,6 +1,10 @@
 package fr.umontpellier.iut.dominion.cards.base;
 
+import fr.umontpellier.iut.dominion.CardType;
 import fr.umontpellier.iut.dominion.cards.Card;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Carte Bandit
@@ -11,5 +15,13 @@ import fr.umontpellier.iut.dominion.cards.Card;
 public class Bandit extends Card {
     public Bandit() {
         super("Bandit", 5);
+    }
+
+    @Override
+    public List<CardType> getTypes() {
+        List<CardType> types = new ArrayList<>();
+        types.add(CardType.Action);
+        types.add(CardType.Attack);
+        return types;
     }
 }

@@ -1,6 +1,10 @@
 package fr.umontpellier.iut.dominion.cards.base;
 
+import fr.umontpellier.iut.dominion.CardType;
 import fr.umontpellier.iut.dominion.cards.Card;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Carte Sorcière (Witch)
@@ -11,5 +15,13 @@ import fr.umontpellier.iut.dominion.cards.Card;
 public class Witch extends Card {
     public Witch() {
         super("Witch", 5);
+    }
+
+    @Override
+    public List<CardType> getTypes() {
+        List<CardType> types = new ArrayList<>();
+        types.add(CardType.Action);
+        types.add(CardType.Attack);
+        return types;
     }
 }

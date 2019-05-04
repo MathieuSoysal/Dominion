@@ -1,7 +1,11 @@
 package fr.umontpellier.iut.dominion.cards.base;
 
+import fr.umontpellier.iut.dominion.CardType;
 import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.Card;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Carte Marché (Market)
@@ -22,5 +26,12 @@ public class Market extends Card {
         p.incrementActions(1);
         p.incrementBuys(1);
         p.drawToHand();
+    }
+
+    @Override
+    public List<CardType> getTypes() {
+        List<CardType> types = new ArrayList<>();
+        types.add(CardType.Action);
+        return types;
     }
 }

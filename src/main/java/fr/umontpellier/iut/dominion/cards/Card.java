@@ -69,9 +69,7 @@ public abstract class Card {
      *
      * L'action de cette méthode dépend de la classe de la carte.
      */
-    public void play(Player p) {
-
-    }
+    public void play(Player p) {}
 
     /**
      * Renvoie la valeur de la carte en points de victoire (c'est cette méthode

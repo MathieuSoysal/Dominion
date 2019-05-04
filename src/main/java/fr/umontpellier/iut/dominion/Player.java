@@ -656,7 +656,7 @@ public class Player {
         }
 
         // 3. (Trésor)
-        for (Card c : hand){
+        for (Card c : getCardsInHand()){ //Modification pour pouvoir lancer la partie (original --> Card c : hand)
             if (c.getTypes().contains(CardType.Treasure))
                 playCard(c);
         }

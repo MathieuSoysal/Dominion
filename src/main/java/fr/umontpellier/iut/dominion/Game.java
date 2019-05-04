@@ -135,7 +135,9 @@ public class Game {
     public ListOfCards availableSupplyCards() {
         ListOfCards availableCards = new ListOfCards();
         for (ListOfCards cardList : supplyStacks) {
-            availableCards.add(cardList.get(0));
+            if (cardList.size() != 0) {
+                availableCards.add(cardList.get(0));
+            }
         }
         return availableCards;
     }

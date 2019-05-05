@@ -257,6 +257,11 @@ public class Player {
 
     }
 
+    /**
+     * Tire n cartes de la pioche et les ajoutes dans hand
+     *
+     * @param n nombre de carte à tirer
+     */
     public void drawNCardsToHand(int n) {
         while(n--!=0) {
             drawToHand();
@@ -274,7 +279,8 @@ public class Player {
 
     /**
      * Ajoute une carte dans le deck depuis la défausse
-     * @param cardName
+     *
+     * @param cardName nom de la carte à ajouter
      */
     public void addFromDiscardToDraw(String cardName) {
         addToDraw(discard.getCard(cardName));

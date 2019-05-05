@@ -19,9 +19,7 @@ public class Smithy extends Card {
 
     @Override
     public void play(Player p) {
-        for (int i = 0; i < 3; i++) {
-            p.drawToHand();
-        }
+        p.drawNCardsToHand(3);
     }
 
     @Override

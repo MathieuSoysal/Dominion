@@ -20,9 +20,7 @@ public class Laboratory extends Card {
 
     @Override
     public void play(Player p) {
-        for (int i = 0; i < 2; i++) {
-            p.drawToHand();
-        }
+        p.drawNCardsToHand(2);
         p.incrementActions(1);
     }
 

@@ -18,6 +18,14 @@ public class Harbinger extends Card {
     public Harbinger() {
         super("Harbinger", 3);
     }
+
+    @Override
+    public void play(Player p) {
+        p.incrementActions(1);
+        p.drawNCardsToHand(1);
+        p.chooseOption("Choisissez une carte à placer sur votre deck :",p.getCardsNameInDiscard(),)
+    }
+
     @Override
     public List<CardType> getTypes() {
         List<CardType> types = new ArrayList<>();

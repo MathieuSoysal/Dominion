@@ -135,6 +135,14 @@ public class Player {
         return new ListOfCards(hand);
     }
 
+    public List<String> getCardsNameInDiscard() {
+        List<String> cardsNames = new ArrayList<>();
+        for (Card card : discard) {
+            cardsNames.add(card.getName());
+        }
+        return cardsNames;
+    }
+
     /**
      * Renvoie une liste de toutes les cartes possédées par le joueur
      * (le deck complet c'est-à-dire toutes les cartes dans la main, la

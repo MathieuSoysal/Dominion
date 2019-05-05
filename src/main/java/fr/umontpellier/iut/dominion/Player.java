@@ -264,6 +264,15 @@ public class Player {
     }
 
     /**
+     * Retire une carte de nom "cardName" dans la liste donnée
+     *
+     * @return la carte retirée ou {@code null} si la carte n'est pas disponible
+     */
+    private Card removeCard(ListOfCards cardList, String cardName) {
+        return cardList.remove(cardList.indexOf(cardName));
+    }
+
+    /**
      * Ajoute une carte à la main du joueur.
      */
     public void addToHand(Card c) {

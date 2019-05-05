@@ -23,7 +23,9 @@ public class Harbinger extends Card {
     public void play(Player p) {
         p.incrementActions(1);
         p.drawNCardsToHand(1);
-        p.chooseOption("Choisissez une carte à placer sur votre deck :",p.getCardsNameInDiscard(),true);
+
+        (chooseOption("Choisissez une carte à placer sur votre deck :",p.getCardsNameInDiscard(),true));
+        p.addToDraw();
     }
 
     @Override

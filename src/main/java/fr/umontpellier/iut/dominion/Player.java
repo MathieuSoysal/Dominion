@@ -273,6 +273,15 @@ public class Player {
     }
 
     /**
+     * Ajoute une carte dans le deck depuis la défausse
+     * @param cardName
+     */
+    public void addFromDiscardToDraw(String cardName) {
+        addToDraw(discard.getCard(cardName));
+        discard.remove(cardName);
+    }
+
+    /**
      * Ajoute une carte à la main du joueur.
      */
     public void addToHand(Card c) {

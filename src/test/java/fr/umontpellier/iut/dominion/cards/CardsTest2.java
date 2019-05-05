@@ -178,7 +178,7 @@ class CardsTest2 {
         assertNull(p2.getHand().getCard("Silver"));
     }
 
-    @Disabled
+
     @Test
     void testCouncilRoom() {
         p1.getHand().add(new CouncilRoom());

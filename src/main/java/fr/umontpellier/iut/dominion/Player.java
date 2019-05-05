@@ -249,6 +249,12 @@ public class Player {
 
     }
 
+    public void drawNCardsToHand(int n) {
+        for (int i = 0 ; i < n ; i++) {
+            drawToHand();
+        }
+    }
+
     /**
      * Ajoute une carte à la main du joueur.
      */

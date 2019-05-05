@@ -1,6 +1,7 @@
 package fr.umontpellier.iut.dominion.cards.base;
 
 import fr.umontpellier.iut.dominion.CardType;
+import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.Card;
 
 import java.util.ArrayList;
@@ -17,7 +18,6 @@ public class Harbinger extends Card {
     public Harbinger() {
         super("Harbinger", 3);
     }
-
     @Override
     public List<CardType> getTypes() {
         List<CardType> types = new ArrayList<>();

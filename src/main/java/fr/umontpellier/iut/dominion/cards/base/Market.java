@@ -25,7 +25,7 @@ public class Market extends Card {
         p.incrementMoney(1);
         p.incrementActions(1);
         p.incrementBuys(1);
-        p.drawToHand();
+        p.drawNCardsToHand(1);
     }
 
     @Override

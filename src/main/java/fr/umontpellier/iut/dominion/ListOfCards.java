@@ -62,6 +62,20 @@ public class ListOfCards extends ArrayList<Card> {
     }
 
     /**
+     * Renvoie une liste des noms des cartes de la liste
+     *
+     * @return une liste de String contenant les noms de cartes de la liste ou une liste vide si il n'y a pas de cartes
+     * dans la liste
+     */
+    public List<String> getCardsName() {
+        List<String> cardsName = new ArrayList<>();
+        for (Card card : this) {
+            cardsName.add(card.getName());
+        }
+        return cardsName;
+    }
+
+    /**
      * Représentation de la liste sous forme d'une chaîne de caractères
      *
      * Cette fonction renvoie une chaîne de caractères constituée des noms des

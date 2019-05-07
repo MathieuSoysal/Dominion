@@ -135,13 +135,12 @@ public class Player {
         return new ListOfCards(hand);
     }
 
-    public List<String> getCardsNameInDiscard() {
-        List<String> cardsNames = new ArrayList<>();
-        for (Card card : discard) {
-            cardsNames.add(card.getName());
-        }
-        return cardsNames;
-    }
+    /**
+     * Renvoie une liste des cartes que le joueur a dans sa défausse
+     * La liste renvoyée doit être une nouvelle {@code ListOfCards} dont les
+     * éléments sont les mêmes que ceux de {@code discard}.
+     */
+    public ListOfCards getCardsInDiscard() { return new ListOfCards(discard); }
 
     /**
      * Renvoie une liste de toutes les cartes possédées par le joueur

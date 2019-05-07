@@ -223,4 +223,12 @@ class PlayerTest {
         assertEquals(0, p.getNumberOfBuys());
         assertEquals(8, p.getMoney());
     }
+
+    // Test additionnels
+
+    @Disabled
+    @Test
+    void testDrawNCardsToHand() {
+        throw new RuntimeException("A implémenter");
+    }
 }

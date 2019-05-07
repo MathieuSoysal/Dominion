@@ -267,24 +267,36 @@ public class Player {
         }
     }
 
-    /**
-     * Retire une carte de nom "cardName" dans la liste donnée
-     *
-     * @return la carte retirée ou {@code null} si la carte n'est pas disponible
-     */
-    private Card removeCard(ListOfCards cardList, String cardName) {
-        return cardList.remove(cardList.indexOf(cardName));
-    }
+//    /**
+//     * Retire une carte de nom "cardName" dans la liste donnée
+//     *
+//     * @return la carte retirée ou {@code null} si la carte n'est pas disponible
+//     */
+//    private Card removeCard(ListOfCards cardList, String cardName) {
+//        return cardList.remove(cardList.indexOf(cardName));
+//    }
+
+//    /**
+//     * Ajoute une carte dans le deck depuis la défausse
+//     *
+//     * @param cardName nom de la carte à ajouter
+//     */
+//    public void addFromDiscardToDraw(String cardName) {
+//        addToDraw(discard.getCard(cardName));
+//        discard.remove(cardName);
+//    }
 
     /**
-     * Ajoute une carte dans le deck depuis la défausse
+     * Retire une carte de la discard et renvoie la carte retirée
      *
-     * @param cardName nom de la carte à ajouter
+     * @param cardName nom de la carte à retirer
+     * @return Une {@code Card} correspondant à la carte retirée
      */
-    public void addFromDiscardToDraw(String cardName) {
-        addToDraw(discard.getCard(cardName));
-        discard.remove(cardName);
+    public Card removeFromDiscard(String cardName) {
+        return discard.remove(cardName);
     }
+
+
 
     /**
      * Ajoute une carte à la main du joueur.
@@ -744,4 +756,8 @@ public class Player {
             hand.add(removedCard);
         }
     }
+
+//    public Card getCardFromName(String cardName, ListOfCards cardList) {
+//
+//    }
 }

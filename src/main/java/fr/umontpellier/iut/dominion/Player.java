@@ -296,6 +296,16 @@ public class Player {
         return discard.remove(cardName);
     }
 
+    /**
+     * Retire une carte de la main et renvoie la carte retirée
+     *
+     * @param cardName nom de la carte à retirer
+     * @return Une {@code Card} correspondant à la carte retirée
+     */
+    public Card removeFromHand(String cardName) {
+        return hand.remove(cardName);
+    }
+
 
 
     /**

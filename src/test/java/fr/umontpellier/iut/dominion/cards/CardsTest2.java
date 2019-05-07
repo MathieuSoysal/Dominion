@@ -73,7 +73,7 @@ class CardsTest2 {
         assertEquals(0, p2.getDiscard().size());
     }
 
-    @Disabled
+
     @Test
     void testWorkshop() {
         p2.getHand().add(new Workshop());
@@ -238,7 +238,7 @@ class CardsTest2 {
         assertTrue(p1.getDiscard().contains(duchy2));
     }
 
-    @Disabled
+
     @Test
     void testArtisan() {
         Card silver = new Silver();

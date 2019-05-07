@@ -1,6 +1,7 @@
 package fr.umontpellier.iut.dominion.cards.base;
 
 import fr.umontpellier.iut.dominion.CardType;
+import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.Card;
 
 import java.util.ArrayList;
@@ -16,6 +17,11 @@ import java.util.List;
 public class Cellar extends Card {
     public Cellar() {
         super("Cellar", 2);
+    }
+
+    @Override
+    public void play(Player p) {
+        p.incrementActions(1);
     }
 
     @Override

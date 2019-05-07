@@ -20,7 +20,12 @@ public class Moneylender extends Card {
 
     @Override
     public void play(Player p) {
-
+        if (p.chooseCard("Écartez une carte Cuivre de votre main pour gagné +3 Pièces.", p.getHand(), true)
+        // Attention il est possible qu'il est le droit de choisir une carte qui ne corréspond pas à copper (à testé dans dominion server)
+                .equals("Copper")) {
+            p.incrementMoney(3);
+            p.removeFromHand("Copper");
+         }
     }
 
     @Override

@@ -702,7 +702,7 @@ public class Player {
         String input;
         while (numberOfActions > 0) {
             ListOfCards choices = new ListOfCards();
-            for (Card c : hand)
+            for (Card c : getCardsInHand()) //Modifié comme pour Trésor
                 if (c.getTypes().contains(CardType.Action))
                     choices.add(c);
             input = chooseCard("Action phase (ENTER to pass).", choices, true);

@@ -1,6 +1,7 @@
 package fr.umontpellier.iut.dominion.cards.base;
 
 import fr.umontpellier.iut.dominion.CardType;
+import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.Card;
 
 import java.util.ArrayList;
@@ -15,6 +16,18 @@ import java.util.List;
 public class Militia extends Card {
     public Militia() {
         super("Militia", 4);
+    }
+
+    @Override
+    public void play(Player p) {
+        for (Player otherP : p.getOtherPlayers())
+        {
+            while (otherP.getHand().size() > 3) {
+                otherP.discardCard(otherP.removeFromHand(otherP.chooseCard("Choisi une carte à défausser", otherP.getHand(), false)));
+            }
+            
+        }
+        p.incrementMoney(2);
     }
 
     @Override

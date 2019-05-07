@@ -385,6 +385,19 @@ public class Player {
         c.play(this);
     }
 
+        /**
+    * regarde si une acarte à été jouer
+    *
+    * @param cardName nom de la carte à chercher
+    * @return true ou false
+    *
+    * S'il existe une carte dans inPlay dont le nom est égal au
+    * paramètre renvoi true sinon false
+    */
+    public boolean schearInPlay(String cardName) {
+        return inPlay.getCard(cardName) != null;
+    }
+
     /**
      * Joue une carte de la main du joueur.
      *
@@ -702,7 +715,7 @@ public class Player {
         String input;
         while (numberOfActions > 0) {
             ListOfCards choices = new ListOfCards();
-            for (Card c : hand)
+            for (Card c : getCardsInHand()) //Modifié comme pour Trésor
                 if (c.getTypes().contains(CardType.Action))
                     choices.add(c);
             input = chooseCard("Action phase (ENTER to pass).", choices, true);

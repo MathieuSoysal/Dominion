@@ -386,13 +386,14 @@ public class Player {
     }
 
         /**
-     * regarde si une acarte à été jouer
-     *
-     * @param cardName nom de la carte à chercher
-     *
-     * S'il existe une carte dans inPlay dont le nom est égal au
-     * paramètre renvoi true sinon false
-     */
+    * regarde si une acarte à été jouer
+    *
+    * @param cardName nom de la carte à chercher
+    * @return true ou false
+    *
+    * S'il existe une carte dans inPlay dont le nom est égal au
+    * paramètre renvoi true sinon false
+    */
     public boolean schearInPlay(String cardName) {
         return inPlay.getCard(cardName) != null;
     }

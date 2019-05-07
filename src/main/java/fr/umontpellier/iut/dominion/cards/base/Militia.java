@@ -22,8 +22,8 @@ public class Militia extends Card {
     public void play(Player p) {
         for (Player otherP : p.getOtherPlayers())
         {
-            while (otherP.getHand().size() > 3) {
-                otherP.discardCard(otherP.removeFromHand(otherP.chooseCard("Choisi une carte à défausser", otherP.getHand(), false)));
+            while (otherP.getCardsInHand().size() > 3) {
+                otherP.discardCard(otherP.removeFromHand(otherP.chooseCard("Choisi une carte à défausser", otherP.getCardsInHand(), false)));
             }
             
         }

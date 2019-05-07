@@ -760,6 +760,16 @@ public class Player {
         return availableToGain;
     }
 
+    public  ListOfCards listCardCostingExactly(int cost) {
+        ListOfCards availableToGain = game.availableSupplyCards();
+        for (Card c: availableToGain) {
+            if (c.getCost() == cost) {
+                availableToGain.remove(c.getName());
+            }
+        }
+        return availableToGain;
+    }
+
     public void gainFromSupplyToHand(String cardName) {
         Card removedCard = game.removeFromSupply(cardName);
         if (removedCard != null) {

@@ -1,6 +1,7 @@
 package fr.umontpellier.iut.dominion.cards.base;
 
 import fr.umontpellier.iut.dominion.CardType;
+import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.Card;
 
 import java.util.ArrayList;
@@ -15,6 +16,12 @@ import java.util.List;
 public class Artisan extends Card {
     public Artisan() {
         super("Artisan", 6);
+    }
+
+    @Override
+    public void play(Player p) {
+        p.gainFromSupplyToHand(p.chooseOption("Choisissez une carte coutant jusqu'à 5 à placer sur dans votre main :",p.listCardCostingUpTo(5).getCardsName(),false));
+       // p.addToDraw(p.chooseOption("Choisissez une carte à placer sur le dessus de votre pioche :", p.getCardsInHand().getCardsName(), false));
     }
 
     @Override

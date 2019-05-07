@@ -1,9 +1,11 @@
 package fr.umontpellier.iut.dominion.cards.base;
 
 import fr.umontpellier.iut.dominion.CardType;
+import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.Card;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -15,6 +17,16 @@ import java.util.List;
 public class Vassal extends Card {
     public Vassal() {
         super("Vassal", 3);
+    }
+
+    @Override
+    public void play(Player p) {
+        p.incrementMoney(2);
+        Card cartePiochee = p.drawCard();
+        if (cartePiochee.getTypes().contains(CardType.Action)) {
+            List<String> choices = Arrays.asList("y", "n");
+            if (p.chooseOption("Voulez-vous jouer la carte "+cartePiochee.getName()+" ?", choices, false).equals("y")) cartePiochee.play(p);
+        }
     }
 
     @Override

@@ -206,7 +206,7 @@ class CardsTest2 {
         assertEquals(0, p2.getDiscard().size());
     }
 
-    @Disabled
+
     @Test
     void testWitch() {
         p1.getHand().add(new Witch());

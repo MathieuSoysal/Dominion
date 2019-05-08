@@ -1,6 +1,7 @@
 package fr.umontpellier.iut.dominion.cards.base;
 
 import fr.umontpellier.iut.dominion.CardType;
+import fr.umontpellier.iut.dominion.ListOfCards;
 import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.Card;
 
@@ -19,11 +20,28 @@ public class Bureaucrat extends Card {
         super("Bureaucrat", 4);
     }
 
+    // il y a surrement des erreurs dans System.out.print 
     @Override
     public void play(Player p) {
         p.gainFromSupply("Silver");
+        ListOfCards cardsVictory = new ListOfCards();
         for (Player otherP : p.getOtherPlayers()) {
-            //Nous avons besoin d'une méthode pour show une carte
+            for (Card c : otherP.getCardsInHand()) { // Trie les cartes victoires de sa main dans cardsVictory
+                if (c.getTypes().contains(CardType.Victory)) {
+                    cardsVictory.add(c);
+                }
+            }
+            if (cardsVictory.isEmpty()) { // Si cardsVictory est vide alors :
+                System.out.print(otherP.getName()+"dévoile ces cartes en main :");
+                otherP.getCardsInHand().forEach(x -> System.out.print(x.getName() + ", "));
+                System.out.print("\n");
+            }
+            else { // si cardsVictory n'est pas vide alors :
+                String carteReveal = otherP.chooseCard("dévoile une carte Victoire : ", cardsVictory, false);
+                // j'ai du utiliser une variable String car je devait à la fois afficher la carte et la déplacer dans la défausse (deck ?)
+                System.out.println(otherP.getName()+"dévoile une carte Victoire en main :"+carteReveal);
+                otherP.discardCard(otherP.removeFromHand(carteReveal));
+            }
         }
     }
 

@@ -394,7 +394,7 @@ public class Player {
     * S'il existe une carte dans inPlay dont le nom est égal au
     * paramètre renvoi true sinon false
     */
-    public boolean schearInPlay(String cardName) {
+    public boolean searchInPlay(String cardName) {
         return inPlay.getCard(cardName) != null;
     }
 

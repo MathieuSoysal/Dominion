@@ -19,7 +19,7 @@ public class Silver extends Card {
 
     @Override
     public void play(Player p) {
-        p.incrementMoney(2+((p.schearInPlay("Merchand")&&!(p.schearInPlay("Silver")))?1:0));
+        p.incrementMoney(2+((p.searchInPlay("Merchand")&&!(p.searchInPlay("Silver")))?1:0));
     }
 
     @Override

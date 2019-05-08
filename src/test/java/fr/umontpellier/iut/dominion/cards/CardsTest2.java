@@ -43,7 +43,7 @@ class CardsTest2 {
         p2 = game.getPlayer(2);
     }
 
-    @Disabled
+
     @Test
     void testCellar() {
         p2.getHand().add(new Cellar());
@@ -60,7 +60,7 @@ class CardsTest2 {
         assertNull(p2.getHand().getCard("Duchy"));
     }
 
-    @Disabled
+
     @Test
     void testChapel() {
         p2.getHand().add(new Chapel());
@@ -83,7 +83,7 @@ class CardsTest2 {
         assertNotNull(p2.getDiscard().getCard("Silver"));
     }
 
-    @Disabled
+
     @Test
     void testBureaucrat() {
         p0.getHand().clear();
@@ -107,7 +107,7 @@ class CardsTest2 {
         assertEquals(3, p2.getHand().size());            // p0 a toujours les mêmes cartes en main
     }
 
-    @Disabled
+
     @Test
     void testMilitia() {
         p0.getHand().clear();
@@ -136,7 +136,7 @@ class CardsTest2 {
         assertTrue(hasCards(p0.getDiscard(), "Silver", "Silver", "Duchy"));
     }
 
-    @Disabled
+
     @Test
     void testMoneylenderWithCopper() {
         p2.getHand().clear();
@@ -151,7 +151,7 @@ class CardsTest2 {
         assertTrue(hasCards(p2.getHand(), "Silver", "Silver"));
     }
 
-    @Disabled
+
     @Test
     void testMoneylenderNoCopper() {
         p2.getHand().clear();
@@ -165,7 +165,7 @@ class CardsTest2 {
         assertTrue(hasCards(p2.getHand(), "Silver", "Silver"));
     }
 
-    @Disabled
+
     @Test
     void testRemodel() {
         p2.getHand().add(new Remodel());
@@ -190,7 +190,7 @@ class CardsTest2 {
         assertEquals(6, p2.getHand().size());
     }
 
-    @Disabled
+
     @Test
     void testMine() {
         p2.getHand().clear();
@@ -218,7 +218,7 @@ class CardsTest2 {
         assertEquals(7, p1.getHand().size());
     }
 
-    @Disabled
+
     @Test
     void testPoacher() {
         p1.getHand().add(new Poacher());
@@ -257,7 +257,7 @@ class CardsTest2 {
         assertEquals(silver, p1.getDraw().get(0));      // Silver est sur le deck
     }
 
-    @Disabled
+
     @Test
     void testVassalPlayAction() {
         p1.getHand().add(new Vassal());
@@ -274,7 +274,7 @@ class CardsTest2 {
         assertTrue(p1.getInPlay().contains(village));
     }
 
-    @Disabled
+
     @Test
     void testVassalNotAction() {
         p1.getHand().add(new Vassal());

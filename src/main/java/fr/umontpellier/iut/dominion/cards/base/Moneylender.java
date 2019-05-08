@@ -25,7 +25,8 @@ public class Moneylender extends Card {
             if (c.getName().equals("Copper"))
                 cardsCopper.add(c);
         }
-        if (!cardsCopper.isEmpty()// si cardsCopper n'est pas vide
+        // si cardsCopper n'est pas vide
+        if (!cardsCopper.isEmpty()
                 && p.chooseCard("Écartez une carte Cuivre de votre main pour gagné +3 Pièces.", cardsCopper, true)
                         .equals("Copper")) { // Et que le joueur décide de choisir de trash une carte copper de sa main
             p.incrementMoney(3);

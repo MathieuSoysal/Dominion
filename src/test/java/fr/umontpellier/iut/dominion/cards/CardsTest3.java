@@ -41,7 +41,7 @@ class CardsTest3 {
         p2 = game.getPlayer(2);
     }
 
-    @Disabled
+
     @Test
     void testMoatReaction() {
         p0.getHand().add(new Moat());
@@ -55,7 +55,7 @@ class CardsTest3 {
     }
 
 
-    @Disabled
+
     @Test
     void testThroneRoom() {
         p1.getHand().add(new ThroneRoom());
@@ -73,7 +73,7 @@ class CardsTest3 {
         assertEquals(7, p1.getHand().size());
     }
 
-    @Disabled
+
     @Test
     void testLibrary() {
         p1.getDraw().clear();
@@ -97,7 +97,7 @@ class CardsTest3 {
         assertTrue(hasCards(p1.getDiscard(), "Village"));
     }
 
-    @Disabled
+
     @Test
     void testBandit() {
         p1.getHand().add(new Bandit());
@@ -144,7 +144,7 @@ class CardsTest3 {
         assertFalse(p1.getDiscard().contains(gold));
     }
 
-    @Disabled
+
     @Test
     void testMerchant() {
         p1.getHand().add(new Merchant());
@@ -162,7 +162,7 @@ class CardsTest3 {
         assertEquals(5, p1.getMoney());
     }
 
-    @Disabled
+
     @Test
     void testSentryTrash1Discard1() {
         p1.getHand().add(new Sentry());
@@ -184,7 +184,7 @@ class CardsTest3 {
         assertTrue(p1.getDiscard().contains(silver));
     }
 
-    @Disabled
+    
     @Test
     void testSentryPassTwice() {
         p1.getHand().add(new Sentry());

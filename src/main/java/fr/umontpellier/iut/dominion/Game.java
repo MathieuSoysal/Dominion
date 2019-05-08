@@ -120,8 +120,16 @@ public class Game {
      * premier).
      */
     public List<Player> otherPlayers(Player p) {
-        ArrayList<Player> opponents = players;
-        opponents.remove(p);
+        ArrayList<Player> opponents = new ArrayList<>();
+        int opponentsIndex = 0;
+        for (Player currentPlayer : players) {
+            if (indexOfPlayer(currentPlayer) > indexOfPlayer(p)) {
+                opponents.add(opponentsIndex,currentPlayer);
+                opponentsIndex++;
+            } else if (! currentPlayer.equals(p)) {
+                opponents.add(currentPlayer);
+            }
+        }
         return opponents;
     }
 

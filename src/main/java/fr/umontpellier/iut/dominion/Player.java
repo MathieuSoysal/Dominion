@@ -385,17 +385,21 @@ public class Player {
         c.play(this);
     }
 
-        /**
-    * regarde si une acarte à été jouer
-    *
-    * @param cardName nom de la carte à chercher
-    * @return true ou false
-    *
-    * S'il existe une carte dans inPlay dont le nom est égal au
-    * paramètre renvoi true sinon false
-    */
-    public boolean searchInPlay(String cardName) {
-        return inPlay.getCard(cardName) != null;
+    /**
+     * regarde combien de fois la carte est dans inPlay
+     *
+     * @param cardName nom de la carte à chercher
+     * @return Le nombre de fois que la carte est dans inPlay
+     *
+     *         S'il existe une carte dans inPlay dont le nom est égal au paramètre
+     *         renvoi le nombre de fois qu'il y est
+     */
+    public int searchInPlay(String cardName) {
+        int nbCard = 0;
+        for (Card c : inPlay) {
+            nbCard += (c.getName().equals(cardName)) ? 1 : 0;
+        }
+        return nbCard;
     }
 
     /**

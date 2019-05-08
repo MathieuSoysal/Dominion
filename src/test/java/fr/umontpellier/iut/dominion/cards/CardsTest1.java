@@ -5,7 +5,6 @@ import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.base.*;
 import fr.umontpellier.iut.dominion.cards.common.Silver;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.OutputStream;
@@ -32,11 +31,10 @@ class CardsTest1 {
 
     @BeforeEach
     void setUp() {
-        String[] playerNames = new String[]{"Toto", "Titi", "Tutu"};
+        String[] playerNames = new String[] { "Toto", "Titi", "Tutu" };
         Game minimalGame = new Game(playerNames, new String[0]);
         player = minimalGame.getPlayer(1);
     }
-
 
     @Test
     void testInitialState() {
@@ -48,7 +46,6 @@ class CardsTest1 {
         assertEquals(0, player.getMoney());
     }
 
-    
     @Test
     void testMoatAction() {
         player.getHand().add(new Moat());
@@ -60,7 +57,6 @@ class CardsTest1 {
         assertEquals(3, player.getDraw().size());
     }
 
-
     @Test
     void testVillage() {
         player.getHand().add(new Village());
@@ -71,12 +67,11 @@ class CardsTest1 {
         assertEquals(4, player.getDraw().size());
     }
 
-
     @Test
     void testGardens() {
-        assertEquals(3, player.getVictoryPoints());  // le joueur a initialement 10 cartes
+        assertEquals(3, player.getVictoryPoints()); // le joueur a initialement 10 cartes
         player.getHand().add(new Gardens());
-        assertEquals(4, player.getVictoryPoints());  // le joueur a 11 cartes (1 Gardens)
+        assertEquals(4, player.getVictoryPoints()); // le joueur a 11 cartes (1 Gardens)
         player.getDiscard().add(new Silver());
         player.getDiscard().add(new Silver());
         player.getDiscard().add(new Silver());
@@ -85,13 +80,12 @@ class CardsTest1 {
         player.getDiscard().add(new Silver());
         player.getDiscard().add(new Silver());
         player.getDiscard().add(new Silver());
-        assertEquals(4, player.getVictoryPoints());  // le joueur a 19 cartes (1 Gardens)
+        assertEquals(4, player.getVictoryPoints()); // le joueur a 19 cartes (1 Gardens)
         player.getDiscard().add(new Silver());
-        assertEquals(5, player.getVictoryPoints());  // le joueur a 20 cartes (1 Gardens)
+        assertEquals(5, player.getVictoryPoints()); // le joueur a 20 cartes (1 Gardens)
         player.getDraw().add(new Gardens());
-        assertEquals(7, player.getVictoryPoints());  // le joueur a 21 cartes (2 Gardens)
+        assertEquals(7, player.getVictoryPoints()); // le joueur a 21 cartes (2 Gardens)
     }
-
 
     @Test
     void testSmithy() {
@@ -100,7 +94,6 @@ class CardsTest1 {
         assertEquals(8, player.getHand().size());
         assertEquals(2, player.getDraw().size());
     }
-
 
     @Test
     void testFestival() {
@@ -112,7 +105,6 @@ class CardsTest1 {
         assertEquals(5, player.getHand().size());
     }
 
-
     @Test
     void testLaboratory() {
         player.getHand().add(new Laboratory());
@@ -120,7 +112,6 @@ class CardsTest1 {
         assertEquals(7, player.getHand().size());
         assertEquals(1, player.getNumberOfActions());
     }
-
 
     @Test
     void testMarket() {

@@ -5,7 +5,6 @@ import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.base.*;
 import fr.umontpellier.iut.dominion.cards.common.*;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.OutputStream;
@@ -13,7 +12,6 @@ import java.io.PrintStream;
 
 import static fr.umontpellier.iut.dominion.TestUtils.hasCards;
 import static org.junit.jupiter.api.Assertions.*;
-
 
 class CardsTest3 {
     private IOGame game;
@@ -34,13 +32,12 @@ class CardsTest3 {
 
     @BeforeEach
     void setUp() {
-        String[] playerNames = new String[]{"Toto", "Titi", "Tutu"};
+        String[] playerNames = new String[] { "Toto", "Titi", "Tutu" };
         game = new IOGame(playerNames, new String[0]);
         p0 = game.getPlayer(0);
         p1 = game.getPlayer(1);
         p2 = game.getPlayer(2);
     }
-
 
     @Test
     void testMoatReaction() {
@@ -53,8 +50,6 @@ class CardsTest3 {
         assertNull(p2.getDiscard().getCard("Curse"));
         assertNotNull(p0.getDiscard().getCard("Curse"));
     }
-
-
 
     @Test
     void testThroneRoom() {
@@ -73,7 +68,6 @@ class CardsTest3 {
         assertEquals(7, p1.getHand().size());
     }
 
-
     @Test
     void testLibrary() {
         p1.getDraw().clear();
@@ -89,14 +83,12 @@ class CardsTest3 {
         p1.getDraw().add(new Silver());
         p1.getDraw().add(new Silver());
 
-        game.setInput("y", "n");    // le joueur défausse le Village et prend le Festival
+        game.setInput("y", "n"); // le joueur défausse le Village et prend le Festival
         p1.playCard("Library");
 
-        assertTrue(
-                hasCards(p1.getHand(), "Duchy", "Duchy", "Duchy", "Duchy", "Festival", "Gold", "Silver"));
+        assertTrue(hasCards(p1.getHand(), "Duchy", "Duchy", "Duchy", "Duchy", "Festival", "Gold", "Silver"));
         assertTrue(hasCards(p1.getDiscard(), "Village"));
     }
-
 
     @Test
     void testBandit() {
@@ -115,14 +107,13 @@ class CardsTest3 {
         p1.playCard("Bandit");
 
         assertNotNull(p1.getDiscard().getCard("Gold")); // p1 a gagné un Gold
-        assertFalse(p2.getDraw().contains(silver1));    // p2 a perdu le Silver (automatiquement)
+        assertFalse(p2.getDraw().contains(silver1)); // p2 a perdu le Silver (automatiquement)
         assertFalse(p2.getDiscard().contains(silver1));
-        assertTrue(p2.getDiscard().contains(copper));   // p2 a défaussé le Copper
-        assertFalse(p0.getDraw().contains(silver2));    // p0 a perdu le Silver (choix de l'utilisateur)
+        assertTrue(p2.getDiscard().contains(copper)); // p2 a défaussé le Copper
+        assertFalse(p0.getDraw().contains(silver2)); // p0 a perdu le Silver (choix de l'utilisateur)
         assertFalse(p0.getDiscard().contains(silver2));
-        assertTrue(p0.getDiscard().contains(gold));     // p0 a défaussé le Gold
+        assertTrue(p0.getDiscard().contains(gold)); // p0 a défaussé le Gold
     }
-
 
     @Test
     void testHarbinger() {
@@ -144,7 +135,6 @@ class CardsTest3 {
         assertFalse(p1.getDiscard().contains(gold));
     }
 
-
     @Test
     void testMerchant() {
         p1.getHand().add(new Merchant());
@@ -161,7 +151,6 @@ class CardsTest3 {
         p1.playCard("Silver");
         assertEquals(5, p1.getMoney());
     }
-
 
     @Test
     void testSentryTrash1Discard1() {
@@ -184,7 +173,6 @@ class CardsTest3 {
         assertTrue(p1.getDiscard().contains(silver));
     }
 
-    
     @Test
     void testSentryPassTwice() {
         p1.getHand().add(new Sentry());

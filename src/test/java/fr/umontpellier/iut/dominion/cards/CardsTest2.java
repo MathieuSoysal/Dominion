@@ -5,7 +5,6 @@ import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.base.*;
 import fr.umontpellier.iut.dominion.cards.common.*;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.OutputStream;
@@ -15,7 +14,6 @@ import java.util.Arrays;
 
 import static fr.umontpellier.iut.dominion.TestUtils.hasCards;
 import static org.junit.jupiter.api.Assertions.*;
-
 
 class CardsTest2 {
     private IOGame game;
@@ -36,13 +34,12 @@ class CardsTest2 {
 
     @BeforeEach
     void setUp() {
-        String[] playerNames = new String[]{"Toto", "Titi", "Tutu"};
+        String[] playerNames = new String[] { "Toto", "Titi", "Tutu" };
         game = new IOGame(playerNames, new String[0]);
         p0 = game.getPlayer(0);
         p1 = game.getPlayer(1);
         p2 = game.getPlayer(2);
     }
-
 
     @Test
     void testCellar() {
@@ -60,7 +57,6 @@ class CardsTest2 {
         assertNull(p2.getHand().getCard("Duchy"));
     }
 
-
     @Test
     void testChapel() {
         p2.getHand().add(new Chapel());
@@ -73,7 +69,6 @@ class CardsTest2 {
         assertEquals(0, p2.getDiscard().size());
     }
 
-
     @Test
     void testWorkshop() {
         p2.getHand().add(new Workshop());
@@ -82,7 +77,6 @@ class CardsTest2 {
         assertNull(p2.getDiscard().getCard("Gold"));
         assertNotNull(p2.getDiscard().getCard("Silver"));
     }
-
 
     @Test
     void testBureaucrat() {
@@ -100,13 +94,12 @@ class CardsTest2 {
         game.setInput("Province", "Duchy", "");
         p1.playCard("Bureaucrat");
 
-        assertNotNull(p0.getHand().getCard("Estate"));   // p0 a toujours Estate en main
-        assertNull(p0.getHand().getCard("Duchy"));       // p0 n'a plus de Duchy en main
-        assertEquals("Duchy", p0.getDraw().get(0).getName());    // le Duchy est sur la pioche de p0
-        assertNotNull(p1.getDraw().getCard("Silver"));   // p1 a un Silver sur la pioche
-        assertEquals(3, p2.getHand().size());            // p0 a toujours les mêmes cartes en main
+        assertNotNull(p0.getHand().getCard("Estate")); // p0 a toujours Estate en main
+        assertNull(p0.getHand().getCard("Duchy")); // p0 n'a plus de Duchy en main
+        assertEquals("Duchy", p0.getDraw().get(0).getName()); // le Duchy est sur la pioche de p0
+        assertNotNull(p1.getDraw().getCard("Silver")); // p1 a un Silver sur la pioche
+        assertEquals(3, p2.getHand().size()); // p0 a toujours les mêmes cartes en main
     }
-
 
     @Test
     void testMilitia() {
@@ -125,7 +118,8 @@ class CardsTest2 {
         p2.getHand().add(new Silver()); // p2 a 2 cartes en main, non affecté par Militia
 
         game.setInput("Silver", "Estate", "Silver");
-        // Estate n'est pas un choix valide. Après le 2e Silver, un Duchy devrait être choisi automatiquement
+        // Estate n'est pas un choix valide. Après le 2e Silver, un Duchy devrait être
+        // choisi automatiquement
         p1.playCard("Militia");
 
         assertEquals(2, p1.getMoney());
@@ -135,7 +129,6 @@ class CardsTest2 {
         assertTrue(hasCards(p0.getHand(), "Duchy", "Duchy", "Duchy"));
         assertTrue(hasCards(p0.getDiscard(), "Silver", "Silver", "Duchy"));
     }
-
 
     @Test
     void testMoneylenderWithCopper() {
@@ -151,7 +144,6 @@ class CardsTest2 {
         assertTrue(hasCards(p2.getHand(), "Silver", "Silver"));
     }
 
-
     @Test
     void testMoneylenderNoCopper() {
         p2.getHand().clear();
@@ -165,7 +157,6 @@ class CardsTest2 {
         assertTrue(hasCards(p2.getHand(), "Silver", "Silver"));
     }
 
-
     @Test
     void testRemodel() {
         p2.getHand().add(new Remodel());
@@ -178,7 +169,6 @@ class CardsTest2 {
         assertNull(p2.getHand().getCard("Silver"));
     }
 
-
     @Test
     void testCouncilRoom() {
         p1.getHand().add(new CouncilRoom());
@@ -189,7 +179,6 @@ class CardsTest2 {
         assertEquals(1, p1.getNumberOfBuys());
         assertEquals(6, p2.getHand().size());
     }
-
 
     @Test
     void testMine() {
@@ -206,7 +195,6 @@ class CardsTest2 {
         assertEquals(0, p2.getDiscard().size());
     }
 
-
     @Test
     void testWitch() {
         p1.getHand().add(new Witch());
@@ -218,7 +206,6 @@ class CardsTest2 {
         assertEquals(7, p1.getHand().size());
     }
 
-
     @Test
     void testPoacher() {
         p1.getHand().add(new Poacher());
@@ -226,8 +213,12 @@ class CardsTest2 {
         Card duchy2 = new Duchy();
         p1.getHand().add(duchy1);
         p1.getHand().add(duchy2);
-        for (int i = 0; i < 99; i++) { game.removeFromSupply("Silver"); }   // vider la pile de Silver
-        for (int i = 0; i < 99; i++) { game.removeFromSupply("Gold"); }     // vider la pile de Gold
+        for (int i = 0; i < 99; i++) {
+            game.removeFromSupply("Silver");
+        } // vider la pile de Silver
+        for (int i = 0; i < 99; i++) {
+            game.removeFromSupply("Gold");
+        } // vider la pile de Gold
 
         game.setInput("Duchy", "Province", "Duchy");
 
@@ -237,7 +228,6 @@ class CardsTest2 {
         assertTrue(p1.getDiscard().contains(duchy1));
         assertTrue(p1.getDiscard().contains(duchy2));
     }
-
 
     @Test
     void testArtisan() {
@@ -251,12 +241,11 @@ class CardsTest2 {
 
         p1.playCard("Artisan");
 
-        assertNull(p1.getHand().getCard("Gold"));       // Gold n'a pas été gagné
-        assertNotNull(p1.getHand().getCard("Duchy"));   // Duchy a été gagné en main
-        assertFalse(p1.getHand().contains(silver));     // Silver n'est plus en main
-        assertEquals(silver, p1.getDraw().get(0));      // Silver est sur le deck
+        assertNull(p1.getHand().getCard("Gold")); // Gold n'a pas été gagné
+        assertNotNull(p1.getHand().getCard("Duchy")); // Duchy a été gagné en main
+        assertFalse(p1.getHand().contains(silver)); // Silver n'est plus en main
+        assertEquals(silver, p1.getDraw().get(0)); // Silver est sur le deck
     }
-
 
     @Test
     void testVassalPlayAction() {
@@ -264,16 +253,15 @@ class CardsTest2 {
         Card village = new Village();
         p1.getDraw().add(0, village);
 
-        game.setInput("y");     // joue le Village
+        game.setInput("y"); // joue le Village
 
         p1.playCard("Vassal");
 
         assertEquals(2, p1.getMoney());
-        assertEquals(2, p1.getNumberOfActions());   // +2 actions du Village
-        assertEquals(6, p1.getHand().size());       // +1 carte du Village
+        assertEquals(2, p1.getNumberOfActions()); // +2 actions du Village
+        assertEquals(6, p1.getHand().size()); // +1 carte du Village
         assertTrue(p1.getInPlay().contains(village));
     }
-
 
     @Test
     void testVassalNotAction() {
@@ -281,7 +269,7 @@ class CardsTest2 {
         Card gold = new Gold();
         p1.getDraw().add(0, gold);
 
-        game.setInput("y");     // ne devrait pas être lu
+        game.setInput("y"); // ne devrait pas être lu
 
         p1.playCard("Vassal");
 

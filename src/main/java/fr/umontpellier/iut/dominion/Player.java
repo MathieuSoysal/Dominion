@@ -764,20 +764,20 @@ public class Player {
     }
 
     public  ListOfCards listCardCostingUpTo(int cost) {
-        ListOfCards availableToGain = game.availableSupplyCards();
-        for (Card c: availableToGain) {
+        ListOfCards availableToGain = new ListOfCards();
+        for (Card c: game.availableSupplyCards()) {
             if (c.getCost() > cost) {
-                availableToGain.remove(c.getName());
+                availableToGain.add(c);
             }
         }
         return availableToGain;
     }
 
     public  ListOfCards listCardCostingExactly(int cost) {
-        ListOfCards availableToGain = game.availableSupplyCards();
-        for (Card c: availableToGain) {
+        ListOfCards availableToGain = new ListOfCards();
+        for (Card c: game.availableSupplyCards()) {
             if (c.getCost() == cost) {
-                availableToGain.remove(c.getName());
+                availableToGain.add(c);
             }
         }
         return availableToGain;

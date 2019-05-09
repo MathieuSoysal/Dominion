@@ -143,11 +143,20 @@ public class Game {
     public ListOfCards availableSupplyCards() {
         ListOfCards availableCards = new ListOfCards();
         for (ListOfCards cardList : supplyStacks) {
-            if (cardList.size() != 0) {
+            if (!cardList.isEmpty())
                 availableCards.add(cardList.get(0));
-            }
         }
         return availableCards;
+    }
+
+        /**
+     * Renvoie le nombre de liste de cartes qui ne sont plus disponibles à l'achat dans la
+     * réserve.
+     *
+     * @return un int 
+     */
+    public int nbSupplyCardsEmpty() {
+        return supplyStacks.size()-availableSupplyCards().size();
     }
 
     /**
@@ -221,14 +230,11 @@ public class Game {
      * ne correspond
      */
     public Card getFromSupply(String cardName) {
-        Card card = null;
         for (ListOfCards cardList : supplyStacks) {
-            card = cardList.getCard(cardName);
-            if (card != null) {
-                return card;
-            }
+            if (cardList.getCard(cardName) != null)
+                return cardList.getCard(cardName);
         }
-        return card;
+        return null;
     }
 
     /**

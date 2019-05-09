@@ -23,9 +23,9 @@ public class Militia extends Card {
         p.incrementMoney(2);
         for (Player otherP : p.getOtherPlayers()) {
             for (int size = otherP.getCardsInHand().size()-3; size > 0; size--){
-                otherP.discardCard(otherP.removeFromHand(otherP.chooseCard(
+                otherP.handToDisCard(otherP.chooseCard(
                         "Défausse " + size + "carte" + (size > 1 ? "s" : "") + " de ta main :",
-                        otherP.getCardsInHand(), false)));
+                        otherP.getCardsInHand(), false));
             }
         }
     }

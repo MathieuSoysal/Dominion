@@ -23,7 +23,7 @@ public class Chapel extends Card {
         for (int i = 0; i < 4 - (size < 4 ? 4 - size : 0); i++) {
             // ((size < 4 ? 4 - size : 0) permet d'évite à ce que
             // le joueur doit retiré une carte alors qu'il plus de carte en main
-            p.removeFromHand(p.chooseCard("Écartez jusqu'à 4 carte de votre main :", p.getCardsInHand(), true));
+            p.handToTrash(p.chooseCard("Écartez jusqu'à 4 carte de votre main :", p.getCardsInHand(), true)));
         }
     }
 

@@ -29,7 +29,7 @@ public class Cellar extends Card {
                 .getCardsInHand().isEmpty()
                 && !cardDiscard.equals(""); cardDiscard = p.chooseCard("Défaussez 1 carte, ou passez",
                         p.getCardsInHand(), true)) {
-            p.discardCard(p.removeFromHand(cardDiscard));
+            p.handToDisCard(cardDiscard);
             discarded++;
         }
         p.drawNCardsToHand(discarded);

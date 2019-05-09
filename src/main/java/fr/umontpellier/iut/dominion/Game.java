@@ -166,10 +166,10 @@ public class Game {
     }
 
         /**
-     * Renvoie le nombre de liste de cartes qui ne sont plus disponibles à l'achat dans la
+     * Renvoie le nombre de pile de cartes qui ne sont plus disponibles à l'achat dans la
      * réserve.
      *
-     * @return un int 
+     * @return int 
      */
     public int nbSupplyCardsEmpty() {
         return supplyStacks.size()-availableSupplyCards().size();
@@ -362,5 +362,16 @@ public class Game {
      */
     public String readLine() {
         return scanner.nextLine();
+    }
+
+
+    /**
+     * Ajoute une carte dans le trash de la game
+     * @param c Ddemande un Card en paramètre
+     * @return Retourne la carte reçue en paramètre
+     */
+    public Card addToTrash(Card c) {
+        trashedCards.add(c);
+        return c;
     }
 }

@@ -22,7 +22,7 @@ public class Vassal extends Card {
     @Override
     public void play(Player p) {
         p.incrementMoney(2);
-        Card cartePiochee = p.drawCard();
+        Card cartePiochee = p.drawToHand();
         List<String> choices = Arrays.asList("y", "n");
         if (cartePiochee.getTypes().contains(CardType.Action)
                 && p.chooseOption("Voulez-vous jouer la carte " + cartePiochee.getName() + " ?", choices, false)
@@ -30,7 +30,7 @@ public class Vassal extends Card {
             p.incrementActions(1); // à fin qu'on utilise pas d'action pour playcard
             p.playCard(cartePiochee.getName());
         } else
-            p.discardCard(cartePiochee);
+            p.handToDisCard(cartePiochee.getName());
     }
 
     @Override

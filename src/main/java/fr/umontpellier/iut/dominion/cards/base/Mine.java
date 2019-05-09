@@ -32,7 +32,7 @@ public class Mine extends Card {
                 iter.remove();
         }
 
-        int costToAdd = p.removeFromHand(p.chooseCard("Choisissez une carte Trésor à écarter :", HandTreasure, false))
+        int costToAdd = p.handToTrash(p.chooseCard("Choisissez une carte Trésor à écarter :", HandTreasure, false))
                 .getCost() +3;
         ListOfCards listTreasure = p.listCardCostingUpToByType(costToAdd, CardType.Treasure);
 

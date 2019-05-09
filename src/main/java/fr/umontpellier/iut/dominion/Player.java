@@ -321,8 +321,17 @@ public class Player {
      * La carte est ajoutée à la pile de défausse du joueur. On suppose que la carte
      * a été retirée de son emplacement précédent.
      */
-    public void discardCard(Card c) {
+    public Card discardCard(Card c) {
         discard.add(c);
+        return c;
+    }
+
+    public Card handToTrash(String cardName) {
+        return game.addToTrash(hand.remove(cardName));
+    }
+
+    public Card handToDisCard(String cardName) {
+        return this.discardCard(hand.remove(cardName));
     }
 
     /**

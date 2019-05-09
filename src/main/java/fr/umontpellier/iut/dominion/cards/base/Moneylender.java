@@ -30,7 +30,7 @@ public class Moneylender extends Card {
                 && p.chooseCard("Écartez une carte Cuivre de votre main pour gagné +3 Pièces.", cardsCopper, true)
                         .equals("Copper")) { // Et que le joueur décide de choisir de trash une carte copper de sa main
             p.incrementMoney(3);
-            p.removeFromHand("Copper");
+            p.handToTrash("Copper");
         }
     }
 

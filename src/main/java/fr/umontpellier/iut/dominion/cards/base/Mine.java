@@ -22,8 +22,17 @@ public class Mine extends Card {
 
     @Override
     public void play(Player p) {
+        ListOfCards HandTreasure = p.getCardsInHand();
 
-        int costToAdd = p.removeFromHand(p.chooseCard("Choisissez une carte Trésor à écarter :", p.getCardsInHand(), false))
+        Iterator<Card> iter = HandTreasure.iterator();
+
+        while (iter.hasNext()) {
+            Card c = iter.next();
+            if (!c.getTypes().contains(CardType.Treasure))
+                iter.remove();
+        }
+
+        int costToAdd = p.removeFromHand(p.chooseCard("Choisissez une carte Trésor à écarter :", HandTreasure, false))
                 .getCost() +3;
         ListOfCards listTreasure = p.listCardCostingUpToByType(costToAdd, CardType.Treasure);
 

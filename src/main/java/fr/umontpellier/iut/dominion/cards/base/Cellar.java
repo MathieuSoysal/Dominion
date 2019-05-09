@@ -22,6 +22,19 @@ public class Cellar extends Card {
     @Override
     public void play(Player p) {
         p.incrementActions(1);
+        boolean wantsDiscard = true;
+        int discarded = 0;
+        int size = p.getCardsInHand().size();
+        while (wantsDiscard) {
+            p.discardCard(p.removeFromHand(p.chooseCard("Défaussez 1 carte, ou passez", p.getCardsInHand(), true)));
+            if (size == p.getCardsInHand().size()) {
+                wantsDiscard = false;
+            } else {
+                discarded++;
+                size--;
+            }
+        }
+        p.drawNCardsToHand(discarded);
     }
 
     @Override

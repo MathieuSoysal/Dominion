@@ -149,6 +149,22 @@ public class Game {
         return availableCards;
     }
 
+    /**
+     * Renvoie la liste des cartes du type donné qui sont disponibles à l'achat dans la
+     * réserve.
+     *
+     * @return une liste de cartes contenant la première carte de chaque pile
+     * non-vide de la réserve, du type donné
+     */
+    public ListOfCards availableSupplyCardsByType(CardType ct) {
+        ListOfCards availableCards = new ListOfCards();
+        for (ListOfCards cardList : supplyStacks) {
+            if (!cardList.isEmpty() && (cardList.get(0).getTypes().contains(ct)))
+                availableCards.add(cardList.get(0));
+        }
+        return availableCards;
+    }
+
         /**
      * Renvoie le nombre de liste de cartes qui ne sont plus disponibles à l'achat dans la
      * réserve.

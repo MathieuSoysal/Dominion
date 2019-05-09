@@ -1,10 +1,12 @@
 package fr.umontpellier.iut.dominion.cards.base;
 
 import fr.umontpellier.iut.dominion.CardType;
+import fr.umontpellier.iut.dominion.ListOfCards;
 import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.Card;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -18,10 +20,16 @@ public class Mine extends Card {
         super("Mine", 5);
     }
 
-//    @Override
-//    public void play(Player p) {
-//        p.chooseCard("You may trash a Treasure from your hand. Gain a Treasure to your hand costing up to $3 more than it.", p.getCardsInHand(),false );
-//    }
+    @Override
+    public void play(Player p) {
+
+        int costToAdd = p.removeFromHand(p.chooseCard("Choisissez une carte Trésor à écarter :", p.getCardsInHand(), false))
+                .getCost() +3;
+        ListOfCards listTreasure = p.listCardCostingUpToByType(costToAdd, CardType.Treasure);
+
+        p.gainFromSupplyToHand(p.chooseCard("Choisissez une carte Trésor coutant jusqu'à " + (costToAdd + 3) + " :",
+                listTreasure, false));
+    }
 @Override
 public List<CardType> getTypes() {
     List<CardType> types = new ArrayList<>();

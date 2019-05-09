@@ -776,6 +776,15 @@ public class Player {
         }
         return availableToGain;
     }
+    public  ListOfCards listCardCostingUpToByType(int cost, CardType ct) {
+        ListOfCards availableToGain = new ListOfCards();
+        for (Card c: game.availableSupplyCardsByType(ct)) {
+            if (c.getCost() <= cost) {
+                availableToGain.add(c);
+            }
+        }
+        return availableToGain;
+    }
 
     public  ListOfCards listCardCostingExactly(int cost) {
         ListOfCards availableToGain = new ListOfCards();

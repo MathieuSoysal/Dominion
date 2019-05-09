@@ -33,7 +33,7 @@ public class Mine extends Card {
             if (!chooseC.equals("")) { // S'il à pas choisi de passer alors :
                 int costFinal = p.handToTrash(chooseC).getCost() + 3; // calcul du bonus
                 for (Card c : p.getGame().availableSupplyCards()) { // On trie les cartes pouvant être acheté :
-                    if (c.getTypes().contains(CardType.Treasure) && c.getCost() < costFinal)
+                    if (c.getTypes().contains(CardType.Treasure) && c.getCost() <= costFinal)
                         treasureInsupply.add(c);
                 }
                 p.addToHand(p.getGame().removeFromSupply(p.chooseCard(

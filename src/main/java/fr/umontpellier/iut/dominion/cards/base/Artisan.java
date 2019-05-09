@@ -20,7 +20,7 @@ public class Artisan extends Card {
 
     @Override
     public void play(Player p) {
-        p.addToHand(p.getGame().removeFromSupply((p.chooseCard("Choisissez une carte coutant jusqu'à 5 à placer sur dans votre main :",p.listCardCostingUpTo(5),false))));
+        p.addToHand(p.getGame().removeFromSupply((p.chooseCard("Choisissez une carte coutant jusqu'à 5 $ à placer sur dans votre main :",p.listCardCostingUpTo(5),false))));
         p.addToDraw(p.removeFromHand(p.chooseCard("Choisissez une carte à placer sur le dessus de votre pioche :", p.getCardsInHand(), false)));
     }
 

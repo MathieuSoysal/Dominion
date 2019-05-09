@@ -28,11 +28,8 @@ public class Chapel extends Card {
                             && !chooseC.equals(""); chooseC = (p.getCardsInHand().isEmpty()) ? ""
                                     : p.chooseCard(
                                             "Écartez jusqu'à " + i + " carte" + (i > 1 ? "s" : "") + " de votre main :",
-                                            p.getCardsInHand(), true)) {
-                // ((size < 4 ? 4 - size : 0) permet d'évite à ce que
-                // le joueur doit retiré une carte alors qu'il plus de carte en main
+                                            p.getCardsInHand(), true))
                 p.handToTrash(chooseC);
-            }
         }
     }
 

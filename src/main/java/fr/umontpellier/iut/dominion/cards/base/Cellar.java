@@ -22,17 +22,15 @@ public class Cellar extends Card {
     @Override
     public void play(Player p) {
         p.incrementActions(1);
-        boolean wantsDiscard = true;
         int discarded = 0;
-        int size = p.getCardsInHand().size();
-        while (wantsDiscard) {
-            p.discardCard(p.removeFromHand(p.chooseCard("Défaussez 1 carte, ou passez", p.getCardsInHand(), true)));
-            if (size == p.getCardsInHand().size()) {
-                wantsDiscard = false;
-            } else {
-                discarded++;
-                size--;
-            }
+        // j'ai initalisé chooseCard dans le for et je l'actualise aussi dans le for et vérifie
+        // si le joueur décide de passé cela renvoi la chaine "" et ça intéromp la boucle
+        for (String cardDiscard = p.chooseCard("Défaussez 1 carte, ou passez", p.getCardsInHand(), true); !p
+                .getCardsInHand().isEmpty()
+                && !cardDiscard.equals(""); cardDiscard = p.chooseCard("Défaussez 1 carte, ou passez",
+                        p.getCardsInHand(), true)) {
+            p.discardCard(p.removeFromHand(cardDiscard));
+            discarded++;
         }
         p.drawNCardsToHand(discarded);
     }

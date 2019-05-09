@@ -6,14 +6,13 @@ import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.Card;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 /**
  * Carte Mine
  *
- * Écartez une carte Trésor de votre main. Recevez une carte Trésor coûtant jusqu'à 3 Pièces de plus ;
- * ajoutez cette carte à votre main.
+ * Écartez une carte Trésor de votre main. Recevez une carte Trésor coûtant
+ * jusqu'à 3 Pièces de plus ; ajoutez cette carte à votre main.
  */
 public class Mine extends Card {
     public Mine() {
@@ -22,27 +21,31 @@ public class Mine extends Card {
 
     @Override
     public void play(Player p) {
-        ListOfCards HandTreasure = p.getCardsInHand();
+        ListOfCards handTreasure = new ListOfCards();
+        ListOfCards listTreasure = new ListOfCards();
 
-        Iterator<Card> iter = HandTreasure.iterator();
-
-        while (iter.hasNext()) {
-            Card c = iter.next();
-            if (!c.getTypes().contains(CardType.Treasure))
-                iter.remove();
+        for (Card c : p.getCardsInHand()) {
+            if (c.getTypes().contains(CardType.Treasure))
+                handTreasure.add(c);
         }
-
-        int costToAdd = p.handToTrash(p.chooseCard("Choisissez une carte Trésor à écarter :", HandTreasure, false))
-                .getCost() +3;
-        ListOfCards listTreasure = p.listCardCostingUpToByType(costToAdd, CardType.Treasure);
-
-        p.gainFromSupplyToHand(p.chooseCard("Choisissez une carte Trésor coutant jusqu'à " + (costToAdd + 3) + " :",
-                listTreasure, false));
+        if (!handTreasure.isEmpty()) { // S'il a des cartes trésors en main alors :
+            String chooseC = p.chooseCard("Choisissez une carte Trésor à écarter :", handTreasure, true);
+            if (!chooseC.equals("")) { // S'il à pas choisi de passer alors :
+                int costFinal = p.handToTrash(chooseC).getCost() + 3; // calcul du bonus
+                for (Card c : p.getGame().availableSupplyCards()) { // On trie les cartes pouvant être acheté :
+                    if (c.getTypes().contains(CardType.Treasure) && c.getCost() < costFinal)
+                        listTreasure.add(c);
+                }
+                p.gainFromSupplyToHand(p.chooseCard("Choisissez une carte Trésor coutant jusqu'à " + costFinal + "$ :",
+                        listTreasure, false)); // On lui demande de choisir parmit les cartes triés
+            }
+        }
     }
-@Override
-public List<CardType> getTypes() {
-    List<CardType> types = new ArrayList<>();
-    types.add(CardType.Action);
-    return types;
-}
+
+    @Override
+    public List<CardType> getTypes() {
+        List<CardType> types = new ArrayList<>();
+        types.add(CardType.Action);
+        return types;
+    }
 }

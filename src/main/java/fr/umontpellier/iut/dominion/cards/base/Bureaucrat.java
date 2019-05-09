@@ -23,7 +23,7 @@ public class Bureaucrat extends Card {
     // il y a surrement des erreurs dans System.out.print
     @Override
     public void play(Player p) {
-        p.gainFromSupply("Silver");
+        p.addToDraw(p.getGame().removeFromSupply("Silver"));
         ListOfCards cardsVictory = new ListOfCards();
         for (Player otherP : p.getOtherPlayers()) {
             for (Card c : otherP.getCardsInHand()) { // Trie les cartes victoires de sa main dans cardsVictory

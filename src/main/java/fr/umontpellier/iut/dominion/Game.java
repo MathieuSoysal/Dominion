@@ -149,27 +149,11 @@ public class Game {
         return availableCards;
     }
 
-    /**
-     * Renvoie la liste des cartes du type donné qui sont disponibles à l'achat dans la
-     * réserve.
-     *
-     * @return une liste de cartes contenant la première carte de chaque pile
-     * non-vide de la réserve, du type donné
-     */
-    public ListOfCards availableSupplyCardsByType(CardType ct) {
-        ListOfCards availableCards = new ListOfCards();
-        for (ListOfCards cardList : supplyStacks) {
-            if (!cardList.isEmpty() && (cardList.get(0).getTypes().contains(ct)))
-                availableCards.add(cardList.get(0));
-        }
-        return availableCards;
-    }
-
         /**
      * Renvoie le nombre de pile de cartes qui ne sont plus disponibles à l'achat dans la
      * réserve.
      *
-     * @return int 
+     * @return int
      */
     public int nbSupplyCardsEmpty() {
         return supplyStacks.size()-availableSupplyCards().size();
@@ -270,6 +254,7 @@ public class Game {
         }
         return card;
     }
+
     /**
      * Teste si la partie est terminée
      *
@@ -293,6 +278,21 @@ public class Game {
                 if (stack.get(0).getName().equals("Province"))
                     hasProvince = true;
         return (nbEmptyStacks >= 3 || !hasProvince);
+    }
+    /**
+     * Renvoie la liste des cartes du type donné qui sont disponibles à l'achat dans la
+     * réserve.
+     *
+     * @return une liste de cartes contenant la première carte de chaque pile
+     * non-vide de la réserve, du type donné
+     */
+    public ListOfCards availableSupplyCardsByType(CardType cardType) {
+        ListOfCards availableCards = new ListOfCards();
+        for (ListOfCards cardList : supplyStacks) { // TODO : Voir pour amélioration en utilisant {@code avaibleSupplyCards()} plutôt que supplyStacks
+            if (!cardList.isEmpty() && (cardList.get(0).getTypes().contains(cardType)))
+                availableCards.add(cardList.get(0));
+        }
+        return availableCards;
     }
 
     /**

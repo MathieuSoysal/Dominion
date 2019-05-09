@@ -24,6 +24,8 @@ public class Moat extends Card {
         p.drawNCardsToHand(2);
     }
 
+    // TODO : Voir si la carte est discard quand elle est dévoilée
+
     @Override
     public List<CardType> getTypes() {
         List<CardType> types = new ArrayList<>();

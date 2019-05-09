@@ -1,6 +1,7 @@
 package fr.umontpellier.iut.dominion.cards.base;
 
 import fr.umontpellier.iut.dominion.CardType;
+import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.Card;
 
 import java.util.ArrayList;
@@ -15,6 +16,13 @@ import java.util.List;
 public class Bandit extends Card {
     public Bandit() {
         super("Bandit", 5);
+    }
+
+    public void play(Player p) {
+        p.gain(p.getGame().removeFromSupply("Gold"));
+        for (Player currentPlayer : p.getOtherPlayers()) {
+            // TODO : Finir Bandit, voir "dévoiler"
+        }
     }
 
     @Override

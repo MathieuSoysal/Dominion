@@ -11,8 +11,8 @@ import java.util.List;
 /**
  * Carte Vassal
  *
- * +2 Pièces.
- * Défaussez la première carte de votre deck. Si c'est une carte Action, vous pouvez la jouer.
+ * +2 Pièces. Défaussez la première carte de votre deck. Si c'est une carte
+ * Action, vous pouvez la jouer.
  */
 public class Vassal extends Card {
     public Vassal() {
@@ -23,10 +23,11 @@ public class Vassal extends Card {
     public void play(Player p) {
         p.incrementMoney(2);
         Card cartePiochee = p.drawCard();
-        if (cartePiochee.getTypes().contains(CardType.Action)) {
-            List<String> choices = Arrays.asList("y", "n");
-            if (p.chooseOption("Voulez-vous jouer la carte "+cartePiochee.getName()+" ?", choices, false).equals("y")) cartePiochee.play(p);
-        }
+        List<String> choices = Arrays.asList("y", "n");
+        if (cartePiochee.getTypes().contains(CardType.Action)
+                && p.chooseOption("Voulez-vous jouer la carte " + cartePiochee.getName() + " ?", choices, false)
+                        .equals("y"))
+            cartePiochee.play(p);
     }
 
     @Override

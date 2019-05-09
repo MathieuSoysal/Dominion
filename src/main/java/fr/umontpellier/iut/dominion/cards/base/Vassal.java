@@ -27,7 +27,7 @@ public class Vassal extends Card {
         if (cartePiochee.getTypes().contains(CardType.Action)
                 && p.chooseOption("Voulez-vous jouer la carte " + cartePiochee.getName() + " ?", choices, false)
                         .equals("y"))
-            cartePiochee.play(p);
+            p.playCard(cartePiochee.getName());
     }
 
     @Override

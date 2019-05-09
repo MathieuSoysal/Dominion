@@ -21,23 +21,24 @@ public class Mine extends Card {
 
     @Override
     public void play(Player p) {
-        ListOfCards handTreasure = new ListOfCards();
-        ListOfCards listTreasure = new ListOfCards();
+        ListOfCards treasureInHand = new ListOfCards();
+        ListOfCards treasureInsupply = new ListOfCards();
 
         for (Card c : p.getCardsInHand()) {
             if (c.getTypes().contains(CardType.Treasure))
-                handTreasure.add(c);
+                treasureInHand.add(c);
         }
-        if (!handTreasure.isEmpty()) { // S'il a des cartes trésors en main alors :
-            String chooseC = p.chooseCard("Choisissez une carte Trésor à écarter :", handTreasure, true);
+        if (!treasureInHand.isEmpty()) { // S'il a des cartes trésors en main alors :
+            String chooseC = p.chooseCard("Choisissez une carte Trésor à écarter :", treasureInHand, true);
             if (!chooseC.equals("")) { // S'il à pas choisi de passer alors :
                 int costFinal = p.handToTrash(chooseC).getCost() + 3; // calcul du bonus
                 for (Card c : p.getGame().availableSupplyCards()) { // On trie les cartes pouvant être acheté :
                     if (c.getTypes().contains(CardType.Treasure) && c.getCost() < costFinal)
-                        listTreasure.add(c);
+                        treasureInsupply.add(c);
                 }
-                p.gainFromSupplyToHand(p.chooseCard("Choisissez une carte Trésor coutant jusqu'à " + costFinal + "$ :",
-                        listTreasure, false)); // On lui demande de choisir parmit les cartes triés
+                p.addToHand(p.getGame().removeFromSupply(p.chooseCard(
+                        "Choisissez une carte Trésor coutant jusqu'à " + costFinal + "$ :", treasureInsupply, false)));
+                // On lui demande de choisir parmit les cartes triés dans la résérve (treasureInSupply)
             }
         }
     }

@@ -138,6 +138,7 @@ class CardsTest2 {
         p2.getHand().add(new Silver());
         p2.getHand().add(new Copper());
 
+        game.setInput("Copper");
         p2.playCard("Moneylender");
 
         assertEquals(3, p2.getMoney());

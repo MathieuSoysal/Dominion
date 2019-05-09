@@ -770,7 +770,7 @@ public class Player {
     public  ListOfCards listCardCostingUpTo(int cost) {
         ListOfCards availableToGain = new ListOfCards();
         for (Card c: game.availableSupplyCards()) {
-            if (c.getCost() > cost) {
+            if (c.getCost() <= cost) {
                 availableToGain.add(c);
             }
         }

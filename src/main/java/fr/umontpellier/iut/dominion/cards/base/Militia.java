@@ -10,8 +10,8 @@ import java.util.List;
 /**
  * Carte Milice (Militia)
  *
- * 2 Pièces.
- * Tous vos adversaires défaussent leurs cartes de façon à n'avoir que 3 cartes en main.
+ * 2 Pièces. Tous vos adversaires défaussent leurs cartes de façon à n'avoir que
+ * 3 cartes en main.
  */
 public class Militia extends Card {
     public Militia() {
@@ -20,14 +20,14 @@ public class Militia extends Card {
 
     @Override
     public void play(Player p) {
-        for (Player otherP : p.getOtherPlayers())
-        {
-            while (otherP.getCardsInHand().size() > 3) {
-                otherP.discardCard(otherP.removeFromHand(otherP.chooseCard("Choisi une carte à défausser", otherP.getCardsInHand(), false)));
-            }
-            
-        }
         p.incrementMoney(2);
+        for (Player otherP : p.getOtherPlayers()) {
+            for (int size = otherP.getCardsInHand().size()-3; size > 0; size--){
+                otherP.discardCard(otherP.removeFromHand(otherP.chooseCard(
+                        "Défausse " + size + "carte" + (size > 1 ? "s" : "") + " de ta main :",
+                        otherP.getCardsInHand(), false)));
+            }
+        }
     }
 
     @Override

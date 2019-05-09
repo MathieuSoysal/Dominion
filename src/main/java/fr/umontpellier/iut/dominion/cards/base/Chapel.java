@@ -19,11 +19,20 @@ public class Chapel extends Card {
 
     @Override
     public void play(Player p) {
-        int size = p.getCardsInHand().size(); // je le met dnas un int pour éviter la que la condition du for change
-        for (int i = 0; i < 4 - (size < 4 ? 4 - size : 0); i++) {
-            // ((size < 4 ? 4 - size : 0) permet d'évite à ce que
-            // le joueur doit retiré une carte alors qu'il plus de carte en main
-            p.handToTrash(p.chooseCard("Écartez jusqu'à 4 carte de votre main :", p.getCardsInHand(), true));
+        if (!p.getCardsInHand().isEmpty()) {
+            int i = 4;
+            for (String chooseC = p.chooseCard(
+                    "Écartez jusqu'à " + (p.getCardsInHand().size() > 4 ? 4 : 4) + " carte"
+                            + (p.getCardsInHand().size() > 1 ? "s" : "") + " de votre main :",
+                    p.getCardsInHand(), true); i-- > 0
+                            && !chooseC.equals(""); chooseC = (p.getCardsInHand().isEmpty()) ? ""
+                                    : p.chooseCard(
+                                            "Écartez jusqu'à " + i + " carte" + (i > 1 ? "s" : "") + " de votre main :",
+                                            p.getCardsInHand(), true)) {
+                // ((size < 4 ? 4 - size : 0) permet d'évite à ce que
+                // le joueur doit retiré une carte alors qu'il plus de carte en main
+                p.handToTrash(chooseC);
+            }
         }
     }
 

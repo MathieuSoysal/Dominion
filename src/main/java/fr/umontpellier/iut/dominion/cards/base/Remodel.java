@@ -10,8 +10,8 @@ import java.util.List;
 /**
  * Carte Rénovation (Remodel)
  *
- * Écartez une carte de votre main.
- * Recevez une carte coûtant jusqu'à 2 Pièces de plus que la carte écartée.
+ * Écartez une carte de votre main. Recevez une carte coûtant jusqu'à 2 Pièces
+ * de plus que la carte écartée.
  */
 public class Remodel extends Card {
     public Remodel() {
@@ -20,9 +20,10 @@ public class Remodel extends Card {
 
     @Override
     public void play(Player p) {
-        Card removed = p.removeFromHand(p.chooseCard("Choisissez une carte à placer sur le dessus de votre pioche :", p.getCardsInHand(), false));
-        int costToAdd = removed.getCost();
-        p.gainFromSupply(p.chooseCard("Choisissez une carte coutant jusqu'à 4 :",p.listCardCostingUpTo(costToAdd + 2),false));
+        int costToAdd = p.removeFromHand(p.chooseCard("Choisissez une carte à sacrifier :", p.getCardsInHand(), false))
+                .getCost();
+        p.gainFromSupply(p.chooseCard("Choisissez une carte coutant jusqu'à " + (costToAdd + 2) + " :",
+                p.listCardCostingUpTo(costToAdd + 2), false));
     }
 
     @Override

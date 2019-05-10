@@ -1,9 +1,12 @@
 package fr.umontpellier.iut.dominion.cards.base;
 
 import fr.umontpellier.iut.dominion.CardType;
+import fr.umontpellier.iut.dominion.ListOfCards;
+import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.Card;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -15,6 +18,22 @@ import java.util.List;
 public class ThroneRoom extends Card {
     public ThroneRoom() {
         super("Throne Room", 4);
+    }
+
+    @Override
+    public void play(Player p) {
+        ListOfCards actionInHand = new ListOfCards();
+        for (Card c : p.getCardsInHand()) {
+            if (c.getTypes().contains(CardType.Action))
+                actionInHand.add(c);
+        }
+        String carteChoisie = p.chooseCard("Choisissez une carte Action de votre main", actionInHand, true);
+        if (!carteChoisie.equals("")) {
+            Card choisieAsCard = p.getCardsInHand().getCard(carteChoisie);
+            choisieAsCard.play(p); // n'utilise que l'action de la carte
+            p.playCard(carteChoisie); // action de la carte + passage dans InPlay
+        }
+
     }
 
     @Override

@@ -23,28 +23,25 @@ public class Bandit extends Card {
     public void play(Player p) {
         p.gain(p.getGame().removeFromSupply("Gold"));
 
-        ListOfCards cardsDrawed = new ListOfCards();
-        for (int i = 0; i < 2; i++) {
-            Card cardDrawed = p.drawCard();
-            // p.reveals(cardDrawed);
-            if (cardDrawed.getTypes().contains(CardType.Treasure) && !cardDrawed.getName().equals("Copper")) {
-                cardsDrawed.add(cardDrawed);
-            } else {
-                p.discardCard(cardDrawed);
-            }
-        }
+        for (Player otherP : p.getOtherPlayers()) {
+            ListOfCards cardsDrawed = new ListOfCards();
 
-        if (!cardsDrawed.isEmpty()) {
-            int indexCardChoose = 0; // variable pour l'exeption doublon
-            if (cardsDrawed.size() == 2) {
-
-                if (!cardsDrawed.get(0).getName().equals(cardsDrawed.get(1).getName())) {
-                    indexCardChoose = cardsDrawed.indexOf(cardsDrawed.getCard(p.chooseCard(
-                            "Ecarte un trésor autre que Cuivre et défausse le reste.", cardsDrawed, false)));
+            for (int i = 0; i < 2; i++) {
+                Card cardDrawed = otherP.drawCard();
+                if (cardDrawed.getTypes().contains(CardType.Treasure) && !cardDrawed.getName().equals("Copper")) {
+                    cardsDrawed.add(cardDrawed);
+                } else {
+                    otherP.discardCard(cardDrawed);
                 }
-                p.discardCard(cardsDrawed.get(indexCardChoose == 1 ? 0 : 1));
             }
-            p.getGame().addToTrash(cardsDrawed.get(indexCardChoose));
+
+            if (!cardsDrawed.isEmpty()) {
+                String cardChoose = otherP.chooseCard("Ecarte un trésor", cardsDrawed, false);
+                otherP.getGame().addToTrash(cardsDrawed.remove(cardChoose));
+
+                if (!cardsDrawed.isEmpty())
+                    otherP.discardCard(cardsDrawed.get(0));
+            }
         }
     }
 

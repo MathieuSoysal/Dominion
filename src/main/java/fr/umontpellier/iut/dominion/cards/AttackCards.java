@@ -9,6 +9,9 @@ import java.util.List;
 
 public abstract class AttackCards extends Card {
 
+    /**
+     * Liste des joueurs protégés par Moat
+     */
     private List<Player> protectedPlayers;
 
     public AttackCards(String cardName, int cost) {
@@ -16,6 +19,12 @@ public abstract class AttackCards extends Card {
         protectedPlayers = new ArrayList<>();
     }
 
+    /**
+     * Vérifie si les joueurs adverses ont une carte Moat dans leur main et leur demande si ils veulent la dévoiler
+     *
+     * @param p joueur qui exécute l'effet de la carte
+     *
+     */
     public void play(Player p) {
         for (Player currentPlayer : p.getOtherPlayers()) {
             for (Card currentCard : currentPlayer.getCardsInHand()) {
@@ -32,10 +41,19 @@ public abstract class AttackCards extends Card {
         }
     }
 
+    /**
+     * Renvoie la liste des joueurs protégés par Moat
+     *
+     */
     public List<Player> getProtectedPlayers() {
         return protectedPlayers;
     }
 
+    /**
+     * @param p le joueur qui a joué la carte attaque
+     *
+     * @return la liste des joueurs qui peuvent être affectés par la carte attaque (non protégés par Moat)
+     */
     public List<Player> getAffectedPlayers(Player p) {
         List<Player> playerList = new ArrayList<>();
         playerList.addAll(p.getOtherPlayers());

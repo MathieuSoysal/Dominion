@@ -30,7 +30,7 @@ public class Poacher extends Card {
             while (nbSupplyCardsEmpty-- != 0)// c'est juste un while avec nbSupply nombre de boucles
                 p.handToDisCard(p.chooseCard("Choisi " + nbSupplyCardsEmpty + " carte"
                         + ((nbSupplyCardsEmpty > 1) ? "s" : "") + " à défausser :", p.getCardsInHand(), false));
-        }// ((nbSupplyCardsEmpty > 1) ? "s" : "") histoir d'éviter la faute d'orthographe
+        }// ((nbSupplyCardsEmpty > 1) ? "s" : "") histoire d'éviter la faute d'orthographe
     }
 
     @Override

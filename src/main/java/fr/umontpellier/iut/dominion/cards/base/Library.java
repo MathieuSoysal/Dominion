@@ -1,9 +1,12 @@
 package fr.umontpellier.iut.dominion.cards.base;
 
 import fr.umontpellier.iut.dominion.CardType;
+import fr.umontpellier.iut.dominion.ListOfCards;
+import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.Card;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -15,6 +18,26 @@ import java.util.List;
 public class Library extends Card {
     public Library() {
         super("Library", 5);
+    }
+
+    @Override
+    public void play(Player p) {
+        ListOfCards aside = new ListOfCards();
+        List<String> choices = Arrays.asList("y", "n");
+
+        while (p.getCardsInHand().size() != 7 && (!p.getDraw().isEmpty() && !p.getDiscard().isEmpty())) {
+            Card drawResult = p.drawCard();
+
+            if (drawResult.getTypes().contains(CardType.Action) && p.chooseOption("Voulez-vous mettre de côté la carte " + drawResult.getName() + " ?", choices, false)
+                    .equals("y")) {
+                aside.add(drawResult);
+            } else {
+                p.addToHand(drawResult);
+            }
+        }
+        for (Card c: aside) {
+            p.discardCard(c);
+        }
     }
 
     @Override

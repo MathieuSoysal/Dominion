@@ -23,9 +23,9 @@ public class Witch extends AttackCards {
     @Override
     public void play(Player p) {
         super.play(p);
-        List<Player> playerList = super.getAffectedPlayers(p);
-        for (Player otherP : playerList)
+        for (Player otherP : super.getAffectedPlayers(p)) {
             otherP.gainFromSupply("Curse");
+        }
         p.drawNCardsToHand(2);
     }
 

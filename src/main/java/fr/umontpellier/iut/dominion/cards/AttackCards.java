@@ -20,7 +20,7 @@ public abstract class AttackCards extends Card {
         for (Player currentPlayer : p.getOtherPlayers()) {
             for (Card currentCard : currentPlayer.getCardsInHand()) {
                 if (currentCard.getName().equals("Moat")) {
-                    List<String> choices = Arrays.asList("y", "n");
+                    List<String> choices = Arrays.asList("y","n");
                     if (currentPlayer.choose("Voulez-vous dévoiler votre carte : Moat ? ",
                             choices,
                             false,

@@ -39,7 +39,7 @@ public class Sentry extends Card {
                 for (String chooseC = p.chooseCard("Défausser celles que vous voulez", cardDrawed, true); !chooseC
                         .equals(""); chooseC = (cardDrawed.isEmpty() ? ""
                                 : p.chooseCard("Défausser la si vous voulez", cardDrawed, true)))
-                    p.getGame().addToTrash(cardDrawed.remove(chooseC));
+                    p.discardCard(cardDrawed.remove(chooseC));
 
                 while (!cardDrawed.isEmpty())
                     p.addToDraw(cardDrawed.remove(p.chooseCard(

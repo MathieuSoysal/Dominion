@@ -230,11 +230,7 @@ public class Game {
      * ne correspond
      */
     public Card getFromSupply(String cardName) {
-        for (ListOfCards cardList : supplyStacks) {
-            if (cardList.getCard(cardName) != null)
-                return cardList.getCard(cardName);
-        }
-        return null;
+        return this.availableSupplyCards().getCard(cardName) ;
     }
 
     /**
@@ -278,21 +274,6 @@ public class Game {
                 if (stack.get(0).getName().equals("Province"))
                     hasProvince = true;
         return (nbEmptyStacks >= 3 || !hasProvince);
-    }
-    /**
-     * Renvoie la liste des cartes du type donné qui sont disponibles à l'achat dans la
-     * réserve.
-     *
-     * @return une liste de cartes contenant la première carte de chaque pile
-     * non-vide de la réserve, du type donné
-     */
-    public ListOfCards availableSupplyCardsByType(CardType cardType) {
-        ListOfCards availableCards = new ListOfCards();
-        for (ListOfCards cardList : supplyStacks) { // TODO : Voir pour amélioration en utilisant {@code avaibleSupplyCards()} plutôt que supplyStacks
-            if (!cardList.isEmpty() && (cardList.get(0).getTypes().contains(cardType)))
-                availableCards.add(cardList.get(0));
-        }
-        return availableCards;
     }
 
     /**

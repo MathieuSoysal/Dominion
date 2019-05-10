@@ -811,34 +811,4 @@ public class Player {
         }
         return availableToGain;
     }
-    public  ListOfCards listCardCostingUpToByType(int cost, CardType ct) {
-        ListOfCards availableToGain = new ListOfCards();
-        for (Card c: game.availableSupplyCardsByType(ct)) {
-            if (c.getCost() <= cost) {
-                availableToGain.add(c);
-            }
-        }
-        return availableToGain;
-    }
-
-    public  ListOfCards listCardCostingExactly(int cost) {
-        ListOfCards availableToGain = new ListOfCards();
-        for (Card c: game.availableSupplyCards()) {
-            if (c.getCost() == cost) {
-                availableToGain.add(c);
-            }
-        }
-        return availableToGain;
-    }
-
-    public void gainFromSupplyToHand(String cardName) {
-        Card removedCard = game.removeFromSupply(cardName);
-        if (removedCard != null) {
-            hand.add(removedCard);
-        }
-    }
-
-//    public Card getCardFromName(String cardName, ListOfCards cardList) {
-//
-//    }
 }

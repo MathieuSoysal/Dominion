@@ -60,7 +60,7 @@ public class Player {
     /**
      * Liste des joueurs protégés par Moat
      */
-    private static List<Player> protectedPlayers = new ArrayList<>();
+//    private static List<Player> protectedPlayers = new ArrayList<>();
 
     /**
      * Constructeur
@@ -189,11 +189,7 @@ public class Player {
      * de la classe {@code Game}.
      */
     public List<Player> getOtherPlayers() {
-//        return game.otherPlayers(this); //Version avant la modification pour gérer Moat
-        List<Player> playerList = game.otherPlayers(this);
-        playerList.removeAll(protectedPlayers);
-        protectedPlayers.clear();
-        return playerList;
+        return game.otherPlayers(this);
     }
 
     /**
@@ -401,22 +397,6 @@ public class Player {
      */
     private void playCard(Card c) {
         inPlay.add(hand.remove(hand.indexOf(c)));
-        if (c.getTypes().contains(CardType.Attack)) { // Test pour gérer la réaction de Moat
-            ArrayList<Player> otherPlayersTmp = new ArrayList<>();
-            otherPlayersTmp.addAll(getOtherPlayers());
-            for (Player player : otherPlayersTmp) {
-                if (player.getCardsInHand().getCard("Moat") != null) {
-                    List<String> choices = new ArrayList<>();
-                    choices.add("y");
-                    choices.add("n");
-
-                    List<Player> protectedPlayers = new ArrayList<>();
-                    if (player.choose("Voulez-vous révéler votre douve ?",choices,false,true).equals("y")) {
-                        Player.protectedPlayers.add(player);
-                    }
-                }
-            }
-        }
         c.play(this);
     }
 

@@ -25,6 +25,7 @@ public class Bureaucrat extends Card {
     public void play(Player p) {
         p.addToDraw(p.getGame().removeFromSupply("Silver"));
         ListOfCards cardsVictory = new ListOfCards();
+
         for (Player otherP : p.getOtherPlayers()) {
             for (Card c : otherP.getCardsInHand()) { // Trie les cartes victoires de sa main dans cardsVictory
                 if (c.getTypes().contains(CardType.Victory))
@@ -34,6 +35,7 @@ public class Bureaucrat extends Card {
                 System.out.print(otherP.getName() + "dévoile ces cartes en main :");
                 otherP.getCardsInHand().forEach(x -> System.out.print(x.getName() + ", "));
                 System.out.print("\n");
+
             } else { // si cardsVictory n'est pas vide alors :
                 String carteReveal = otherP.chooseCard("Choisi une carte Victoire  à dévoiler : ", cardsVictory, false);
                 // j'ai du utiliser une variable String car je devait à la fois afficher la

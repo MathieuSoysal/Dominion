@@ -23,12 +23,13 @@ public class Cellar extends Card {
     public void play(Player p) {
         p.incrementActions(1);
         int discarded = 0;
-        // j'ai initalisé chooseCard dans le for et je l'actualise aussi dans le for et vérifie
-        // si le joueur décide de passé cela renvoi la chaine "" et ça intéromp la boucle
-        for (String cardDiscard = p.chooseCard("Défaussez 1 carte, ou passez", p.getCardsInHand(), true); !p
-                .getCardsInHand().isEmpty()
-                && !cardDiscard.equals(""); cardDiscard = p.chooseCard("Défaussez 1 carte, ou passez",
-                        p.getCardsInHand(), true)) {
+        // j'ai initalisé chooseCard dans le for et je l'actualise aussi dans le for et
+        // vérifie
+        // si le joueur décide de passé cela renvoi la chaine "" et ça intéromp la
+        // boucle
+        for (String cardDiscard = p.chooseCard("Défaussez 1 carte, ou passez", p.getCardsInHand(), true); !cardDiscard
+                .equals(""); cardDiscard = (p.getCardsInHand().isEmpty() ? ""
+                        : p.chooseCard("Défaussez 1 carte, ou passez", p.getCardsInHand(), true))) {
             p.handToDisCard(cardDiscard);
             discarded++;
         }

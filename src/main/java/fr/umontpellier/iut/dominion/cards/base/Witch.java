@@ -21,9 +21,7 @@ public class Witch extends Card {
     @Override
     public void play(Player p) {
         for (Player otherP : p.getOtherPlayers())
-        {
             otherP.gainFromSupply("Curse");
-        }
         p.drawNCardsToHand(2);
     }
 

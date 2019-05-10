@@ -150,9 +150,10 @@ class CardsTest3 {
         assertNotNull(p1.getDiscard().getCard("Gold")); // p1 a gagné un Gold
         assertFalse(p2.getDraw().contains(silver1)); // p2 a perdu le Silver (automatiquement)
         assertFalse(p2.getDiscard().contains(silver1));
-        assertTrue(p2.getDiscard().contains(copper)); // p2 a défaussé le Copper
         assertFalse(p0.getDraw().contains(silver2)); // p0 a perdu le Silver (choix de l'utilisateur)
         assertFalse(p0.getDiscard().contains(silver2));
+
+        assertTrue(p2.getDiscard().contains(copper)); // p2 a défaussé le Copper
         assertTrue(p0.getDiscard().contains(gold)); // p0 a défaussé le Gold
     }
 

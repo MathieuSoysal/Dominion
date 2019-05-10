@@ -4,9 +4,9 @@ import fr.umontpellier.iut.dominion.CardType;
 import fr.umontpellier.iut.dominion.ListOfCards;
 import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.Card;
+import fr.umontpellier.iut.dominion.cards.AttackCards;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -23,43 +23,28 @@ public class Bandit extends Card {
     public void play(Player p) {
         p.gain(p.getGame().removeFromSupply("Gold"));
 
-        for (Player currentPlayer : p.getOtherPlayers()) {
-            ListOfCards cardsTreasure = new ListOfCards();
-            ListOfCards listDrawCards = new ListOfCards();
+        ListOfCards cardsDrawed = new ListOfCards();
+        for (int i = 0; i < 2; i++) {
+            Card cardDrawed = p.drawCard();
+            // p.reveals(cardDrawed);
+            if (cardDrawed.getTypes().contains(CardType.Treasure) && !cardDrawed.getName().equals("Copper")) {
+                cardsDrawed.add(cardDrawed);
+            } else {
+                p.discardCard(cardDrawed);
+            }
+        }
 
-            listDrawCards.add(currentPlayer.drawToHand()); //Pioche les 2 cartes du deck
-            listDrawCards.add(currentPlayer.drawToHand());
+        if (!cardsDrawed.isEmpty()) {
+            int indexCardChoose = 0; // variable pour l'exeption doublon
+            if (cardsDrawed.size() == 2) {
 
-            Iterator<Card> iter = listDrawCards.iterator();
-
-            while (iter.hasNext()) {
-                Card c = iter.next();
-
-                if (c.getTypes().contains(CardType.Treasure) && !c.getName().contains("Copper")) {
-                    cardsTreasure.add(c);
-                    iter.remove();
+                if (!cardsDrawed.get(0).getName().equals(cardsDrawed.get(1).getName())) {
+                    indexCardChoose = cardsDrawed.indexOf(cardsDrawed.getCard(p.chooseCard(
+                            "Ecarte un trésor autre que Cuivre et défausse le reste.", cardsDrawed, false)));
                 }
+                p.discardCard(cardsDrawed.get(indexCardChoose == 1 ? 0 : 1));
             }
-
-//            for (Card c : listDrawCards) { // Trie les cartes treasure picohées dans cardsTreasure
-//                if (c.getTypes().contains(CardType.Treasure) && !c.getName().contains("Copper") && cardsTreasure.isEmpty()) {
-//                    cardsTreasure.add(c);
-//                }
-//            }
-
-            // Trash une carte Treasure
-
-            if (cardsTreasure.size() == 2) {
-                currentPlayer.getGame().addToTrash(currentPlayer.removeFromHand(currentPlayer.chooseCard("Choisissez le Trésor à écarter", cardsTreasure, false)));
-            } else if (cardsTreasure.size() == 1){
-                currentPlayer.getGame().addToTrash(currentPlayer.removeFromHand(cardsTreasure.remove(0).getName()));
-            }
-
-            // discard le reste
-
-            for (Card c: listDrawCards) {
-                currentPlayer.handToDisCard(c.getName());
-            }
+            p.getGame().addToTrash(cardsDrawed.get(indexCardChoose));
         }
     }
 

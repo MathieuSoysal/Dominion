@@ -99,6 +99,16 @@ public class Game {
         return players.size();
     }
 
+        /**
+    * à utiliser pour les tests
+    * Renvoie true si le nom de la carte est bien dans le trash
+    * @param String nom de la carte
+    * @return boolean
+    */
+    public boolean inTrash(String cardName){
+        return trashedCards.getCard(cardName)!=null;
+    }
+
     /**
      * Renvoie l'indice du joueur passé en argument dans le tableau des
      * joueurs, ou -1 si le joueur n'est pas dans le tableau.

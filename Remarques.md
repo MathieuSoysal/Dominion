@@ -12,6 +12,10 @@ et suppression de code) ne sont pas comptabilisés dans les statistiques suivant
 
 ### Mathieu SOYSAL
 
+Mon absence lors du début du projet, s'expliques par un dysfonctionnement de mon IDE, notre super professeur M.Poupet peut aprouvé le dysfonctionnement de ma configuration avec l'IDE intiliji.
+J'ai donc fait du mieux que je pouvais pour ratrapé mes camarades.
+Je leur remercie d'avoir été patient, un grand merci à eux sans qui le projet ne serais pas aussi complet aujourd'hui, Merci
+
 ## Code
 
 #### Moat

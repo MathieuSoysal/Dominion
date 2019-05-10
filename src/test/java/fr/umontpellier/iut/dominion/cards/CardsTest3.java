@@ -166,6 +166,8 @@ class CardsTest3 {
         p2.getDraw().add(0, silver1);
         p2.getDraw().add(0, silver2);
 
+        p1.playCard("Bandit");
+
         assertNotNull(p2.getDiscard().getCard("Silver")); // Il y a un Silver dans la défausse
         assertFalse(!game.inTrash("Silver")); // il y a un Silver dans le trash du jeu
     }

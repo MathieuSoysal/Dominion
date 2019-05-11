@@ -1,5 +1,6 @@
 package fr.umontpellier.iut.dominion.cards;
 
+import com.sun.corba.se.spi.orbutil.threadpool.Work;
 import fr.umontpellier.iut.dominion.IOGame;
 import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.base.*;
@@ -228,7 +229,43 @@ class CardsTest3 {
         p0.playCard("Silver");
 
         assertNotNull(p0.getInPlay().getCard("Silver"));
+        assertEquals(2, p0.getNumberOfActions());
         assertEquals(4,p0.getMoney());
+    }
+
+    @Test
+    void testThroneRoomActionHarbinger() {
+
+        p1.getHand().add(new Harbinger());
+        p1.getHand().add(new Harbinger());
+        Card gold = new Gold();
+        p1.getDiscard().add(gold);
+        p1.getDiscard().add(new Copper());
+        p1.getDiscard().add(new Copper());
+        p1.getDiscard().add(new Copper());
+        Card c0 = p1.getDraw().get(0);
+        p1.getHand().add(new ThroneRoom());
+
+        game.setInput("Harbinger");
+
+        p1.playCard("Throne Room");
+
+//        assertTrue(p1.getHand().contains(c0));
+//        assertEquals(2, p1.getNumberOfActions());
+//        assertEquals(gold, p1.getDraw().get(0));
+//        assertFalse(p1.getDiscard().contains(gold));
+    }
+
+    @Test
+    void testThroneRoomInfiniteLoop() {
+        p1.getHand().add(new ThroneRoom());
+        p1.getHand().add(new Workshop());
+
+        game.setInput("Workshop","Silver","Silver");
+
+        p1.playCard("Throne Room");
+
+        assertEquals(2,p1.getHand().size());
     }
 
         //Test d'autres groupes

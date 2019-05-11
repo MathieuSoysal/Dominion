@@ -19,6 +19,9 @@ public class ThroneRoom extends Card {
         super("Throne Room", 4);
     }
 
+    // TODO : Régler problème de la boucle infinie de Throne Room
+    // TODO : ThroneRoom plante avec différentes cartes(throne room, Harbinger...)
+
     @Override
     public void play(Player p) {
         ListOfCards actionInHand = new ListOfCards();
@@ -27,14 +30,15 @@ public class ThroneRoom extends Card {
                 actionInHand.add(c);
             }
         }
-        String carteChoisie = p.chooseCard("Choisissez une carte Action de votre main", actionInHand, true);
-        if (!carteChoisie.equals("")) {
-            Card choisieAsCard = p.getCardsInHand().getCard(carteChoisie);
-            choisieAsCard.play(p); // n'utilise que l'action de la carte
-            p.playCard(carteChoisie); // action de la carte + passage dans InPlay
+        String chosenCardName = p.chooseCard("Choisissez une carte Action de votre main", actionInHand, true);
+        if (! chosenCardName.equals("")) {
+            Card chosenCard = p.getCardsInHand().getCard(chosenCardName);
+            p.playCard(chosenCardName); // action de la carte + passage dans InPlay
+            chosenCard.play(p); // n'utilise que l'action de la carte
         }
 
     }
+
 
     @Override
     public List<CardType> getTypes() {

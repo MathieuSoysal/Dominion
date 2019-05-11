@@ -149,6 +149,8 @@ public class Player {
      */
     public ListOfCards getCardsInDiscard() { return new ListOfCards(discard); }
 
+    public ListOfCards getCardsInPlay() { return new ListOfCards(inPlay); }
+
     /**
      * Renvoie une liste de toutes les cartes possédées par le joueur
      * (le deck complet c'est-à-dire toutes les cartes dans la main, la

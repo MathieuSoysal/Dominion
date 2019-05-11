@@ -4,6 +4,8 @@ import fr.umontpellier.iut.dominion.cards.Card;
 import fr.umontpellier.iut.dominion.cards.common.Copper;
 import fr.umontpellier.iut.dominion.cards.common.Estate;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -171,7 +173,8 @@ public class Player {
     public int getVictoryPoints() {
         int totalPoints = 0;
         for (Card currentCard : getAllCards()) {
-            totalPoints += currentCard.getVictoryValue(this);
+            if (currentCard.getTypes().contains(CardType.Victory))
+                totalPoints += currentCard.getVictoryValue(this);
         }
         return totalPoints;
     }
@@ -254,9 +257,8 @@ public class Player {
      */
     public Card drawToHand() {
         Card cardToAdd = drawCard();
-        if (cardToAdd != null) {
+        if (cardToAdd != null)
             hand.add(cardToAdd);
-        }
         return cardToAdd;
 
     }
@@ -298,7 +300,8 @@ public class Player {
      * Ajoute une carte à la main du joueur.
      */
     public void addToHand(Card c) {
-        hand.add(c);
+        if (c != null)
+            hand.add(c);
     }
 
     /**
@@ -308,7 +311,8 @@ public class Player {
      * a été retirée de son emplacement précédent.
      */
     public Card discardCard(Card c) {
-        discard.add(c);
+        if (c != null)
+            discard.add(c);
         return c;
     }
 
@@ -377,8 +381,10 @@ public class Player {
      * {@code inPlay} et exécute la méthode {@code play(Player p)} de la carte.
      */
     private void playCard(Card c) {
-        inPlay.add(hand.remove(c.getName()));
-        c.play(this);
+        if (c != null) {
+            inPlay.add(hand.remove(c.getName()));
+            c.play(this);
+        }
     }
 
     /**
@@ -410,9 +416,7 @@ public class Player {
      */
     public void playCard(String cardName) {
         Card card = hand.getCard(cardName);
-        if (card != null) {
-            playCard(card);
-        }
+        playCard(card);
     }
 
     /**
@@ -425,9 +429,8 @@ public class Player {
      * emplacement précédent au préalable.
      */
     public void gain(Card c) {
-        if ( c != null) {
+        if ( c != null)
             discard.add(0,c);
-        }
     }
 
     /**
@@ -441,9 +444,7 @@ public class Player {
      */
     public Card gainFromSupply(String cardName) {
         Card removedCard = game.removeFromSupply(cardName);
-        if (removedCard != null) {
-            gain(removedCard);
-        }
+        gain(removedCard); // gain possède déjà une exeption null
         return removedCard;
     }
 
@@ -475,7 +476,8 @@ public class Player {
      * Ajoute une carte sur le dessus de la pioche du joueur
      */
     public void addToDraw(Card c) {
-        draw.add(0,c);
+        if (c != null)
+            draw.add(0, c);
     }
 
     /**
@@ -661,12 +663,7 @@ public class Player {
         hand.clear();
         discard.addAll(inPlay);
         inPlay.clear();
-        for (int i = 0; i < 5; i++) { //if a commenter si décommente le while
-            drawToHand();
-        }
-        /*while (hand.size() < 5) {
-            hand.add(drawToHand());
-        }*/
+        drawNCardsToHand(5);
     }
 
     /**

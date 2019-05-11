@@ -60,7 +60,6 @@ public class Player {
     /**
      * Liste des joueurs protégés par Moat
      */
-//    private static List<Player> protectedPlayers = new ArrayList<>();
 
     /**
      * Constructeur
@@ -314,14 +313,12 @@ public class Player {
     }
 
 
-    // TODO : A refactoriser en utilisant removeFromHand et removeFromDiscard
-
     public Card handToTrash(String cardName) {
-        return game.addToTrash(hand.remove(cardName));
+        return game.addToTrash(removeFromHand(cardName));
     }
 
     public Card handToDisCard(String cardName) {
-        return this.discardCard(hand.remove(cardName));
+        return this.discardCard(removeFromHand(cardName));
     }
 
     /**
@@ -380,7 +377,7 @@ public class Player {
      * {@code inPlay} et exécute la méthode {@code play(Player p)} de la carte.
      */
     private void playCard(Card c) {
-        inPlay.add(hand.remove(hand.indexOf(c)));
+        inPlay.add(hand.remove(c.getName()));
         c.play(this);
     }
 

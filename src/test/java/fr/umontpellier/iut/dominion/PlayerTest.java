@@ -226,9 +226,11 @@ class PlayerTest {
 
     // Test additionnels
 
-    @Disabled
     @Test
     void testDrawNCardsToHand() {
-        throw new RuntimeException("A implémenter");
+        p.getHand().clear();
+        p.drawNCardsToHand(5);
+
+        assertEquals(5, p.getHand().size());
     }
 }

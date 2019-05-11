@@ -70,6 +70,7 @@ public class DominionServer {
             Scanner scanner = new Scanner(System.in);
             while(true) {
                 game.addInput(scanner.nextLine());
+                scanner.close();
             }
         } catch (DeploymentException e) {
             throw new RuntimeException(e);

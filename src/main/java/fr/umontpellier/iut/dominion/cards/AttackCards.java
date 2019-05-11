@@ -1,6 +1,5 @@
 package fr.umontpellier.iut.dominion.cards;
 
-import fr.umontpellier.iut.dominion.CardType;
 import fr.umontpellier.iut.dominion.Player;
 
 import java.util.ArrayList;

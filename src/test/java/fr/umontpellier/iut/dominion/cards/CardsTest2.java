@@ -123,7 +123,7 @@ class CardsTest2 {
         p1.playCard("Militia");
 
         assertEquals(2, p1.getMoney());
-        ArrayList<String> witnessList = new ArrayList<>(Arrays.asList("Silver", "Silver"));
+        new ArrayList<>(Arrays.asList("Silver", "Silver"));
         assertTrue(hasCards(p2.getHand(), "Silver", "Silver"));
         assertEquals(0, p2.getDiscard().size());
         assertTrue(hasCards(p0.getHand(), "Duchy", "Duchy", "Duchy"));

@@ -147,9 +147,11 @@ public class Player {
      * La liste renvoyée doit être une nouvelle {@code ListOfCards} dont les
      * éléments sont les mêmes que ceux de {@code discard}.
      */
-    public ListOfCards getCardsInDiscard() { return new ListOfCards(discard); }
+    public ListOfCards getCardsInDiscard() {
+        return new ListOfCards(discard);
+    }
 
-    public ListOfCards getCardsInPlay() { return new ListOfCards(inPlay); }
+    public ListOfCards getCardsInPlay() { return new ListOfCards(inPlay); }//TODO: Mèthode non utilisé
 
     /**
      * Renvoie une liste de toutes les cartes possédées par le joueur
@@ -257,10 +259,8 @@ public class Player {
      */
     public Card drawToHand() {
         Card cardToAdd = drawCard();
-        if (cardToAdd != null)
-            hand.add(cardToAdd);
+        hand.addNullSafe(cardToAdd);
         return cardToAdd;
-
     }
 
     /**
@@ -300,9 +300,7 @@ public class Player {
      * Ajoute une carte à la main du joueur.
      */
     public void addToHand(Card c) {
-        if (c != null) {
-            hand.add(c);
-        }
+        hand.addNullSafe(c);
     }
 
     /**
@@ -312,17 +310,24 @@ public class Player {
      * a été retirée de son emplacement précédent.
      */
     public Card discardCard(Card c) {
-        if (c != null) {
-            discard.add(c);
-        }
-        return c;
+        discard.addNullSafe(c);
+        return c; //TODO: voir si le return est vraiment utile
     }
 
-
+    /**
+     * Transfère une carte de la main vers le trash.
+     *
+     * @param String Nom de la carte à trasférer
+     */
     public Card handToTrash(String cardName) {
         return game.addToTrash(removeFromHand(cardName));
     }
 
+        /**
+     * Transfère une carte de la main vers la dèfausse.
+     *
+     * @param String Nom de la carte à trasférer
+     */
     public Card handToDisCard(String cardName) {
         return this.discardCard(removeFromHand(cardName));
     }
@@ -383,10 +388,8 @@ public class Player {
      * {@code inPlay} et exécute la méthode {@code play(Player p)} de la carte.
      */
     private void playCard(Card c) {
-        if (c != null) {
-            inPlay.add(hand.remove(c.getName()));
-            c.play(this);
-        }
+        inPlay.addNullSafe(hand.remove(c.getName()));
+        c.play(this);
     }
 
     /**
@@ -431,9 +434,8 @@ public class Player {
      * emplacement précédent au préalable.
      */
     public void gain(Card c) {
-        if ( c != null) {
+        if (c != null)
             discard.add(0, c);
-        }
     }
 
     /**
@@ -447,7 +449,7 @@ public class Player {
      */
     public Card gainFromSupply(String cardName) {
         Card removedCard = game.removeFromSupply(cardName);
-        gain(removedCard); // gain possède déjà une exeption null
+        gain(removedCard); // gain possède déjà une exception null
         return removedCard;
     }
 
@@ -477,11 +479,12 @@ public class Player {
 
     /**
      * Ajoute une carte sur le dessus de la pioche du joueur
+     * 
+     * @param Card la carte à ajouter au dessus de la pioche
      */
     public void addToDraw(Card c) {
-        if (c != null) {
+        if (c != null)
             draw.add(0, c);
-        }
     }
 
     /**
@@ -764,6 +767,12 @@ public class Player {
         discard.clear();
     }
 
+        /**
+    * Regroupe toutes les cartes de la réserve coutant au maximum cost
+    *
+    * @param int prix maximum des cartes à chercher
+    * @return {@code ListOfCards} des carte coutant au maximum que cost
+    */
     public  ListOfCards listCardCostingUpTo(int cost) {
         ListOfCards availableToGain = new ListOfCards();
         for (Card c: game.availableSupplyCards()) {

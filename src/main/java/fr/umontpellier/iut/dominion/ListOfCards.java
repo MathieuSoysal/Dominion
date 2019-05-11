@@ -63,6 +63,17 @@ public class ListOfCards extends ArrayList<Card> {
         return null;
     }
 
+        /**
+     * Si la carte en paramètre n'est pas null l'ajoute à la list
+     *
+     * @param Card la carte à ajouter
+     * 
+     */
+    public void addNullSafe(Card c) {
+        if (c != null)
+            this.add(c);
+    }
+
 
     /**
      * Représentation de la liste sous forme d'une chaîne de caractères

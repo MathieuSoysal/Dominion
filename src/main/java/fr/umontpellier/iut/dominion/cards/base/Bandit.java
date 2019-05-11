@@ -24,24 +24,24 @@ public class Bandit extends AttackCards {
         super.play(p);
         p.gain(p.getGame().removeFromSupply("Gold"));
 
-        for (Player otherP : super.getAffectedPlayers(p)) {
-            ListOfCards cardsDrawed = new ListOfCards();
+        for (Player otherP : p.getOtherPlayers()) {
+            ListOfCards cardsDrawn = new ListOfCards();
 
             for (int i = 0; i < 2; i++) {
-                Card cardDrawed = otherP.drawCard();
-                if (cardDrawed.getTypes().contains(CardType.Treasure) && !cardDrawed.getName().equals("Copper")) {
-                    cardsDrawed.add(cardDrawed);
+                Card cardPulled = otherP.drawCard();
+                if (cardPulled.getTypes().contains(CardType.Treasure) && !cardPulled.getName().equals("Copper")) {
+                    cardsDrawn.add(cardPulled);
                 } else {
-                    otherP.discardCard(cardDrawed);
+                    otherP.discardCard(cardPulled);
                 }
             }
 
-            if (!cardsDrawed.isEmpty()) {
-                String cardChoose = otherP.chooseCard("Ecarte un trésor", cardsDrawed, false);
-                otherP.getGame().addToTrash(cardsDrawed.remove(cardChoose));
+            if (!cardsDrawn.isEmpty()) {
+                String chosenCard = otherP.chooseCard("Ecarte un trésor", cardsDrawn, false);
+                otherP.getGame().addToTrash(cardsDrawn.remove(chosenCard));
 
-                if (!cardsDrawed.isEmpty())
-                    otherP.discardCard(cardsDrawed.get(0));
+                if (!cardsDrawn.isEmpty())
+                    otherP.discardCard(cardsDrawn.get(0));
             }
         }
     }

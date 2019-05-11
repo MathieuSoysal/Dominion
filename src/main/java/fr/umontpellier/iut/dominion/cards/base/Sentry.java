@@ -25,25 +25,25 @@ public class Sentry extends Card {
     public void play(Player p) {
         p.drawToHand();
         p.incrementActions(1);
-        ListOfCards cardDrawed = new ListOfCards();
-        while (cardDrawed.size() != 2)
-            cardDrawed.add(p.drawCard());
+        ListOfCards cardsDrawn = new ListOfCards();
+        while (cardsDrawn.size() != 2)
+            cardsDrawn.add(p.drawCard());
 
-        String cardChoose = p.chooseCard("Écartez celles que vous voulez", cardDrawed, true);
-        while (!cardChoose.equals("")) {
-            p.getGame().addToTrash(cardDrawed.remove(cardChoose));
-            cardChoose = p.chooseCard("Écartez celles que vous voulez", cardDrawed, true);
+        String chosenCard = p.chooseCard("Écartez celles que vous voulez", cardsDrawn, true);
+        while (!chosenCard.equals("")) {
+            p.getGame().addToTrash(cardsDrawn.remove(chosenCard));
+            chosenCard = p.chooseCard("Écartez celles que vous voulez", cardsDrawn, true);
         }
 
-        cardChoose = p.chooseCard("Défausser celles que vous voulez", cardDrawed, true);
-        while (!cardChoose.equals("")) {
-            p.discardCard(cardDrawed.remove(cardChoose));
-            cardChoose = p.chooseCard("Défausser celles que vous voulez", cardDrawed, true);
+        chosenCard = p.chooseCard("Défausser celles que vous voulez", cardsDrawn, true);
+        while (!chosenCard.equals("")) {
+            p.discardCard(cardsDrawn.remove(chosenCard));
+            chosenCard = p.chooseCard("Défausser celles que vous voulez", cardsDrawn, true);
         }
 
-        while (!cardDrawed.isEmpty())
-            p.addToDraw(cardDrawed.remove(
-                    p.chooseCard("Replacez les sur votre deck dans l'ordre de votre choix :", cardDrawed, false)));
+        while (!cardsDrawn.isEmpty())
+            p.addToDraw(cardsDrawn.remove(
+                    p.chooseCard("Replacez les sur votre deck dans l'ordre de votre choix :", cardsDrawn, false)));
     }
 
     @Override

@@ -6,6 +6,7 @@ import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.base.*;
 import fr.umontpellier.iut.dominion.cards.common.*;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.OutputStream;
@@ -234,38 +235,67 @@ class CardsTest3 {
     }
 
     @Test
+    void testThroneRoomActionWorkshop() {
+        p0.getHand().add(new ThroneRoom());
+        p0.getHand().add(new Workshop());
+
+        game.setInput("Workshop","Copper","Silver");
+
+        p0.playCard("Throne Room");
+
+        assertNotNull(p0.getDiscard().getCard("Copper"));
+        assertNotNull(p0.getDiscard().getCard("Silver"));
+    }
+
+    @Disabled
+    @Test
     void testThroneRoomActionHarbinger() {
 
         p1.getHand().add(new Harbinger());
         p1.getHand().add(new Harbinger());
         Card gold = new Gold();
+        Card silver = new Silver();
         p1.getDiscard().add(gold);
+        p1.getDiscard().add(silver);
         p1.getDiscard().add(new Copper());
         p1.getDiscard().add(new Copper());
         p1.getDiscard().add(new Copper());
         Card c0 = p1.getDraw().get(0);
+        Card c1 = p1.getDraw().get(1);
         p1.getHand().add(new ThroneRoom());
 
-        game.setInput("Harbinger");
+        game.setInput("Harbinger","Gold","Silver");
 
         p1.playCard("Throne Room");
 
-//        assertTrue(p1.getHand().contains(c0));
-//        assertEquals(2, p1.getNumberOfActions());
-//        assertEquals(gold, p1.getDraw().get(0));
-//        assertFalse(p1.getDiscard().contains(gold));
+        assertTrue(p1.getHand().contains(c0));
+        assertTrue(p1.getHand().contains(c1));
+        assertEquals(2, p1.getNumberOfActions());
+        assertEquals(gold, p1.getDraw().get(0));
+        assertFalse(p1.getDiscard().contains(gold));
     }
 
     @Test
     void testThroneRoomInfiniteLoop() {
         p1.getHand().add(new ThroneRoom());
-        p1.getHand().add(new Workshop());
+        p1.getHand().add(new ThroneRoom());
 
-        game.setInput("Workshop","Silver","Silver");
+        game.setInput("Throne Room");
 
         p1.playCard("Throne Room");
 
-        assertEquals(2,p1.getHand().size());
+        assertEquals(2,p1.getInPlay().size());
+    }
+
+    @Test
+    void testThroneRoomNoActionCards() {
+        p1.getHand().add(new ThroneRoom());
+
+        game.setInput("");
+
+        p1.playCard("Throne Room");
+
+        assertNotNull(p1.getInPlay().getCard("Throne Room"));
     }
 
         //Test d'autres groupes

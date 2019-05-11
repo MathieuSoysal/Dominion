@@ -26,6 +26,7 @@ public class Bureaucrat extends AttackCards {
     // il y a surrement des erreurs dans System.out.print
     @Override
     public void play(Player p) {
+        super.play(p);
         p.addToDraw(p.getGame().removeFromSupply("Silver"));
         ListOfCards cardsVictory = new ListOfCards();
 

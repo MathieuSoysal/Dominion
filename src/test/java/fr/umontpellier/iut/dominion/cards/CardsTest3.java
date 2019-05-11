@@ -50,48 +50,7 @@ class CardsTest3 {
         assertNull(p2.getDiscard().getCard("Curse"));
         assertNotNull(p0.getDiscard().getCard("Curse"));
     }
-    //Test d'autres groupes
-    @Test
-    void testMoatReactionBandit() {
-        p0.getHand().add(new Moat());
-        p0.getDraw().add(0, new Silver());
-        p1.getHand().add(new Bandit());
-        p2.getHand().add(new Moat());
-        p2.getDraw().add(0, new Silver());
 
-        game.setInput("y", "n");
-        p1.playCard("Bandit");
-        assertNotNull(p2.getDraw().getCard("Silver"));
-        assertNull(p0.getDraw().getCard("Silver"));
-        assertNull(p0.getDiscard().getCard("Silver"));
-    }
-
-    @Test
-    void testMoatReactionMilitia() {
-        p0.getHand().clear();
-        p2.getHand().clear();
-
-        p0.getHand().add(new Moat());
-        p0.getHand().add(new Silver());
-        p0.getHand().add(new Gold());
-        p0.getHand().add(new Witch());
-        p0.getHand().add(new Bandit());
-
-        p1.getHand().add(new Militia());
-
-        p2.getHand().add(new Moat());
-        p2.getHand().add(new Silver());
-        p2.getHand().add(new Gold());
-        p2.getHand().add(new Smithy());
-        p2.getHand().add(new Mine());
-
-
-        game.setInput("y", "n", "Silver", "Gold");
-        p1.playCard("Militia");
-        assertEquals(5, p2.getHand().size());
-        assertEquals(3, p0.getHand().size());
-    }
-    // Fin des test des autres groupes
     @Test
     void testThroneRoom() {
         p1.getHand().add(new ThroneRoom());
@@ -236,4 +195,66 @@ class CardsTest3 {
         assertEquals(duchy, p1.getDraw().get(0));
         assertEquals(silver, p1.getDraw().get(1));
     }
+
+    // Tests additionnels
+
+        //Personnels
+
+    @Test
+    void testMoatReactionBureaucrat() {
+        p0.getHand().add(new Bureaucrat());
+        p1.getHand().add(new Moat());
+        p1.getHand().add(new Gardens());
+        p2.getHand().add(new Moat());
+        p2.getHand().add(new Gardens());
+
+        game.setInput("y", "n","Gardens");
+        p0.playCard("Bureaucrat");
+
+        assertNull(p1.getDraw().getCard("Gardens"));
+        assertNotNull(p2.getDraw().getCard("Gardens"));
+    }
+
+        //Test d'autres groupes
+    @Test
+    void testMoatReactionBandit() {
+        p0.getHand().add(new Moat());
+        p0.getDraw().add(0, new Silver());
+        p1.getHand().add(new Bandit());
+        p2.getHand().add(new Moat());
+        p2.getDraw().add(0, new Silver());
+
+        game.setInput("y", "n");
+        p1.playCard("Bandit");
+        assertNotNull(p2.getDraw().getCard("Silver"));
+        assertNull(p0.getDraw().getCard("Silver"));
+        assertNull(p0.getDiscard().getCard("Silver"));
+    }
+
+    @Test
+    void testMoatReactionMilitia() {
+        p0.getHand().clear();
+        p2.getHand().clear();
+
+        p0.getHand().add(new Moat());
+        p0.getHand().add(new Silver());
+        p0.getHand().add(new Gold());
+        p0.getHand().add(new Witch());
+        p0.getHand().add(new Bandit());
+
+        p1.getHand().add(new Militia());
+
+        p2.getHand().add(new Moat());
+        p2.getHand().add(new Silver());
+        p2.getHand().add(new Gold());
+        p2.getHand().add(new Smithy());
+        p2.getHand().add(new Mine());
+
+
+        game.setInput("y", "n", "Silver", "Gold");
+        p1.playCard("Militia");
+        assertEquals(5, p2.getHand().size());
+        assertEquals(3, p0.getHand().size());
+    }
+
 }

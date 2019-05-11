@@ -15,12 +15,13 @@ import java.util.List;
  * Gagnez un Or.
  * Chaque joueur révèle les deux premières cartes de son deck, écarte un trésor autre que Cuivre et défausse le reste.
  */
-public class Bandit extends Card {
+public class Bandit extends AttackCards {
     public Bandit() {
         super("Bandit", 5);
     }
 
     public void play(Player p) {
+        super.play(p);
         p.gain(p.getGame().removeFromSupply("Gold"));
 
         for (Player otherP : p.getOtherPlayers()) {

@@ -158,21 +158,6 @@ class CardsTest3 {
     }
 
     @Test
-    void testBanditPerso(){
-        p1.getHand().add(new Bandit());
-        Card silver1 = new Silver();
-        Card silver2 = new Silver();
-
-        p2.getDraw().add(0, silver1);
-        p2.getDraw().add(0, silver2);
-
-        p1.playCard("Bandit");
-
-        assertNotNull(p2.getDiscard().getCard("Silver")); // Il y a un Silver dans la défausse
-        assertFalse(!game.inTrash("Silver")); // il y a un Silver dans le trash du jeu
-    }
-
-    @Test
     void testHarbinger() {
         p1.getHand().add(new Harbinger());
         Card gold = new Gold();

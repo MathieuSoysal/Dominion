@@ -24,7 +24,7 @@ public class Bandit extends AttackCards {
         super.play(p);
         p.gain(p.getGame().removeFromSupply("Gold"));
 
-        for (Player otherP : p.getOtherPlayers()) {
+        for (Player otherP : super.getAffectedPlayers(p)) {
             ListOfCards cardsDrawed = new ListOfCards();
 
             for (int i = 0; i < 2; i++) {

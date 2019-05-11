@@ -23,8 +23,9 @@ public class ThroneRoom extends Card {
     public void play(Player p) {
         ListOfCards actionInHand = new ListOfCards();
         for (Card c : p.getCardsInHand()) {
-            if (c.getTypes().contains(CardType.Action))
+            if (c.getTypes().contains(CardType.Action)) {
                 actionInHand.add(c);
+            }
         }
         String carteChoisie = p.chooseCard("Choisissez une carte Action de votre main", actionInHand, true);
         if (!carteChoisie.equals("")) {

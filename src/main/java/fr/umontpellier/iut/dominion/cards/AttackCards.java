@@ -49,6 +49,8 @@ public abstract class AttackCards extends Card {
     }
 
     /**
+     * Renvoie la liste des joueurs affectés par la carte attaque
+     *
      * @param p le joueur qui a joué la carte attaque
      *
      * @return la liste des joueurs qui peuvent être affectés par la carte attaque (non protégés par Moat)

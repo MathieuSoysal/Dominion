@@ -300,8 +300,9 @@ public class Player {
      * Ajoute une carte à la main du joueur.
      */
     public void addToHand(Card c) {
-        if (c != null)
+        if (c != null) {
             hand.add(c);
+        }
     }
 
     /**
@@ -311,8 +312,9 @@ public class Player {
      * a été retirée de son emplacement précédent.
      */
     public Card discardCard(Card c) {
-        if (c != null)
+        if (c != null) {
             discard.add(c);
+        }
         return c;
     }
 
@@ -429,8 +431,9 @@ public class Player {
      * emplacement précédent au préalable.
      */
     public void gain(Card c) {
-        if ( c != null)
-            discard.add(0,c);
+        if ( c != null) {
+            discard.add(0, c);
+        }
     }
 
     /**
@@ -476,8 +479,9 @@ public class Player {
      * Ajoute une carte sur le dessus de la pioche du joueur
      */
     public void addToDraw(Card c) {
-        if (c != null)
+        if (c != null) {
             draw.add(0, c);
+        }
     }
 
     /**

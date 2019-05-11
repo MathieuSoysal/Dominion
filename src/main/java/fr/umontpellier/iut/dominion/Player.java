@@ -172,10 +172,8 @@ public class Player {
      */
     public int getVictoryPoints() {
         int totalPoints = 0;
-        for (Card currentCard : getAllCards()) {
-            if (currentCard.getTypes().contains(CardType.Victory))
-                totalPoints += currentCard.getVictoryValue(this);
-        }
+        for (Card currentCard : getAllCards())
+            totalPoints += currentCard.getVictoryValue(this);
         return totalPoints;
     }
 

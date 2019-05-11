@@ -215,6 +215,22 @@ class CardsTest3 {
         assertNotNull(p2.getDraw().getCard("Gardens"));
     }
 
+    @Test
+    void testThroneRoomActionMerchant() {
+        p0.getHand().add(new ThroneRoom());
+        p0.getHand().add(new Merchant());
+        p0.getHand().add(new Silver());
+
+        game.setInput("Merchant");
+
+        p0.playCard("Throne Room");
+        assertNotNull(p0.getInPlay().getCard("Merchant"));
+        p0.playCard("Silver");
+
+        assertNotNull(p0.getInPlay().getCard("Silver"));
+        assertEquals(4,p0.getMoney());
+    }
+
         //Test d'autres groupes
     @Test
     void testMoatReactionBandit() {

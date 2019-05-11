@@ -19,9 +19,6 @@ public class ThroneRoom extends Card {
         super("Throne Room", 4);
     }
 
-    // TODO : Régler problème de la boucle infinie de Throne Room
-    // TODO : ThroneRoom plante avec différentes cartes(throne room, Harbinger...)
-
     @Override
     public void play(Player p) {
         ListOfCards actionInHand = new ListOfCards();

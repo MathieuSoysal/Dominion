@@ -22,22 +22,21 @@ public class Library extends Card {
 
     @Override
     public void play(Player p) {
-        ListOfCards aside = new ListOfCards();
+        ListOfCards CardsSort = new ListOfCards();
         List<String> choices = Arrays.asList("y", "n");
 
         while (p.getCardsInHand().size() != 7) {
-            Card drawResult = p.drawCard();
 
-            if (drawResult.getTypes().contains(CardType.Action) && p.chooseOption("Voulez-vous mettre de côté la carte " + drawResult.getName() + " ?", choices, false)
-                    .equals("y")) {
-                aside.add(drawResult);
-            } else {
-                p.addToHand(drawResult);
-            }
+            Card cardDrawn = p.drawCard();
+            String instruction = "Voulez-vous mettre de côté la carte " + cardDrawn.getName() + " ?";
+
+            if (cardDrawn.getTypes().contains(CardType.Action)
+                    && p.chooseOption(instruction, choices, false).equals("y"))
+                CardsSort.add(cardDrawn);
+            else
+                p.addToHand(cardDrawn);
         }
-        for (Card c: aside) {
-            p.discardCard(c);
-        }
+        CardsSort.forEach(currentCard -> p.discardCard(currentCard));
     }
 
     @Override

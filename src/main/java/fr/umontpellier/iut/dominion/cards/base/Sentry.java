@@ -30,15 +30,13 @@ public class Sentry extends Card {
             cardsDrawn.add(p.drawCard());
 
         String chosenCard = p.chooseCard("Écartez celles que vous voulez", cardsDrawn, true);
-        while (!chosenCard.equals("")) {
+        for (; !chosenCard.equals(""); chosenCard = p.chooseCard("Écartez celles que vous voulez", cardsDrawn, true)) {
             p.getGame().addToTrash(cardsDrawn.remove(chosenCard));
-            chosenCard = p.chooseCard("Écartez celles que vous voulez", cardsDrawn, true);
         }
 
         chosenCard = p.chooseCard("Défausser celles que vous voulez", cardsDrawn, true);
-        while (!chosenCard.equals("")) {
+        for(;!chosenCard.equals("");chosenCard = p.chooseCard("Défausser celles que vous voulez", cardsDrawn, true)) {
             p.discardCard(cardsDrawn.remove(chosenCard));
-            chosenCard = p.chooseCard("Défausser celles que vous voulez", cardsDrawn, true);
         }
 
         while (!cardsDrawn.isEmpty())

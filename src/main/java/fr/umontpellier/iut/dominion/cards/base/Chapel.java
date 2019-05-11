@@ -20,16 +20,15 @@ public class Chapel extends Card {
     @Override
     public void play(Player p) {
         if (!p.getCardsInHand().isEmpty()) {
-            int i = 4;
-            for (String chooseC = p.chooseCard(
-                    "Écartez jusqu'à " + (p.getCardsInHand().size() > 4 ? 4 : 4) + " carte"
-                            + (p.getCardsInHand().size() > 1 ? "s" : "") + " de votre main :",
-                    p.getCardsInHand(), true); i-- > 0
-                            && !chooseC.equals(""); chooseC = (p.getCardsInHand().isEmpty()) ? ""
-                                    : p.chooseCard(
-                                            "Écartez jusqu'à " + i + " carte" + (i > 1 ? "s" : "") + " de votre main :",
-                                            p.getCardsInHand(), true))
-                p.handToTrash(chooseC);
+
+            int nbDiscardMax = p.getCardsInHand().size() > 4 ? 4 : p.getCardsInHand().size();
+            String instruction = "Écartez jusqu'à " + nbDiscardMax + " carte de votre main :";
+            String chosenCardName = p.chooseCard(instruction, p.getCardsInHand(), true);
+
+            for (; !chosenCardName.equals(""); chosenCardName = p.chooseCard(instruction, p.getCardsInHand(), true)) {
+                p.handToTrash(chosenCardName);
+                instruction = "Écartez jusqu'à " + nbDiscardMax-- + " carte de votre main :";
+            }
         }
     }
 

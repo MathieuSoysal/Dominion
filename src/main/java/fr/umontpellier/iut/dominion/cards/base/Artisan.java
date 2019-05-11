@@ -10,8 +10,8 @@ import java.util.List;
 /**
  * Carte Artisan
  *
- * Gagnez une carte coûtant jusqu'à 5 Pièces dans votre main.
- * Mettez une carte de votre main sur votre deck.
+ * Gagnez une carte coûtant jusqu'à 5 Pièces dans votre main. Mettez une carte
+ * de votre main sur votre deck.
  */
 public class Artisan extends Card {
     public Artisan() {
@@ -20,8 +20,11 @@ public class Artisan extends Card {
 
     @Override
     public void play(Player p) {
-        p.addToHand(p.getGame().removeFromSupply((p.chooseCard("Choisissez une carte coutant jusqu'à 5 $ à placer sur dans votre main :",p.listCardCostingUpTo(5),false))));
-        p.addToDraw(p.removeFromHand(p.chooseCard("Choisissez une carte à placer sur le dessus de votre pioche :", p.getCardsInHand(), false)));
+        String chosenCard = p.chooseCard("Choisissez une carte coutant jusqu'à 5 $:", p.listCardCostingUpTo(5), false);
+        p.addToHand(p.getGame().removeFromSupply((chosenCard)));
+
+        chosenCard = p.chooseCard("Choisissez une carte à placer dessus votre pioche :", p.getCardsInHand(), false);
+        p.addToDraw(p.removeFromHand(chosenCard));
     }
 
     @Override

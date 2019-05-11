@@ -29,21 +29,20 @@ public class Bureaucrat extends AttackCards {
         ListOfCards cardsVictory = new ListOfCards();
 
         for (Player otherP : super.getAffectedPlayers(p)) {
-            for (Card c : otherP.getCardsInHand()) { // Trie les cartes victoires de sa main dans cardsVictory
+            for (Card c : otherP.getCardsInHand()) {
                 if (c.getTypes().contains(CardType.Victory))
                     cardsVictory.add(c);
             }
-            if (cardsVictory.isEmpty()) { // Si cardsVictory est vide alors :
+            if (cardsVictory.isEmpty()) { // S'il n'a pas de carte Victory alors :
                 System.out.print(otherP.getName() + "dévoile ces cartes en main :");
                 otherP.getCardsInHand().forEach(x -> System.out.print(x.getName() + ", "));
                 System.out.print("\n");
 
-            } else { // si cardsVictory n'est pas vide alors :
-                String carteReveal = otherP.chooseCard("Choisi une carte Victoire  à dévoiler : ", cardsVictory, false);
-                // j'ai du utiliser une variable String car je devait à la fois afficher la
-                // carte et la déplacer dans la pioche
-                System.out.println(otherP.getName() + " dévoile une carte Victoire en main : " + carteReveal);
-                otherP.addToDraw(otherP.removeFromHand(carteReveal));
+            } else { // S'il a des cartes victory en main :
+                String chosenCardName = otherP.chooseCard("Choisi une carte Victoire à dévoiler : ", cardsVictory,
+                        false);
+                System.out.println(otherP.getName() + " dévoile une carte Victoire en main : " + chosenCardName);
+                otherP.addToDraw(otherP.removeFromHand(chosenCardName));
             }
         }
     }

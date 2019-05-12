@@ -248,7 +248,6 @@ class CardsTest3 {
 
     @Test
     void testThroneRoomActionHarbinger() {
-
         p1.getHand().add(new Harbinger());
         p1.getHand().add(new Harbinger());
         Card gold = new Gold();
@@ -294,6 +293,21 @@ class CardsTest3 {
         p1.playCard("Throne Room");
 
         assertNotNull(p1.getInPlay().getCard("Throne Room"));
+    }
+
+    @Test
+    void testMerchantAfterThroneRoomAction() {
+        p1.getHand().add(new ThroneRoom());
+        p1.getHand().add(new Village());
+        p1.getHand().add(new Merchant());
+
+        game.setInput("Village");
+        p1.playCard("Throne Room");
+        assertEquals(4,p1.getNumberOfActions());
+        p1.playCard("Merchant");
+
+        assertEquals(5,p1.getNumberOfActions());
+        assertEquals(5,p1.getNumberOfActions());
     }
 
         //Test d'autres groupes

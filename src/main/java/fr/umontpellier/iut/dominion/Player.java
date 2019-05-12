@@ -151,7 +151,7 @@ public class Player {
         return new ListOfCards(discard);
     }
 
-    public ListOfCards getCardsInPlay() { return new ListOfCards(inPlay); }//TODO: Mèthode non utilisé
+    public ListOfCards getCardsInPlay() { return new ListOfCards(inPlay); }
 
     /**
      * Renvoie une liste de toutes les cartes possédées par le joueur
@@ -388,8 +388,8 @@ public class Player {
      * {@code inPlay} et exécute la méthode {@code play(Player p)} de la carte.
      */
     private void playCard(Card c) {
-        if(c!=null){
-        inPlay.add(hand.remove(c.getName()));
+        if(c != null){
+            inPlay.add(hand.remove(c.getName()));
             c.play(this);
         }
     }
@@ -772,7 +772,7 @@ public class Player {
         /**
     * Regroupe toutes les cartes de la réserve coutant au maximum cost
     *
-    * @param int prix maximum des cartes à chercher
+    * @param {@code int} prix maximum des cartes à chercher
     * @return {@code ListOfCards} des carte coutant au maximum que cost
     */
     public  ListOfCards listCardCostingUpTo(int cost) {

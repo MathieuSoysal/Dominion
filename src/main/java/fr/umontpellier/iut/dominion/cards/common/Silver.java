@@ -21,9 +21,8 @@ public class Silver extends Card {
 
     @Override
     public void play(Player p) {
-        int bonus = (2+((p.searchInPlay("Silver")==1)?1*p.searchInPlay("Merchant"):0));
-        if (Merchant.getBonusApplicable()) { bonus += 1; }
-        p.incrementMoney(bonus);
+        p.incrementMoney(2+ Merchant.getBonusApplicable());
+        Merchant.resetBonusApplicable();
     }
 
     @Override

@@ -1,6 +1,7 @@
 package fr.umontpellier.iut.dominion;
 
 import fr.umontpellier.iut.dominion.cards.Card;
+import fr.umontpellier.iut.dominion.cards.base.Merchant;
 import fr.umontpellier.iut.dominion.cards.common.Copper;
 import fr.umontpellier.iut.dominion.cards.common.Estate;
 
@@ -671,6 +672,7 @@ public class Player {
         discard.addAll(inPlay);
         inPlay.clear();
         drawNCardsToHand(5);
+        Merchant.resetBonusApplicable();
     }
 
     /**

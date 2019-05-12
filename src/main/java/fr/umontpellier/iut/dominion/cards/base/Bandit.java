@@ -6,7 +6,6 @@ import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.Card;
 import fr.umontpellier.iut.dominion.cards.AttackCards;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 

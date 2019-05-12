@@ -5,7 +5,7 @@ import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.Card;
 import fr.umontpellier.iut.dominion.cards.base.Merchant;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -28,8 +28,6 @@ public class Silver extends Card {
 
     @Override
     public List<CardType> getTypes() {
-        List<CardType> types = new ArrayList<>();
-        types.add(CardType.Treasure);
-        return types;
+        return Arrays.asList(CardType.Treasure);
     }
 }

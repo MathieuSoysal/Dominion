@@ -4,7 +4,7 @@ import fr.umontpellier.iut.dominion.CardType;
 import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.Card;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -26,8 +26,6 @@ public class Village extends Card {
 
     @Override
     public List<CardType> getTypes() {
-        List<CardType> types = new ArrayList<>();
-        types.add(CardType.Action);
-        return types;
+        return Arrays.asList(CardType.Action);
     }
 }

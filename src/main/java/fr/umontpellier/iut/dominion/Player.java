@@ -4,8 +4,6 @@ import fr.umontpellier.iut.dominion.cards.Card;
 import fr.umontpellier.iut.dominion.cards.common.Copper;
 import fr.umontpellier.iut.dominion.cards.common.Estate;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import java.util.*;
 import java.util.stream.Collectors;
 

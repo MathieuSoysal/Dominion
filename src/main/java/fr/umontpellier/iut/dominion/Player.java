@@ -317,7 +317,7 @@ public class Player {
     /**
      * Transfère une carte de la main vers le trash.
      *
-     * @param String Nom de la carte à trasférer
+     * @param cardName Nom de la carte à trasférer
      */
     public Card handToTrash(String cardName) {
         return game.addToTrash(removeFromHand(cardName));
@@ -326,7 +326,7 @@ public class Player {
         /**
      * Transfère une carte de la main vers la dèfausse.
      *
-     * @param String Nom de la carte à trasférer
+     * @param cardName Nom de la carte à trasférer
      */
     public Card handToDisCard(String cardName) {
         return this.discardCard(removeFromHand(cardName));
@@ -480,7 +480,7 @@ public class Player {
     /**
      * Ajoute une carte sur le dessus de la pioche du joueur
      * 
-     * @param Card la carte à ajouter au dessus de la pioche
+     * @param c la carte à ajouter au dessus de la pioche
      */
     public void addToDraw(Card c) {
         if (c != null)

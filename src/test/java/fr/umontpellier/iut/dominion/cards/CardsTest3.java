@@ -247,33 +247,34 @@ class CardsTest3 {
         assertNotNull(p0.getDiscard().getCard("Silver"));
     }
 
-//    @Disabled
-//    @Test
-//    void testThroneRoomActionHarbinger() {
-//
-//        p1.getHand().add(new Harbinger());
-//        p1.getHand().add(new Harbinger());
-//        Card gold = new Gold();
-//        Card silver = new Silver();
-//        p1.getDiscard().add(gold);
-//        p1.getDiscard().add(silver);
-//        p1.getDiscard().add(new Copper());
-//        p1.getDiscard().add(new Copper());
-//        p1.getDiscard().add(new Copper());
-//        Card c0 = p1.getDraw().get(0);
-//        Card c1 = p1.getDraw().get(1);
-//        p1.getHand().add(new ThroneRoom());
-//
-//        game.setInput("Harbinger","Gold","Silver");
-//
-//        p1.playCard("Throne Room");
-//
-//        assertTrue(p1.getHand().contains(c0));
-//        assertTrue(p1.getHand().contains(c1));
-//        assertEquals(2, p1.getNumberOfActions());
-//        assertEquals(gold, p1.getDraw().get(0));
-//        assertFalse(p1.getDiscard().contains(gold));
-//    }
+    @Disabled
+    @Test
+    void testThroneRoomActionHarbinger() {
+
+        p1.getHand().add(new Harbinger());
+        p1.getHand().add(new Harbinger());
+        Card gold = new Gold();
+        Card silver = new Silver();
+        p1.getDiscard().add(gold);
+        p1.getDiscard().add(silver);
+        p1.getDiscard().add(new Copper());
+        p1.getDiscard().add(new Copper());
+        p1.getDiscard().add(new Copper());
+        Card c0 = p1.getDraw().get(0);
+        Card c1 = p1.getDraw().get(1);
+        p1.getHand().add(new ThroneRoom());
+
+        game.setInput("Harbinger","Gold","Silver");
+
+        p1.playCard("Throne Room");
+
+        assertTrue(p1.getHand().contains(c0));
+        assertTrue(p1.getHand().contains(gold));
+        assertEquals(2, p1.getNumberOfActions());
+        assertEquals(silver, p1.getDraw().get(0));
+        assertFalse(p1.getDiscard().contains(gold));
+        assertFalse(p1.getDiscard().contains(silver));
+    }
 
     @Test
     void testThroneRoomInfiniteLoop() {

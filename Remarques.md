@@ -4,7 +4,8 @@
 
 ### Andy HOUILLON
 
-Beaucoup de problèmes de connexion internet m'ont parfois empêché de pull / push, et 
+Beaucoup de problèmes de connexion internet m'ont parfois empêché de pull / push 
+(ce qui explique que certains commits soient de véritables 'packs' de code), et 
 le temps passé à faire des "Tests" sur tout et rien via le Dominion Server ne peut être
 vu via les commits.
 

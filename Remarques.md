@@ -4,6 +4,10 @@
 
 ### Andy HOUILLON
 
+Beaucoup de problèmes de connexion internet m'ont parfois empêché de pull / push, et 
+le temps passé à faire des "Tests" sur tout et rien via le Dominion Server ne peut être
+vu via les commits.
+
 ### Amaury JASPAR
 
 La totalité de mes commits ne semble pas être comptabilisée dans la "contributors" de l'onglet insight du repo.

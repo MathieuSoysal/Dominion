@@ -39,7 +39,6 @@ public class Merchant extends Card {
             bonusApplicable = true;
         }
 
-        //TODO: Gérer son exception
         // j'ai mit en commun son action avec la card Silver (Silver active son effet que si la carte Silver est joué)
     }
 
@@ -50,6 +49,12 @@ public class Merchant extends Card {
         return types;
     }
 
+    /**
+     * Renvoie un boolean indiquant si le bonus de Merchant est applicable une deuxième fois
+     * Permet de gérer le cas où Merchant est joué avec Throne Room
+     *
+     * @return {@code true} si le bonus doit être appliqué une deuxième fois, {@code false} sinon
+     */
     public static boolean getBonusApplicable() {
         Boolean bonusApplicableTmp = bonusApplicable;
         bonusApplicable = false;

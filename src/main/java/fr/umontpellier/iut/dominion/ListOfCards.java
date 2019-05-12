@@ -63,10 +63,10 @@ public class ListOfCards extends ArrayList<Card> {
         return null;
     }
 
-        /**
+    /**
      * Si la carte en paramètre n'est pas null l'ajoute à la list
      *
-     * @param Card la carte à ajouter
+     * @param {@code Card} la carte à ajouter
      * 
      */
     public Card addNullSafe(Card c) {

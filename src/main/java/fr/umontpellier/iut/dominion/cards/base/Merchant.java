@@ -23,6 +23,7 @@ public class Merchant extends Card {
     public void play(Player p) {
         p.incrementActions(1);
         p.drawNCardsToHand(1);
+        //TODO: Gérer son exception
         // j'ai mit en commun son action avec la card Silver (Silver active son effet que si la carte Silver est joué)
     }
 

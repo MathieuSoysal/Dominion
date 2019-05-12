@@ -29,13 +29,15 @@ public class Bureaucrat extends AttackCards {
         ListOfCards cardsVictory = new ListOfCards();
 
         for (Player otherP : super.getAffectedPlayers(p)) {
-            for (Card c : otherP.getCardsInHand()) {
-                if (c.getTypes().contains(CardType.Victory))
-                    cardsVictory.add(c);
-            }
+
+            otherP.getCardsInHand().forEach(cardInHand -> {
+                if (cardInHand.getTypes().contains(CardType.Victory))
+                    cardsVictory.add(cardInHand);
+            });
+
             if (cardsVictory.isEmpty()) { // S'il n'a pas de carte Victory alors :
-                System.out.print(otherP.getName() + "dévoile ces cartes en main :");
-                otherP.getCardsInHand().forEach(x -> System.out.print(x.getName() + ", "));
+                System.out.print(otherP.getName() + " dévoile ces cartes en main :");
+                otherP.getCardsInHand().forEach(cardInHand -> System.out.print(cardInHand.getName() + ", "));
                 System.out.print("\n");
 
             } else { // S'il a des cartes victory en main :

@@ -24,24 +24,26 @@ public class Mine extends Card {
         ListOfCards treasureInHand = new ListOfCards();
         ListOfCards treasureInsupply = new ListOfCards();
 
-        for (Card c : p.getCardsInHand()) {
-            if (c.getTypes().contains(CardType.Treasure))
-                treasureInHand.add(c);
-        }
-        if (!treasureInHand.isEmpty()) { // S'il a des cartes trésors en main alors :
-            String chooseC = p.chooseCard("Choisissez une carte Trésor à écarter :", treasureInHand, true);
+        p.getCardsInHand().forEach(cardInHand -> {
+            if (cardInHand.getTypes().contains(CardType.Treasure))
+                treasureInHand.add(cardInHand);
+        });
 
-            if (!chooseC.equals("")) { // S'il a pas choisi de passer alors :
-                int costFinal = p.handToTrash(chooseC).getCost() + 3; // calcul du bonus
+            String chosenCardName = p.chooseCard("Choisissez une carte Trésor à écarter :", treasureInHand, true);
 
-                for (Card c : p.getGame().availableSupplyCards()) { // On trie les cartes pouvant être acheté :
-                    if (c.getTypes().contains(CardType.Treasure) && c.getCost() <= costFinal)
-                        treasureInsupply.add(c);
-                }
+            if (!chosenCardName.equals("")) { // S'il a pas choisi de passer alors :
+                int costFinal = p.handToTrash(chosenCardName).getCost() + 3; // calcul du bonus
+
+                p.getGame().availableSupplyCards().forEach(cardInAvailable -> {
+                    if (cardInAvailable.getTypes().contains(CardType.Treasure)
+                            && cardInAvailable.getCost() <= costFinal)
+                        treasureInsupply.add(cardInAvailable);
+                });
+
                 p.addToHand(p.getGame().removeFromSupply(p.chooseCard(
                         "Choisissez une carte Trésor coutant jusqu'à " + costFinal + "$ :", treasureInsupply, false)));
-                // On lui demande de choisir parmit les cartes triés dans la résérve (treasureInSupply)
-            }
+                // On lui demande de choisir parmit les cartes triés dans la résérve
+                // (treasureInSupply)
         }
     }
 

@@ -69,9 +69,12 @@ public class ListOfCards extends ArrayList<Card> {
      * @param Card la carte à ajouter
      * 
      */
-    public void addNullSafe(Card c) {
-        if (c != null)
+    public Card addNullSafe(Card c) {
+        if (c != null) {
             this.add(c);
+            return c;
+        }
+        return null;
     }
 
 

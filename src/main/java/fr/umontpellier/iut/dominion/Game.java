@@ -141,10 +141,12 @@ public class Game {
      */
     public ListOfCards availableSupplyCards() {
         ListOfCards availableCards = new ListOfCards();
-        for (ListOfCards cardList : supplyStacks) {
-            if (!cardList.isEmpty())
-                availableCards.add(cardList.get(0));
-        }
+
+        supplyStacks.forEach(stackInSupply -> {
+            if (!stackInSupply.isEmpty())
+                availableCards.add(stackInSupply.get(0));
+        });
+
         return availableCards;
     }
 
@@ -240,14 +242,14 @@ public class Game {
      * ne correspond au nom passé en argument
      */
     public Card removeFromSupply(String cardName) {
-        Card card = null;
-        for (ListOfCards cardList : supplyStacks) {
-            card = cardList.getCard(cardName);
-            if (card != null) {
-                return cardList.remove(cardList.indexOf(card));
+        Card cardRemoved = null;
+        for (ListOfCards stackInSupply : supplyStacks) {
+            cardRemoved = stackInSupply.getCard(cardName);
+            if (cardRemoved != null) {
+                return stackInSupply.remove(0);
             }
         }
-        return card;
+        return cardRemoved;
     }
 
     /**
@@ -351,7 +353,7 @@ public class Game {
      * @return Retourne la carte reçue en paramètre
      */
     public Card addToTrash(Card c) {
-        trashedCards.add(c);
+        trashedCards.addNullSafe(c);
         return c;
     }
 }

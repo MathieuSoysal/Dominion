@@ -21,8 +21,7 @@ public class CouncilRoom extends Card {
 
     @Override
     public void play(Player p) {
-        for (Player otherP : p.getOtherPlayers())
-            otherP.drawNCardsToHand(1);
+        p.getOtherPlayers().forEach(otherP -> otherP.drawCard());
         p.drawNCardsToHand(4);
         p.incrementBuys(1);
     }

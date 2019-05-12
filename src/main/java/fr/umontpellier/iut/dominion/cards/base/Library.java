@@ -22,7 +22,7 @@ public class Library extends Card {
 
     @Override
     public void play(Player p) {
-        ListOfCards CardsSort = new ListOfCards();
+        ListOfCards CardsSetAside = new ListOfCards();
         List<String> choices = Arrays.asList("y", "n");
 
         while (p.getCardsInHand().size() != 7) {
@@ -31,12 +31,12 @@ public class Library extends Card {
             String instruction = "Voulez-vous mettre de côté la carte " + cardDrawn.getName() + " ?";
 
             if (cardDrawn.getTypes().contains(CardType.Action)
-                    && p.chooseOption(instruction, choices, false).equals("y"))
-                CardsSort.add(cardDrawn);
-            else
+                    && p.chooseOption(instruction, choices, false).equals("y")) {
+                CardsSetAside.add(cardDrawn);
+            } else
                 p.addToHand(cardDrawn);
         }
-        CardsSort.forEach(currentCard -> p.discardCard(currentCard));
+        CardsSetAside.forEach(cardSetAside -> p.discardCard(cardSetAside));
     }
 
     @Override

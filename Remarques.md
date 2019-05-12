@@ -11,9 +11,6 @@ vu via les commits.
 
 ### Amaury JASPAR
 
-La totalité de mes commits ne semble pas être comptabilisée dans la "contributors" de l'onglet insight du repo.
-En effet on peut voir que j'apparais deux fois dans la partie "pulse" et certains de ces commits (et donc les additions
-et suppression de code) ne sont pas comptabilisés dans les statistiques suivantes. 
 
 ### Mathieu SOYSAL
 
@@ -24,4 +21,15 @@ Je leur remercie d'avoir été patient, un grand merci à eux sans qui le projet
 ## Code
 
 #### Moat
+
+Pour Moat nous avons crée une nouvelle classe `AttackCards` dans le package `fr.umontpellier.iut.dominion.cards`.
+Cette classe hérite de `Card` et est parente de toutes les cartes de type `Attack`. 
+Nous avons alors rédéfinis :
+```java
+public void play(Player p) {}
+```
+
+Cette méthode parcours la liste des joueurs de la partie et demande à ceux qui ont une carte `Moat` si ils veulent la
+jouer. Si le joueur souhaite dévoiler sa Moat, il est retiré de la liste des joueurs affectés par l'attaque. Cette
+dernière liste est ensuite utilisée par chaque carte attaque.
 

@@ -29,9 +29,9 @@ public class Library extends Card {
 
             Card cardDrawn = p.drawCard();
             String instruction = "Voulez-vous mettre de côté la carte " + cardDrawn.getName() + " ?";
+            boolean cardIsAction = cardDrawn.getTypes().contains(CardType.Action);
 
-            if (cardDrawn.getTypes().contains(CardType.Action)
-                    && p.chooseOption(instruction, choices, false).equals("y")) {
+            if (cardIsAction && p.chooseOption(instruction, choices, false).equals("y")) {
                 CardsAsideList.add(cardDrawn);
             } else {
                 p.addToHand(cardDrawn);

@@ -20,14 +20,14 @@ public class Moneylender extends Card {
 
     @Override
     public void play(Player p) {
-        ListOfCards cardsCopper = new ListOfCards();
+        ListOfCards cardsCopperInHand = new ListOfCards();
 
         p.getCardsInHand().forEach(cardInHand -> {
             if (cardInHand.getName().equals("Copper"))
-                cardsCopper.add(cardInHand);
+                cardsCopperInHand.add(cardInHand);
         });
 
-        if (p.chooseCard("Écartez une carte Cuivre de votre main pour gagné +3$ .", cardsCopper, true)
+        if (p.chooseCard("Écartez une carte Cuivre de votre main pour gagné +3$ .", cardsCopperInHand, true)
                 .equals("Copper")) {
             p.incrementMoney(3);
             p.handToTrash("Copper");

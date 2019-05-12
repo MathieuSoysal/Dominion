@@ -22,6 +22,7 @@ public class Remodel extends Card {
     public void play(Player p) {
         String chosenCardName = p.chooseCard("Choisissez une carte à sacrifier :", p.getCardsInHand(), false);
         int costToAdd = p.handToTrash(chosenCardName).getCost() + 2;
+
         if (!chosenCardName.equals("")) {
             chosenCardName = p.chooseCard("Choisissez une carte coutant jusqu'à " + costToAdd + " :",
                     p.listCardCostingUpTo(costToAdd), false);

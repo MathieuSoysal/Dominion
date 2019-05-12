@@ -19,7 +19,7 @@ public class Workshop extends Card {
 
     @Override
     public void play(Player p) {
-        p.gainFromSupply(p.chooseCard("Choisissez une carte coutant jusqu'à 4 :",p.listCardCostingUpTo(4),false));
+        p.gainFromSupply(p.chooseCard("Choisissez une carte coutant jusqu'à 4 $ :",p.listCardCostingUpTo(4),false));
     }
 
     @Override

@@ -21,14 +21,14 @@ public class Moneylender extends Card {
     @Override
     public void play(Player p) {
         ListOfCards cardsCopper = new ListOfCards();
-        for (Card c : p.getCardsInHand()) { // Trie les cartes Copper de sa main et les renvois dans cardsCopper
-            if (c.getName().equals("Copper"))
-                cardsCopper.add(c);
-        }
-        // si cardsCopper n'est pas vide
-        if (!cardsCopper.isEmpty()
-                && p.chooseCard("Écartez une carte Cuivre de votre main pour gagné +3$ .", cardsCopper, true)
-                        .equals("Copper")) { // Et que le joueur décide de choisir de trash une carte copper de sa main
+
+        p.getCardsInHand().forEach(cardInHand -> {
+            if (cardInHand.getName().equals("Copper"))
+                cardsCopper.add(cardInHand);
+        });
+
+        if (p.chooseCard("Écartez une carte Cuivre de votre main pour gagné +3$ .", cardsCopper, true)
+                .equals("Copper")) {
             p.incrementMoney(3);
             p.handToTrash("Copper");
         }

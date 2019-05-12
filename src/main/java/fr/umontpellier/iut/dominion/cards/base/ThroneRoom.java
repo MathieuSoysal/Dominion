@@ -22,20 +22,20 @@ public class ThroneRoom extends Card {
     @Override
     public void play(Player p) {
         ListOfCards actionInHand = new ListOfCards();
-        for (Card c : p.getCardsInHand()) {
-            if (c.getTypes().contains(CardType.Action)) {
-                actionInHand.add(c);
-            }
-        }
+
+        p.getCardsInHand().forEach(cardInHand -> {
+            if (cardInHand.getTypes().contains(CardType.Action))
+                actionInHand.add(cardInHand);
+        });
+
         String chosenCardName = p.chooseCard("Choisissez une carte Action de votre main", actionInHand, true);
-        if (! chosenCardName.equals("")) {
+        if (!chosenCardName.equals("")) {
             Card chosenCard = p.getCardsInHand().getCard(chosenCardName);
-            p.playCard(chosenCardName); // action de la carte + passage dans InPlay
-            chosenCard.play(p); // n'utilise que l'action de la carte
+            p.playCard(chosenCardName);
+            chosenCard.play(p);
         }
 
     }
-
 
     @Override
     public List<CardType> getTypes() {

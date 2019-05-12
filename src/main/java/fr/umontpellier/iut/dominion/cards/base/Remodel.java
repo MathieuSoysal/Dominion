@@ -20,10 +20,13 @@ public class Remodel extends Card {
 
     @Override
     public void play(Player p) {
-        int costToAdd = p.handToTrash(p.chooseCard("Choisissez une carte à sacrifier :", p.getCardsInHand(), false))
-                .getCost();
-        p.gainFromSupply(p.chooseCard("Choisissez une carte coutant jusqu'à " + (costToAdd + 2) + " :",
-                p.listCardCostingUpTo(costToAdd + 2), false));
+        String chosenCardName = p.chooseCard("Choisissez une carte à sacrifier :", p.getCardsInHand(), false);
+        int costToAdd = p.handToTrash(chosenCardName).getCost() + 2;
+        if (!chosenCardName.equals("")) {
+            chosenCardName = p.chooseCard("Choisissez une carte coutant jusqu'à " + costToAdd + " :",
+                    p.listCardCostingUpTo(costToAdd), false);
+            p.gainFromSupply(chosenCardName);
+        }
     }
 
     @Override

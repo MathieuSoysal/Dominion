@@ -25,12 +25,14 @@ public class Poacher extends Card {
         p.incrementMoney(1);
         p.incrementActions(1);
         p.drawNCardsToHand(1);
+
         int nbSupplyCardsEmpty = p.getGame().nbSupplyCardsEmpty();
-        if (nbSupplyCardsEmpty > 0) { // Si une liste de carte de la réserve est vide alors :
-            while (nbSupplyCardsEmpty-- != 0)// c'est juste un while avec nbSupply nombre de boucles
-                p.handToDisCard(p.chooseCard("Choisi " + nbSupplyCardsEmpty + " carte"
-                        + ((nbSupplyCardsEmpty > 1) ? "s" : "") + " à défausser :", p.getCardsInHand(), false));
-        }// ((nbSupplyCardsEmpty > 1) ? "s" : "") histoire d'éviter la faute d'orthographe
+
+        while (nbSupplyCardsEmpty-- != 0) {
+            String instruction = "Choisi " + nbSupplyCardsEmpty + " carte" + ((nbSupplyCardsEmpty > 1) ? "s" : "")
+                    + " à défausser :";
+            p.handToDisCard(p.chooseCard(instruction, p.getCardsInHand(), false));
+        }
     }
 
     @Override

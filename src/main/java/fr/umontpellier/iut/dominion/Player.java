@@ -388,8 +388,10 @@ public class Player {
      * {@code inPlay} et exécute la méthode {@code play(Player p)} de la carte.
      */
     private void playCard(Card c) {
-        inPlay.addNullSafe(hand.remove(c.getName()));
-        c.play(this);
+        if(c!=null){
+        inPlay.add(hand.remove(c.getName()));
+            c.play(this);
+        }
     }
 
     /**

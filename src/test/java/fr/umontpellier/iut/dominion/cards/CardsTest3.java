@@ -247,7 +247,7 @@ class CardsTest3 {
         assertNotNull(p0.getDiscard().getCard("Silver"));
     }
 
-    @Disabled
+
     @Test
     void testThroneRoomActionHarbinger() {
 

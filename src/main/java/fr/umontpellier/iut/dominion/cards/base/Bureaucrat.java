@@ -21,27 +21,26 @@ public class Bureaucrat extends AttackCards {
         super("Bureaucrat", 4);
     }
 
-    // il y a surrement des erreurs dans System.out.print
     @Override
     public void play(Player p) {
         super.play(p);
         p.addToDraw(p.getGame().removeFromSupply("Silver"));
-        ListOfCards cardsVictory = new ListOfCards();
+        ListOfCards cardsVictoryInHand = new ListOfCards();
 
         for (Player otherP : super.getAffectedPlayers(p)) {
 
             otherP.getCardsInHand().forEach(cardInHand -> {
                 if (cardInHand.getTypes().contains(CardType.Victory))
-                    cardsVictory.add(cardInHand);
+                    cardsVictoryInHand.add(cardInHand);
             });
 
-            if (cardsVictory.isEmpty()) { // S'il n'a pas de carte Victory alors :
+            if (cardsVictoryInHand.isEmpty()) {
                 System.out.print(otherP.getName() + " dévoile ces cartes en main :");
                 otherP.getCardsInHand().forEach(cardInHand -> System.out.print(cardInHand.getName() + ", "));
                 System.out.print("\n");
 
-            } else { // S'il a des cartes victory en main :
-                String chosenCardName = otherP.chooseCard("Choisi une carte Victoire à dévoiler : ", cardsVictory,
+            } else {
+                String chosenCardName = otherP.chooseCard("Choisi une carte Victoire à dévoiler : ", cardsVictoryInHand,
                         false);
                 System.out.println(otherP.getName() + " dévoile une carte Victoire en main : " + chosenCardName);
                 otherP.addToDraw(otherP.removeFromHand(chosenCardName));

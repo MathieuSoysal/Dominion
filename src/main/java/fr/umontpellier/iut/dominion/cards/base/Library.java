@@ -22,7 +22,7 @@ public class Library extends Card {
 
     @Override
     public void play(Player p) {
-        ListOfCards CardsSetAside = new ListOfCards();
+        ListOfCards CardsAsideList = new ListOfCards();
         List<String> choices = Arrays.asList("y", "n");
 
         while (p.getCardsInHand().size() != 7) {
@@ -32,11 +32,12 @@ public class Library extends Card {
 
             if (cardDrawn.getTypes().contains(CardType.Action)
                     && p.chooseOption(instruction, choices, false).equals("y")) {
-                CardsSetAside.add(cardDrawn);
-            } else
+                CardsAsideList.add(cardDrawn);
+            } else {
                 p.addToHand(cardDrawn);
+            }
         }
-        CardsSetAside.forEach(cardSetAside -> p.discardCard(cardSetAside));
+        CardsAsideList.forEach(cardAside -> p.discardCard(cardAside));
     }
 
     @Override

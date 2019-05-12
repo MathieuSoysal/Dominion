@@ -21,8 +21,8 @@ public class Artisan extends Card {
     @Override
     public void play(Player p) {
         String chosenCard = p.chooseCard("Choisissez une carte coutant jusqu'à 5 $:", p.listCardCostingUpTo(5), false);
-        p.addToHand(p.getGame().removeFromSupply((chosenCard)));
 
+        p.addToHand(p.getGame().removeFromSupply((chosenCard)));
         chosenCard = p.chooseCard("Choisissez une carte à placer dessus votre pioche :", p.getCardsInHand(), false);
         p.addToDraw(p.removeFromHand(chosenCard));
     }

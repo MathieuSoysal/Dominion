@@ -37,8 +37,8 @@ public class Bandit extends AttackCards {
             }
 
             if (!cardDrawnList.isEmpty()) {
-                String chosenCard = otherP.chooseCard("Ecarte un trésor", cardDrawnList, false);
-                otherP.getGame().addToTrash(cardDrawnList.remove(chosenCard));
+                String chosenCardName = otherP.chooseCard("Ecarte un trésor", cardDrawnList, false);
+                otherP.getGame().addToTrash(cardDrawnList.remove(chosenCardName));
 
                 if (!cardDrawnList.isEmpty())
                     otherP.discardCard(cardDrawnList.get(0));

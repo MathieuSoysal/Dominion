@@ -26,16 +26,23 @@ public class Sentry extends Card {
         p.drawToHand();
         p.incrementActions(1);
         ListOfCards cardsDrawn = new ListOfCards();
+        String chosenCard;
+        String instruction;
+
         while (cardsDrawn.size() != 2)
             cardsDrawn.add(p.drawCard());
 
-        String chosenCard = p.chooseCard("Écartez celles que vous voulez", cardsDrawn, true);
-        for (; !chosenCard.equals(""); chosenCard = p.chooseCard("Écartez celles que vous voulez", cardsDrawn, true)) {
+        instruction = "Écartez l" + (cardsDrawn.size() > 1 ? "es cartes que" : "a carte si") + " vous voulez";
+        chosenCard = p.chooseCard(instruction, cardsDrawn, true);
+
+        for (; !chosenCard.equals(""); chosenCard = p.chooseCard("Écartez la carte si vous voulez", cardsDrawn, true)) {
             p.getGame().addToTrash(cardsDrawn.remove(chosenCard));
         }
 
-        chosenCard = p.chooseCard("Défausser celles que vous voulez", cardsDrawn, true);
-        for(;!chosenCard.equals("");chosenCard = p.chooseCard("Défausser celles que vous voulez", cardsDrawn, true)) {
+        instruction = "Défausser l" + (cardsDrawn.size() > 1 ? "es cartes que" : "a carte si") + " vous voulez";
+        chosenCard = p.chooseCard(instruction, cardsDrawn, true);
+
+        for (; !chosenCard.equals(""); chosenCard = p.chooseCard("Défausser la si vous voulez", cardsDrawn, true)) {
             p.discardCard(cardsDrawn.remove(chosenCard));
         }
 

@@ -1,6 +1,5 @@
 package fr.umontpellier.iut.dominion.cards;
 
-import com.sun.corba.se.spi.orbutil.threadpool.Work;
 import fr.umontpellier.iut.dominion.IOGame;
 import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.base.*;
@@ -247,7 +246,6 @@ class CardsTest3 {
         assertNotNull(p0.getDiscard().getCard("Silver"));
     }
 
-    @Disabled
     @Test
     void testThroneRoomActionHarbinger() {
 
@@ -261,7 +259,6 @@ class CardsTest3 {
         p1.getDiscard().add(new Copper());
         p1.getDiscard().add(new Copper());
         Card c0 = p1.getDraw().get(0);
-        Card c1 = p1.getDraw().get(1);
         p1.getHand().add(new ThroneRoom());
 
         game.setInput("Harbinger","Gold","Silver");

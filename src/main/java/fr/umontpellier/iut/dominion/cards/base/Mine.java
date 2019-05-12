@@ -31,8 +31,8 @@ public class Mine extends Card {
 
             String chosenCardName = p.chooseCard("Choisissez une carte Trésor à écarter :", treasureInHand, true);
 
-            if (!chosenCardName.equals("")) { // S'il a pas choisi de passer alors :
-                int costFinal = p.handToTrash(chosenCardName).getCost() + 3; // calcul du bonus
+            if (!chosenCardName.equals("")) {
+                int costFinal = p.handToTrash(chosenCardName).getCost() + 3;
 
                 p.getGame().availableSupplyCards().forEach(cardInAvailable -> {
                     if (cardInAvailable.getTypes().contains(CardType.Treasure)
@@ -42,8 +42,6 @@ public class Mine extends Card {
 
                 p.addToHand(p.getGame().removeFromSupply(p.chooseCard(
                         "Choisissez une carte Trésor coutant jusqu'à " + costFinal + "$ :", treasureInsupply, false)));
-                // On lui demande de choisir parmit les cartes triés dans la résérve
-                // (treasureInSupply)
         }
     }
 

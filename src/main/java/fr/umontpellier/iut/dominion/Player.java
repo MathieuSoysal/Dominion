@@ -317,16 +317,16 @@ public class Player {
     /**
      * Transfère une carte de la main vers le trash.
      *
-     * @param {@code String} Nom de la carte à trasférer
+     * @param cardName Nom de la carte à trasférer
      */
     public Card handToTrash(String cardName) {
         return game.addToTrash(removeFromHand(cardName));
     }
 
         /**
-     * Transfert une carte de la main vers la dèfausse.
+     * Transfère une carte de la main vers la dèfausse.
      *
-     * @param {@code String} Nom de la carte à trasférer
+     * @param cardName Nom de la carte à trasférer
      */
     public Card handToDisCard(String cardName) {
         return this.discardCard(removeFromHand(cardName));
@@ -388,8 +388,10 @@ public class Player {
      * {@code inPlay} et exécute la méthode {@code play(Player p)} de la carte.
      */
     private void playCard(Card c) {
-        inPlay.addNullSafe(hand.remove(c.getName()));
-        c.play(this);
+        if(c!=null){
+        inPlay.add(hand.remove(c.getName()));
+            c.play(this);
+        }
     }
 
     /**
@@ -480,7 +482,7 @@ public class Player {
     /**
      * Ajoute une carte sur le dessus de la pioche du joueur
      * 
-     * @param {@code Card} la carte à ajouter au dessus de la pioche
+     * @param c la carte à ajouter au dessus de la pioche
      */
     public void addToDraw(Card c) {
         if (c != null)
@@ -770,7 +772,7 @@ public class Player {
         /**
     * Regroupe toutes les cartes de la réserve coutant au maximum cost
     *
-    * @param {@code int} prix maximum des cartes à chercher
+    * @param int prix maximum des cartes à chercher
     * @return {@code ListOfCards} des carte coutant au maximum que cost
     */
     public  ListOfCards listCardCostingUpTo(int cost) {

@@ -22,14 +22,14 @@ public class Vassal extends Card {
     @Override
     public void play(Player p) {
         p.incrementMoney(2);
-        Card cartePiochee = p.drawToHand();
+        Card cardDrawn = p.drawToHand();
+        String instruction = "Voulez-vous jouer la carte " + cardDrawn.getName() + " ?";
         List<String> choices = Arrays.asList("y", "n");
-        if (cartePiochee.getTypes().contains(CardType.Action)
-                && p.chooseOption("Voulez-vous jouer la carte " + cartePiochee.getName() + " ?", choices, false)
-                        .equals("y")) {
-            p.playCard(cartePiochee.getName());
-        } else
-            p.handToDisCard(cartePiochee.getName());
+
+        if (cardDrawn.getTypes().contains(CardType.Action) && p.chooseOption(instruction, choices, false).equals("y"))
+            p.playCard(cardDrawn.getName());
+        else
+            p.handToDisCard(cardDrawn.getName());
     }
 
     @Override

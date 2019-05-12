@@ -7,6 +7,7 @@ import fr.umontpellier.iut.dominion.cards.Card;
 import fr.umontpellier.iut.dominion.cards.common.Silver;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**

@@ -4,7 +4,7 @@ import fr.umontpellier.iut.dominion.CardType;
 import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.Card;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -22,6 +22,7 @@ public class Remodel extends Card {
     public void play(Player p) {
         String chosenCardName = p.chooseCard("Choisissez une carte à sacrifier :", p.getCardsInHand(), false);
         int costToAdd = p.handToTrash(chosenCardName).getCost() + 2;
+
         if (!chosenCardName.equals("")) {
             chosenCardName = p.chooseCard("Choisissez une carte coutant jusqu'à " + costToAdd + " :",
                     p.listCardCostingUpTo(costToAdd), false);
@@ -31,8 +32,6 @@ public class Remodel extends Card {
 
     @Override
     public List<CardType> getTypes() {
-        List<CardType> types = new ArrayList<>();
-        types.add(CardType.Action);
-        return types;
+        return Arrays.asList(CardType.Action);
     }
 }

@@ -5,7 +5,6 @@ import fr.umontpellier.iut.dominion.ListOfCards;
 import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.Card;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -29,9 +28,9 @@ public class Library extends Card {
 
             Card cardDrawn = p.drawCard();
             String instruction = "Voulez-vous mettre de côté la carte " + cardDrawn.getName() + " ?";
+            boolean cardIsAction = cardDrawn.getTypes().contains(CardType.Action);
 
-            if (cardDrawn.getTypes().contains(CardType.Action)
-                    && p.chooseOption(instruction, choices, false).equals("y")) {
+            if (cardIsAction && p.chooseOption(instruction, choices, false).equals("y")) {
                 CardsAsideList.add(cardDrawn);
             } else {
                 p.addToHand(cardDrawn);
@@ -42,8 +41,6 @@ public class Library extends Card {
 
     @Override
     public List<CardType> getTypes() {
-        List<CardType> types = new ArrayList<>();
-        types.add(CardType.Action);
-        return types;
+        return Arrays.asList(CardType.Action);
     }
 }

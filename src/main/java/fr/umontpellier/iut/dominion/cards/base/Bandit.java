@@ -6,7 +6,7 @@ import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.Card;
 import fr.umontpellier.iut.dominion.cards.AttackCards;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -48,9 +48,6 @@ public class Bandit extends AttackCards {
 
     @Override
     public List<CardType> getTypes() {
-        List<CardType> types = new ArrayList<>();
-        types.add(CardType.Action);
-        types.add(CardType.Attack);
-        return types;
+        return Arrays.asList(CardType.Action, CardType.Attack);
     }
 }

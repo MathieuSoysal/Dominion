@@ -5,7 +5,7 @@ import fr.umontpellier.iut.dominion.ListOfCards;
 import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.Card;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -20,14 +20,14 @@ public class Moneylender extends Card {
 
     @Override
     public void play(Player p) {
-        ListOfCards cardsCopper = new ListOfCards();
+        ListOfCards cardsCopperInHand = new ListOfCards();
 
         p.getCardsInHand().forEach(cardInHand -> {
             if (cardInHand.getName().equals("Copper"))
-                cardsCopper.add(cardInHand);
+                cardsCopperInHand.add(cardInHand);
         });
 
-        if (p.chooseCard("Écartez une carte Cuivre de votre main pour gagné +3$ .", cardsCopper, true)
+        if (p.chooseCard("Écartez une carte Cuivre de votre main pour gagné +3$ .", cardsCopperInHand, true)
                 .equals("Copper")) {
             p.incrementMoney(3);
             p.handToTrash("Copper");
@@ -36,8 +36,6 @@ public class Moneylender extends Card {
 
     @Override
     public List<CardType> getTypes() {
-        List<CardType> types = new ArrayList<>();
-        types.add(CardType.Action);
-        return types;
+        return Arrays.asList(CardType.Action);
     }
 }

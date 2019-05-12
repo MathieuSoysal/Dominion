@@ -4,9 +4,8 @@ import fr.umontpellier.iut.dominion.CardType;
 import fr.umontpellier.iut.dominion.ListOfCards;
 import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.AttackCards;
-import fr.umontpellier.iut.dominion.cards.Card;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -50,9 +49,6 @@ public class Bureaucrat extends AttackCards {
 
     @Override
     public List<CardType> getTypes() {
-        List<CardType> types = new ArrayList<>();
-        types.add(CardType.Action);
-        types.add(CardType.Attack);
-        return types;
+        return Arrays.asList(CardType.Action, CardType.Attack);
     }
 }

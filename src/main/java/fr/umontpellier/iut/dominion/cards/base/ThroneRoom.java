@@ -5,7 +5,7 @@ import fr.umontpellier.iut.dominion.ListOfCards;
 import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.Card;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -22,14 +22,14 @@ public class ThroneRoom extends Card {
 
     @Override
     public void play(Player p) {
-        ListOfCards actionInHand = new ListOfCards();
+        ListOfCards cardsActionInHand = new ListOfCards();
 
         p.getCardsInHand().forEach(cardInHand -> {
             if (cardInHand.getTypes().contains(CardType.Action))
-                actionInHand.add(cardInHand);
+                cardsActionInHand.add(cardInHand);
         });
 
-        String chosenCardName = p.chooseCard("Choisissez une carte Action de votre main", actionInHand, true);
+        String chosenCardName = p.chooseCard("Choisissez une carte Action de votre main", cardsActionInHand, true);
         if (!chosenCardName.equals("")) {
             Card chosenCard = p.getCardsInHand().getCard(chosenCardName);
             p.playCard(chosenCardName);
@@ -40,8 +40,6 @@ public class ThroneRoom extends Card {
 
     @Override
     public List<CardType> getTypes() {
-        List<CardType> types = new ArrayList<>();
-        types.add(CardType.Action);
-        return types;
+        return Arrays.asList(CardType.Action);
     }
 }

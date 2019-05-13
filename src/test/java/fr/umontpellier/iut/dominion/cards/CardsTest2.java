@@ -70,6 +70,21 @@ class CardsTest2 {
     }
 
     @Test
+    void testChapelOverEffect() {
+        p2.getHand().clear();
+        p2.getHand().add(new Chapel());
+        p2.getHand().add(new Duchy());
+        p2.getHand().add(new Silver());
+        p2.getHand().add(new Silver());
+        p2.getHand().add(new Silver());
+
+        game.setInput("Duchy", "Gold", "Silver", "Silver","Silver");
+        p2.playCard("Chapel");
+        assertEquals(1, p2.getHand().size());
+        assertEquals(0, p2.getDiscard().size());
+    }
+
+    @Test
     void testWorkshop() {
         p2.getHand().add(new Workshop());
         game.setInput("Gold", "Silver");

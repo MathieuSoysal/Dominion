@@ -29,7 +29,7 @@ public class Library extends Card {
             List<String> choices = Arrays.asList("y", "n");
             Card cardDrawn = p.drawCard();
 
-            while (p.getCardsInHand().size() < 7 || cardDrawn != null) {
+            while (p.getCardsInHand().size() != 7 && cardDrawn != null) {
 
                 String instruction = "Voulez-vous mettre de côté la carte " + cardDrawn.getName() + " ?";
                 boolean cardIsAction = cardDrawn.getTypes().contains(CardType.Action);

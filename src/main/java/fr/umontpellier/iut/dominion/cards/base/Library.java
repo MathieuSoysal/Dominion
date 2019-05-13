@@ -24,7 +24,7 @@ public class Library extends Card {
         ListOfCards CardsAsideList = new ListOfCards();
         List<String> choices = Arrays.asList("y", "n");
 
-        while (p.getCardsInHand().size() != 7) {
+        while (p.getCardsInHand().size() != 7 || (!p.getDraw().isEmpty() && !p.getDiscard().isEmpty())) {
 
             Card cardDrawn = p.drawCard();
             String instruction = "Voulez-vous mettre de côté la carte " + cardDrawn.getName() + " ?";

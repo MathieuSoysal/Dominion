@@ -91,6 +91,15 @@ class CardsTest3 {
     }
 
     @Test
+    void testLibraryBoucleInfinie() {
+        p1.getDraw().clear();
+        p1.getHand().clear();
+        p1.getHand().add(new Library());
+
+        p1.playCard("Library");
+    }
+
+    @Test
     void testBandit() {
         p1.getHand().add(new Bandit());
         Card silver1 = new Silver();

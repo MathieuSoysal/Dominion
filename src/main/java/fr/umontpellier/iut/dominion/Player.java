@@ -267,6 +267,9 @@ public class Player {
      */
     public void drawNCardsToHand(int n) {
         while (n-- != 0 && drawToHand() != null) {
+            if (draw.size() + discard.size() ==0 ) {
+                break;
+            }
         }
     }
 

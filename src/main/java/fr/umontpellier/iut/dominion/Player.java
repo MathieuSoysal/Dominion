@@ -280,7 +280,10 @@ public class Player {
      * @return Une {@code Card} correspondant à la carte retirée
      */
     public Card removeFromDiscard(String cardName) {
-        return discard.remove(cardName);
+        if (! discard.isEmpty()) {
+            return discard.remove(cardName);
+        }
+        return null;
     }
 
     /**
@@ -290,7 +293,10 @@ public class Player {
      * @return Une {@code Card} correspondant à la carte retirée
      */
     public Card removeFromHand(String cardName) {
-        return hand.remove(cardName);
+        if (! hand.isEmpty()) {
+            return hand.remove(cardName);
+        }
+        return null;
     }
 
 

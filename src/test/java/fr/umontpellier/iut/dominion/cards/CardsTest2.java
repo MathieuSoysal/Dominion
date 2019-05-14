@@ -77,6 +77,7 @@ class CardsTest2 {
         p2.getHand().add(new Silver());
         p2.getHand().add(new Silver());
         p2.getHand().add(new Silver());
+        p2.getHand().add(new Gold());
 
         game.setInput("Duchy", "Gold", "Silver", "Silver","Silver");
         p2.playCard("Chapel");

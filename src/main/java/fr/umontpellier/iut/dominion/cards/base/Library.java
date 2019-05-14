@@ -31,7 +31,7 @@ public class Library extends Card {
             List<String> choices = Arrays.asList("y", "n");
             Card cardDrawn = p.drawCard();
 
-            while (cardDrawn == null || size++ == 7) {
+            while (cardDrawn == null || size++ != 7) {
 
                 String instruction = "Voulez-vous mettre de côté la carte " + cardDrawn.getName() + " ?";
                 boolean cardIsAction = cardDrawn.getTypes().contains(CardType.Action);

@@ -2,7 +2,7 @@ package fr.umontpellier.iut.dominion.cards.base;
 
 import fr.umontpellier.iut.dominion.CardType;
 import fr.umontpellier.iut.dominion.Player;
-import fr.umontpellier.iut.dominion.cards.Card;
+import fr.umontpellier.iut.dominion.cards.Type.Action;
 
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +13,7 @@ import java.util.List;
  * Gagnez une carte coûtant jusqu'à 5 Pièces dans votre main. Mettez une carte
  * de votre main sur votre deck.
  */
-public class Artisan extends Card {
+public class Artisan extends Action {
     public Artisan() {
         super("Artisan", 6);
     }
@@ -25,10 +25,5 @@ public class Artisan extends Card {
         p.addToHand(p.getGame().removeFromSupply((chosenCard)));
         chosenCard = p.chooseCard("Choisissez une carte à placer dessus votre pioche :", p.getCardsInHand(), false);
         p.addToDraw(p.removeFromHand(chosenCard));
-    }
-
-    @Override
-    public List<CardType> getTypes() {
-        return Arrays.asList(CardType.Action);
     }
 }

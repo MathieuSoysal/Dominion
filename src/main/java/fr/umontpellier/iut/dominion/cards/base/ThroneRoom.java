@@ -3,6 +3,7 @@ package fr.umontpellier.iut.dominion.cards.base;
 import fr.umontpellier.iut.dominion.CardType;
 import fr.umontpellier.iut.dominion.ListOfCards;
 import fr.umontpellier.iut.dominion.Player;
+import fr.umontpellier.iut.dominion.cards.Type.Action;
 import fr.umontpellier.iut.dominion.cards.Card;
 
 import java.util.Arrays;
@@ -14,7 +15,7 @@ import java.util.List;
  * Choisissez 1 carte Action de votre main.
  * Jouez-la deux fois.
  */
-public class ThroneRoom extends Card {
+public class ThroneRoom extends Action {
     public ThroneRoom() {
         super("Throne Room", 4);
     }
@@ -37,10 +38,5 @@ public class ThroneRoom extends Card {
             chosenCard.play(p);
         }
 
-    }
-
-    @Override
-    public List<CardType> getTypes() {
-        return Arrays.asList(CardType.Action);
     }
 }

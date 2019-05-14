@@ -1,5 +1,6 @@
 package fr.umontpellier.iut.dominion.cards;
 
+import fr.umontpellier.iut.dominion.CardType;
 import fr.umontpellier.iut.dominion.IOGame;
 import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.base.*;
@@ -318,6 +319,30 @@ class CardsTest3 {
         assertEquals(5,p1.getNumberOfActions());
     }
 
+    @Test
+    void testCardTypes() {
+        Card silver = new Silver();
+        Card moat = new Moat();
+        Card bandit = new Bandit();
+        Card poacher = new Poacher();
+        Card duchy = new Duchy();
+        Card curse = new Curse();
+
+        assertTrue(silver.getTypes().contains(CardType.Treasure));
+        assertEquals(1,silver.getTypes().size());
+        assertTrue(moat.getTypes().contains(CardType.Action));
+        assertTrue(moat.getTypes().contains(CardType.Reaction));
+        assertEquals(2,moat.getTypes().size());
+        assertTrue(bandit.getTypes().contains(CardType.Attack));
+        assertTrue(bandit.getTypes().contains(CardType.Action));
+        assertEquals(2,bandit.getTypes().size());
+        assertTrue(poacher.getTypes().contains(CardType.Action));
+        assertEquals(1,poacher.getTypes().size());
+        assertTrue(duchy.getTypes().contains(CardType.Victory));
+        assertEquals(1,duchy.getTypes().size());
+        assertTrue(curse.getTypes().contains(CardType.Curse));
+        assertEquals(1,curse.getTypes().size());
+    }
         //Test d'autres groupes
     @Test
     void testMoatReactionBandit() {
@@ -359,5 +384,4 @@ class CardsTest3 {
         assertEquals(5, p2.getHand().size());
         assertEquals(3, p0.getHand().size());
     }
-
 }

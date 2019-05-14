@@ -1,19 +1,22 @@
-package fr.umontpellier.iut.dominion.cards;
+package fr.umontpellier.iut.dominion.cards.Type;
 
+import fr.umontpellier.iut.dominion.CardType;
 import fr.umontpellier.iut.dominion.Player;
+import fr.umontpellier.iut.dominion.cards.Card;
+import fr.umontpellier.iut.dominion.cards.Type.Action;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public abstract class AttackCards extends Card {
+public abstract class Attack extends Action {
 
     /**
      * Liste des joueurs protégés par Moat
      */
     private List<Player> protectedPlayers;
 
-    public AttackCards(String cardName, int cost) {
+    public Attack(String cardName, int cost) {
         super(cardName,cost);
         protectedPlayers = new ArrayList<>();
     }
@@ -60,5 +63,10 @@ public abstract class AttackCards extends Card {
         playerList.addAll(p.getOtherPlayers());
         playerList.removeAll(getProtectedPlayers());
         return playerList;
+    }
+
+    @Override
+    public List<CardType> getTypes() {
+        return Arrays.asList(CardType.Action, CardType.Attack);
     }
 }

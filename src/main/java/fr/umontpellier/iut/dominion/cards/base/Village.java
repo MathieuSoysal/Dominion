@@ -2,7 +2,7 @@ package fr.umontpellier.iut.dominion.cards.base;
 
 import fr.umontpellier.iut.dominion.CardType;
 import fr.umontpellier.iut.dominion.Player;
-import fr.umontpellier.iut.dominion.cards.Card;
+import fr.umontpellier.iut.dominion.cards.Type.Action;
 
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +13,7 @@ import java.util.List;
  * +1 Carte.
  * +2 Actions.
  */
-public class Village extends Card {
+public class Village extends Action {
     public Village() {
         super("Village", 3);
     }
@@ -22,10 +22,5 @@ public class Village extends Card {
     public void play(Player p) {
         p.incrementActions(2);
         p.drawToHand();
-    }
-
-    @Override
-    public List<CardType> getTypes() {
-        return Arrays.asList(CardType.Action);
     }
 }

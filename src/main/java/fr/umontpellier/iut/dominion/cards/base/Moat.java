@@ -2,7 +2,7 @@ package fr.umontpellier.iut.dominion.cards.base;
 
 import fr.umontpellier.iut.dominion.CardType;
 import fr.umontpellier.iut.dominion.Player;
-import fr.umontpellier.iut.dominion.cards.Card;
+import fr.umontpellier.iut.dominion.cards.Type.Action;
 
 import java.util.Arrays;
 import java.util.List;
@@ -14,7 +14,7 @@ import java.util.List;
  * Lorsqu’un adversaire joue une carte Attaque, vous pouvez dévoiler cette carte de votre main. Dans ce
  * cas, l’Attaque n’a pas d’effet sur vous.
  */
-public class Moat extends Card {
+public class Moat extends Action {
     public Moat() {
         super("Moat", 2);
     }
@@ -28,5 +28,4 @@ public class Moat extends Card {
     public List<CardType> getTypes() {
         return Arrays.asList(CardType.Action, CardType.Reaction);
     }
-
 }

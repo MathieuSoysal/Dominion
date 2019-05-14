@@ -2,7 +2,7 @@ package fr.umontpellier.iut.dominion.cards.base;
 
 import fr.umontpellier.iut.dominion.CardType;
 import fr.umontpellier.iut.dominion.Player;
-import fr.umontpellier.iut.dominion.cards.Card;
+import fr.umontpellier.iut.dominion.cards.Type.Action;
 
 import java.util.Arrays;
 import java.util.List;
@@ -15,7 +15,7 @@ import java.util.List;
  * +1 Pièce.
  * Défaussez une carte de votre main par pile de réserve épuisée.
  */
-public class Poacher extends Card {
+public class Poacher extends Action {
     public Poacher() {
         super("Poacher", 4);
     }
@@ -33,10 +33,5 @@ public class Poacher extends Card {
                     + " à défausser :";
             p.handToDisCard(p.chooseCard(instruction, p.getCardsInHand(), false));
         }
-    }
-
-    @Override
-    public List<CardType> getTypes() {
-        return Arrays.asList(CardType.Action);
     }
 }

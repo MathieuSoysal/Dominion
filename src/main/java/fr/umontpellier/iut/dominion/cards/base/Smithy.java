@@ -2,7 +2,7 @@ package fr.umontpellier.iut.dominion.cards.base;
 
 import fr.umontpellier.iut.dominion.CardType;
 import fr.umontpellier.iut.dominion.Player;
-import fr.umontpellier.iut.dominion.cards.Card;
+import fr.umontpellier.iut.dominion.cards.Type.Action;
 
 import java.util.Arrays;
 import java.util.List;
@@ -12,7 +12,7 @@ import java.util.List;
  *
  * +3 Cartes.
  */
-public class Smithy extends Card {
+public class Smithy extends Action {
     public Smithy() {
         super("Smithy", 4);
     }
@@ -20,10 +20,5 @@ public class Smithy extends Card {
     @Override
     public void play(Player p) {
         p.drawNCardsToHand(3);
-    }
-
-    @Override
-    public List<CardType> getTypes() {
-        return Arrays.asList(CardType.Action);
     }
 }

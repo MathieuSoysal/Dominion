@@ -2,7 +2,8 @@ package fr.umontpellier.iut.dominion.cards.base;
 
 import fr.umontpellier.iut.dominion.CardType;
 import fr.umontpellier.iut.dominion.Player;
-import fr.umontpellier.iut.dominion.cards.Card;
+import fr.umontpellier.iut.dominion.cards.Type.Action;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -13,7 +14,7 @@ import java.util.List;
          * +1 Action.
          * La première fois que vous jouez un argent pendant ce tour, +1 Pièce.
          */
-public class Merchant extends Card {
+public class Merchant extends Action {
 
     private static int bonusApplicable = 0;
 
@@ -28,11 +29,6 @@ public class Merchant extends Card {
         bonusApplicable++;
         // j'ai mit en commun son action avec la card Silver (Silver active son effet
         // que si la carte Silver est joué)
-    }
-
-    @Override
-    public List<CardType> getTypes() {
-        return Arrays.asList(CardType.Action);
     }
 
     /**

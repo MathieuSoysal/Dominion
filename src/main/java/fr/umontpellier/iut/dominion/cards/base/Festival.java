@@ -1,11 +1,7 @@
 package fr.umontpellier.iut.dominion.cards.base;
 
-import fr.umontpellier.iut.dominion.CardType;
 import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.Type.Action;
-
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * Carte Festival

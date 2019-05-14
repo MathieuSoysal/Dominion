@@ -6,9 +6,6 @@ import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.Type.Action;
 import fr.umontpellier.iut.dominion.cards.Card;
 
-import java.util.Arrays;
-import java.util.List;
-
 /**
  * Carte Salle du trône (Throne Room)
  *

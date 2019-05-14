@@ -1,12 +1,7 @@
 package fr.umontpellier.iut.dominion.cards.base;
 
-import fr.umontpellier.iut.dominion.CardType;
 import fr.umontpellier.iut.dominion.Player;
-import fr.umontpellier.iut.dominion.cards.Card;
 import fr.umontpellier.iut.dominion.cards.Type.Victory;
-
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * Carte Jardins (Gardens)

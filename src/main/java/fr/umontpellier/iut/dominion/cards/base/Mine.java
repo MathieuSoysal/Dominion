@@ -3,7 +3,7 @@ package fr.umontpellier.iut.dominion.cards.base;
 import fr.umontpellier.iut.dominion.CardType;
 import fr.umontpellier.iut.dominion.ListOfCards;
 import fr.umontpellier.iut.dominion.Player;
-import fr.umontpellier.iut.dominion.cards.Card;
+import fr.umontpellier.iut.dominion.cards.Type.Action;
 
 import java.util.Arrays;
 import java.util.List;
@@ -14,7 +14,7 @@ import java.util.List;
  * Écartez une carte Trésor de votre main. Recevez une carte Trésor coûtant
  * jusqu'à 3 Pièces de plus ; ajoutez cette carte à votre main.
  */
-public class Mine extends Card {
+public class Mine extends Action {
     public Mine() {
         super("Mine", 5);
     }

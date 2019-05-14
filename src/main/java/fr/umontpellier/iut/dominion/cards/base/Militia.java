@@ -2,7 +2,7 @@ package fr.umontpellier.iut.dominion.cards.base;
 
 import fr.umontpellier.iut.dominion.CardType;
 import fr.umontpellier.iut.dominion.Player;
-import fr.umontpellier.iut.dominion.cards.AttackCards;
+import fr.umontpellier.iut.dominion.cards.Type.AttackCards;
 
 import java.util.Arrays;
 import java.util.List;

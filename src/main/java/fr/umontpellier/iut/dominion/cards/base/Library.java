@@ -3,6 +3,7 @@ package fr.umontpellier.iut.dominion.cards.base;
 import fr.umontpellier.iut.dominion.CardType;
 import fr.umontpellier.iut.dominion.ListOfCards;
 import fr.umontpellier.iut.dominion.Player;
+import fr.umontpellier.iut.dominion.cards.Type.Action;
 import fr.umontpellier.iut.dominion.cards.Card;
 
 import java.util.Arrays;
@@ -14,7 +15,7 @@ import java.util.List;
  * Piochez jusqu'à ce que vous ayez 7 cartes en main. Chaque carte Action piochée peut être mise de côté.
  * Défaussez les cartes mises de côté lorsque vous avez terminé de piocher.
  */
-public class Library extends Card {
+public class Library extends Action {
     public Library() {
         super("Library", 5);
     }

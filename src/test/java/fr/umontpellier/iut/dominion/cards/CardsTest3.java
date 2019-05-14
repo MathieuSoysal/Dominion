@@ -317,7 +317,6 @@ class CardsTest3 {
         assertEquals(5,p1.getNumberOfActions());
         assertEquals(5,p1.getNumberOfActions());
     }
-
         //Test d'autres groupes
     @Test
     void testMoatReactionBandit() {
@@ -359,5 +358,4 @@ class CardsTest3 {
         assertEquals(5, p2.getHand().size());
         assertEquals(3, p0.getHand().size());
     }
-
 }

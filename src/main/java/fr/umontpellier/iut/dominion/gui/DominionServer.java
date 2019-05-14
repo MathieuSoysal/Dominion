@@ -53,10 +53,10 @@ public class DominionServer {
         // String[] kingdomCards = new String[0];
 
         // Option 2. Liste explicite de cartes royaume à utiliser (le nombre de cartes peut être quelconque)
-        String[] kingdomCards = new String[]{"CouncilRoom", "Harbinger", "Laboratory", "Smithy", "Village"};
+//        String[] kingdomCards = new String[]{"CouncilRoom", "Harbinger", "Laboratory", "Smithy", "Village"};
 
         // Option 3. Choix aléatoire de 10 cartes parmi la liste complète allKingdomCards définie précédemment
-        // String[] kingdomCards = allKingdomCards.subList(0, 10).toArray(new String[0]);
+         String[] kingdomCards = allKingdomCards.subList(0, 10).toArray(new String[0]);
 
         // Lancement de la partie
         game = new GameGUI(playerNames, kingdomCards);

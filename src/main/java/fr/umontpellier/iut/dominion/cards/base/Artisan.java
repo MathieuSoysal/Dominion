@@ -26,9 +26,4 @@ public class Artisan extends Action {
         chosenCard = p.chooseCard("Choisissez une carte à placer dessus votre pioche :", p.getCardsInHand(), false);
         p.addToDraw(p.removeFromHand(chosenCard));
     }
-
-    @Override
-    public List<CardType> getTypes() {
-        return Arrays.asList(CardType.Action);
-    }
 }

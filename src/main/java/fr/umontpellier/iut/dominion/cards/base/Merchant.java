@@ -31,11 +31,6 @@ public class Merchant extends Action {
         // que si la carte Silver est joué)
     }
 
-    @Override
-    public List<CardType> getTypes() {
-        return Arrays.asList(CardType.Action);
-    }
-
     /**
      * Renvoie un boolean indiquant si le bonus de Merchant est applicable une
      * deuxième fois Permet de gérer le cas où Merchant est joué avec Throne Room

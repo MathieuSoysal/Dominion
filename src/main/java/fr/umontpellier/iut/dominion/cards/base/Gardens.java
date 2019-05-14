@@ -22,9 +22,4 @@ public class Gardens extends Victory {
     public int getVictoryValue(Player p) {
         return p.getAllCards().size()/10;
     }
-
-    @Override
-    public List<CardType> getTypes() {
-        return Arrays.asList(CardType.Victory);
-    }
 }

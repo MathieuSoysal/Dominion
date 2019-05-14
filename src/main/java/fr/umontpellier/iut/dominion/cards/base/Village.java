@@ -23,9 +23,4 @@ public class Village extends Action {
         p.incrementActions(2);
         p.drawToHand();
     }
-
-    @Override
-    public List<CardType> getTypes() {
-        return Arrays.asList(CardType.Action);
-    }
 }

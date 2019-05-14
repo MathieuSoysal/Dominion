@@ -33,9 +33,4 @@ public class Moneylender extends Action {
             p.handToTrash("Copper");
         }
     }
-
-    @Override
-    public List<CardType> getTypes() {
-        return Arrays.asList(CardType.Action);
-    }
 }

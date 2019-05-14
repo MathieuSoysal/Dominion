@@ -47,9 +47,4 @@ public class Bandit extends AttackCards {
             }
         }
     }
-
-    @Override
-    public List<CardType> getTypes() {
-        return Arrays.asList(CardType.Action, CardType.Attack);
-    }
 }

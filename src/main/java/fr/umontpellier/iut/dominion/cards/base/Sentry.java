@@ -73,9 +73,4 @@ public class Sentry extends Action {
             p.addToDraw(cardsDrawn.remove(
                     p.chooseCard("Replacez les sur votre deck dans l'ordre de votre choix :", cardsDrawn, false)));
     }
-
-    @Override
-    public List<CardType> getTypes() {
-        return Arrays.asList(CardType.Action);
-    }
 }

@@ -33,9 +33,4 @@ public class Cellar extends Action {
         }
         p.drawNCardsToHand(discarded);
     }
-
-    @Override
-    public List<CardType> getTypes() {
-        return Arrays.asList(CardType.Action);
-    }
 }

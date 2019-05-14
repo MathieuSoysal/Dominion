@@ -25,9 +25,4 @@ public class Festival extends Action {
         p.incrementBuys(1);
         p.incrementActions(2);
     }
-
-    @Override
-    public List<CardType> getTypes() {
-        return Arrays.asList(CardType.Action);
-    }
 }

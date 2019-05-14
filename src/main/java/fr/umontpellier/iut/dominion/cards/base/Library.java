@@ -45,9 +45,4 @@ public class Library extends Action {
             CardsAsideList.forEach(cardAside -> p.discardCard(cardAside));
         }
     }
-
-    @Override
-    public List<CardType> getTypes() {
-        return Arrays.asList(CardType.Action);
-    }
 }

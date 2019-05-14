@@ -32,11 +32,4 @@ public class Chapel extends Action {
             }
         }
     }
-
-    @Override
-    public List<CardType> getTypes() {
-        List<CardType> types = new ArrayList<>();
-        types.add(CardType.Action);
-        return types;
-    }
 }

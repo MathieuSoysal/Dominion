@@ -27,9 +27,4 @@ public class Harbinger extends Action {
                 p.chooseCard("Choisissez une carte à placer sur votre deck :", p.getCardsInDiscard(), true)));
 
     }
-
-    @Override
-    public List<CardType> getTypes() {
-        return Arrays.asList(CardType.Action);
-    }
 }

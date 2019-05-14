@@ -24,9 +24,4 @@ public class Witch extends AttackCards {
         super.getAffectedPlayers(p).forEach(otherP -> otherP.gainFromSupply("Curse"));
         p.drawNCardsToHand(2);
     }
-
-    @Override
-    public List<CardType> getTypes() {
-        return Arrays.asList(CardType.Action, CardType.Attack);
-    }
 }

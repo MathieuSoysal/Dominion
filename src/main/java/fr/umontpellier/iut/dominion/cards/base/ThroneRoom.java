@@ -39,9 +39,4 @@ public class ThroneRoom extends Action {
         }
 
     }
-
-    @Override
-    public List<CardType> getTypes() {
-        return Arrays.asList(CardType.Action);
-    }
 }

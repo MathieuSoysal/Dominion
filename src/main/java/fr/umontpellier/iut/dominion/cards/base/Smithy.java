@@ -21,9 +21,4 @@ public class Smithy extends Action {
     public void play(Player p) {
         p.drawNCardsToHand(3);
     }
-
-    @Override
-    public List<CardType> getTypes() {
-        return Arrays.asList(CardType.Action);
-    }
 }

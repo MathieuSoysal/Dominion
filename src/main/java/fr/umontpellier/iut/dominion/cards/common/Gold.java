@@ -22,10 +22,4 @@ public class Gold extends Treasure {
     public void play(Player p) {
         p.incrementMoney(3);
     }
-
-    @Override
-    public List<CardType> getTypes() {
-        return Arrays.asList(CardType.Treasure);
-    }
-
 }

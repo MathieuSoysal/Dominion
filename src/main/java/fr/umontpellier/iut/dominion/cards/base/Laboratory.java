@@ -23,9 +23,4 @@ public class Laboratory extends Action {
         p.drawNCardsToHand(2);
         p.incrementActions(1);
     }
-
-    @Override
-    public List<CardType> getTypes() {
-        return Arrays.asList(CardType.Action);
-    }
 }

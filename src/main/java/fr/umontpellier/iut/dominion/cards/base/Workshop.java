@@ -21,9 +21,4 @@ public class Workshop extends Action {
     public void play(Player p) {
         p.gainFromSupply(p.chooseCard("Choisissez une carte coutant jusqu'à 4 $ :",p.listCardCostingUpTo(4),false));
     }
-
-    @Override
-    public List<CardType> getTypes() {
-        return Arrays.asList(CardType.Action);
-    }
 }

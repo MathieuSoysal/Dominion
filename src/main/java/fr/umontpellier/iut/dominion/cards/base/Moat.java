@@ -28,5 +28,4 @@ public class Moat extends Action {
     public List<CardType> getTypes() {
         return Arrays.asList(CardType.Action, CardType.Reaction);
     }
-
 }

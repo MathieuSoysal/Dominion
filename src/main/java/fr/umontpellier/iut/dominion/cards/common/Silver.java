@@ -25,9 +25,4 @@ public class Silver extends Treasure {
         p.incrementMoney(2+ Merchant.getBonusApplicable());
         Merchant.resetBonusApplicable();
     }
-
-    @Override
-    public List<CardType> getTypes() {
-        return Arrays.asList(CardType.Treasure);
-    }
 }

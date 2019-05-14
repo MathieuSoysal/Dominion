@@ -27,9 +27,4 @@ public class Market extends Action {
         p.incrementBuys(1);
         p.drawToHand();
     }
-
-    @Override
-    public List<CardType> getTypes() {
-        return Arrays.asList(CardType.Action);
-    }
 }

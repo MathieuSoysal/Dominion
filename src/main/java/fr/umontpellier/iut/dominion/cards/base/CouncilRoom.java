@@ -25,9 +25,4 @@ public class CouncilRoom extends Action {
         p.drawNCardsToHand(4);
         p.incrementBuys(1);
     }
-
-    @Override
-    public List<CardType> getTypes() {
-        return Arrays.asList(CardType.Action);
-    }
 }

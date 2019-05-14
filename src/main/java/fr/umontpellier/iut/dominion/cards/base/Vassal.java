@@ -35,9 +35,4 @@ public class Vassal extends Action {
                 p.handToDisCard(cardDrawn.getName());
         }
     }
-
-    @Override
-    public List<CardType> getTypes() {
-        return Arrays.asList(CardType.Action);
-    }
 }

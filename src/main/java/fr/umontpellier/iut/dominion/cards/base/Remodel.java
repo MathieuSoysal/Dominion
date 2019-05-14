@@ -29,9 +29,4 @@ public class Remodel extends Action {
             p.gainFromSupply(chosenCardName);
         }
     }
-
-    @Override
-    public List<CardType> getTypes() {
-        return Arrays.asList(CardType.Action);
-    }
 }

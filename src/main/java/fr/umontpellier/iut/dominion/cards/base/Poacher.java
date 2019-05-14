@@ -34,9 +34,4 @@ public class Poacher extends Action {
             p.handToDisCard(p.chooseCard(instruction, p.getCardsInHand(), false));
         }
     }
-
-    @Override
-    public List<CardType> getTypes() {
-        return Arrays.asList(CardType.Action);
-    }
 }

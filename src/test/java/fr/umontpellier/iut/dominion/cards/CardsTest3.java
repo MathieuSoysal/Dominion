@@ -1,5 +1,6 @@
 package fr.umontpellier.iut.dominion.cards;
 
+import fr.umontpellier.iut.dominion.CardType;
 import fr.umontpellier.iut.dominion.IOGame;
 import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.base.*;

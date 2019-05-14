@@ -21,14 +21,18 @@ public class Vassal extends Card {
     @Override
     public void play(Player p) {
         p.incrementMoney(2);
+
         Card cardDrawn = p.drawToHand();
+        if (cardDrawn != null) {
+
         String instruction = "Voulez-vous jouer la carte " + cardDrawn.getName() + " ?";
         List<String> choices = Arrays.asList("y", "n");
 
         if (cardDrawn.getTypes().contains(CardType.Action) && p.chooseOption(instruction, choices, false).equals("y"))
             p.playCard(cardDrawn.getName());
         else
-            p.handToDisCard(cardDrawn.getName());
+                p.handToDisCard(cardDrawn.getName());
+        }
     }
 
     @Override

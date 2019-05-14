@@ -26,9 +26,10 @@ public class Cellar extends Card {
         String instruction = "Choisi les cartes à défausser";
         String chosenCardName = p.chooseCard(instruction, p.getCardsInHand(), true);
 
-        for (; !chosenCardName.equals(""); chosenCardName = p.chooseCard(instruction, p.getCardsInHand(), true)) {
+        while (!chosenCardName.equals("")) {
             p.handToDisCard(chosenCardName);
             instruction = "Choisi les cartes à défausser ( jusqu'à présent " + discarded++ + " cartes défausser.)";
+            chosenCardName = p.chooseCard(instruction, p.getCardsInHand(), true);
         }
         p.drawNCardsToHand(discarded);
     }

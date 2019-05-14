@@ -28,23 +28,46 @@ public class Sentry extends Card {
         ListOfCards cardsDrawn = new ListOfCards();
         String chosenCard;
         String instruction;
+        //int phase = 0;
 
         while (cardsDrawn.size() != 2)
-            cardsDrawn.add(p.drawCard());
+            cardsDrawn.addNullSafe(p.drawCard());
 
         instruction = "Écartez l" + (cardsDrawn.size() > 1 ? "es cartes que" : "a carte si") + " vous voulez";
         chosenCard = p.chooseCard(instruction, cardsDrawn, true);
 
-        for (; !chosenCard.equals(""); chosenCard = p.chooseCard("Écartez la carte si vous voulez", cardsDrawn, true)) {
+        while (!chosenCard.equals("")) {
             p.getGame().addToTrash(cardsDrawn.remove(chosenCard));
+            chosenCard = p.chooseCard("Écartez la carte si vous voulez", cardsDrawn, true);
         }
 
         instruction = "Défausser l" + (cardsDrawn.size() > 1 ? "es cartes que" : "a carte si") + " vous voulez";
         chosenCard = p.chooseCard(instruction, cardsDrawn, true);
 
-        for (; !chosenCard.equals(""); chosenCard = p.chooseCard("Défausser la si vous voulez", cardsDrawn, true)) {
+        while (!chosenCard.equals("")) {
             p.discardCard(cardsDrawn.remove(chosenCard));
+            chosenCard = p.chooseCard("Défausser la si vous voulez", cardsDrawn, true);
         }
+
+        // Pour les instructeurs :
+        //Si mon code se répéte trop :
+        //
+        //  instruction = "Écartez l" + (cardsDrawn.size() > 1 ? "es cartes que" : "a carte si") + " vous voulez";
+        //  chosenCard = p.chooseCard(instruction, cardsDrawn, true);
+        //
+        // while (!chosenCard.equals("") && phase++ != 0) {      autre possibilité : for (String chosenCard = p.chooseCard("Écartez l" + (cardsDrawn.size() > 1 ? "es cartes que" : "a carte si") + " vous voulez", cardsDrawn,true); !chosenCard.equals("") && phase++ != 0;chosenCard = p.chooseCard(instruction, cardsDrawn, true))
+        //     Card cardRemove = cardsDrawn.remove(chosenCard);
+
+        //     if (phase == 0) {
+        //         p.getGame().addToTrash(cardRemove);
+        //     } else {
+        //         p.discardCard(cardsDrawn.remove(chosenCard));                
+        //     }
+            
+        //     instruction = (phase > 0 ? "Défausser" : "Écartez") + " l"
+        //             + (cardsDrawn.size() > 1 ? "es cartes que" : "a carte si") + " vous voulez";
+        //     chosenCard = p.chooseCard(instruction, cardsDrawn, true);
+        // }
 
         while (!cardsDrawn.isEmpty())
             p.addToDraw(cardsDrawn.remove(

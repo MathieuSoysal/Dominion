@@ -266,7 +266,8 @@ public class Player {
      * @param n nombre de carte à tirer
      */
     public void drawNCardsToHand(int n) {
-        while (n-- != 0 && drawToHand() != null && !(draw.isEmpty() && discard.isEmpty())) {
+        while (n-- != 0 && !(draw.isEmpty() && discard.isEmpty())) {
+            drawToHand();
         }
     }
 

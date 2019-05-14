@@ -30,6 +30,7 @@ public class ThroneRoom extends Card {
         });
 
         String chosenCardName = p.chooseCard("Choisissez une carte Action de votre main", cardsActionInHand, true);
+
         if (!chosenCardName.equals("")) {
             Card chosenCard = p.getCardsInHand().getCard(chosenCardName);
             p.playCard(chosenCardName);

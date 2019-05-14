@@ -26,7 +26,7 @@ public class Poacher extends Card {
         p.incrementActions(1);
         p.drawNCardsToHand(1);
 
-        int nbSupplyCardsEmpty = p.getGame().nbSupplyCardsEmpty();
+        int nbSupplyCardsEmpty = p.getGame().nbSupplyCardsEmpty(); //TODO : Vraiment trop spécifique vérifier si seul solution
 
         while (nbSupplyCardsEmpty-- != 0) {
             String instruction = "Choisi " + nbSupplyCardsEmpty + " carte" + ((nbSupplyCardsEmpty > 1) ? "s" : "")

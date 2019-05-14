@@ -24,8 +24,10 @@ public class Militia extends AttackCards {
         p.incrementMoney(2);
         for (Player otherP : super.getAffectedPlayers(p)) {
 
-            for (int handSize = otherP.getCardsInHand().size() - 3; handSize > 0; handSize--) {
-                String instruction = "Défausse " + handSize + "carte" + (handSize > 1 ? "s" : "") + " de ta main :";
+            for (int nbDiscard = otherP.getCardsInHand().size() - 3; nbDiscard > 0; nbDiscard--) {
+
+                String instruction = "Défausse " + nbDiscard + "carte" + (nbDiscard > 1 ? "s" : "") + " de ta main :";
+
                 otherP.handToDisCard(otherP.chooseCard(instruction, otherP.getCardsInHand(), false));
             }
         }

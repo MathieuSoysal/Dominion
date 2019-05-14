@@ -150,8 +150,6 @@ public class Player {
         return new ListOfCards(discard);
     }
 
-    public ListOfCards getCardsInPlay() { return new ListOfCards(inPlay); }
-
     /**
      * Renvoie une liste de toutes les cartes possédées par le joueur
      * (le deck complet c'est-à-dire toutes les cartes dans la main, la
@@ -268,8 +266,7 @@ public class Player {
      * @param n nombre de carte à tirer
      */
     public void drawNCardsToHand(int n) {
-        while(n--!=0) {
-            drawToHand();
+        while (n-- != 0 && drawToHand() != null && !(draw.isEmpty() && discard.isEmpty())) {
         }
     }
 
@@ -391,23 +388,6 @@ public class Player {
             inPlay.add(hand.remove(c.getName()));
             c.play(this);
         }
-    }
-
-    /**
-     * regarde combien de fois la carte est dans inPlay
-     *
-     * @param cardName nom de la carte à chercher
-     * @return Le nombre de fois que la carte est dans inPlay
-     *
-     *         S'il existe une carte dans inPlay dont le nom est égal au paramètre
-     *         renvoi le nombre de fois qu'il y est
-     */
-    public int searchInPlay(String cardName) {
-        int nbCard = 0;
-        for (Card c : inPlay) {
-            nbCard += (c.getName().equals(cardName)) ? 1 : 0;
-        }
-        return nbCard;
     }
 
     /**

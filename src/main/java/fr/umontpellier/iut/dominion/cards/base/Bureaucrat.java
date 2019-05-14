@@ -34,14 +34,11 @@ public class Bureaucrat extends AttackCards {
             });
 
             if (cardsVictoryInHand.isEmpty()) {
-                System.out.print(otherP.getName() + " dévoile ces cartes en main :");
-                otherP.getCardsInHand().forEach(cardInHand -> System.out.print(cardInHand.getName() + ", "));
-                System.out.print("\n");
-
+                //x.reveal(otherP.getName() + " dévoile ces cartes en main :"+ p.getCardsInHand().toString());
             } else {
                 String chosenCardName = otherP.chooseCard("Choisi une carte Victoire à dévoiler : ", cardsVictoryInHand,
                         false);
-                System.out.println(otherP.getName() + " dévoile une carte Victoire en main : " + chosenCardName);
+                //x.reveal(otherP.getName() + " dévoile une carte Victoire en main : " + chosenCardName);
                 otherP.addToDraw(otherP.removeFromHand(chosenCardName));
             }
         }

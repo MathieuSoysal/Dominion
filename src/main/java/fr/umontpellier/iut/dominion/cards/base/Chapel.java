@@ -25,9 +25,10 @@ public class Chapel extends Card {
             String instruction = "Écartez jusqu'à " + nbDiscardMax + " carte de votre main :";
             String chosenCardName = p.chooseCard(instruction, p.getCardsInHand(), true);
 
-            for (; !chosenCardName.equals(""); chosenCardName = p.chooseCard(instruction, p.getCardsInHand(), true)) {
+            while (!chosenCardName.equals("") && nbDiscardMax-- !=0) {
                 p.handToTrash(chosenCardName);
-                instruction = "Écartez jusqu'à " + nbDiscardMax-- + " carte de votre main :";
+                instruction = "Écartez jusqu'à " + nbDiscardMax + " carte de votre main :";
+                chosenCardName = p.chooseCard(instruction, p.getCardsInHand(), true);
             }
         }
     }

@@ -21,9 +21,7 @@ public class Library extends Card {
 
     @Override
     public void play(Player p) {
-        int size = p.getCardsInHand().size();
-        
-        if (size < 7) {
+        if (p.getCardsInHand().size() < 7) {
             // j'ai mit la condition ici pour pouvoir mettre le drawcard avant la boucle et
             // ainsi vérifier s'il est null en même temps que la boucle while et ce qui me
             // permet aussi d'éviter de faire le getType d'une card null.
@@ -31,7 +29,7 @@ public class Library extends Card {
             List<String> choices = Arrays.asList("y", "n");
             Card cardDrawn = p.drawCard();
 
-            while (cardDrawn == null || size++ != 7) {
+            while (p.getCardsInHand().size() != 7 && cardDrawn != null) {
 
                 String instruction = "Voulez-vous mettre de côté la carte " + cardDrawn.getName() + " ?";
                 boolean cardIsAction = cardDrawn.getTypes().contains(CardType.Action);
@@ -41,7 +39,7 @@ public class Library extends Card {
                 } else {
                     p.addToHand(cardDrawn);
                 }
-                cardDrawn = (size == 7) ? null : p.drawCard(); /* évité de carrote une carte de la pioche à la fin de la boucle */
+                cardDrawn = p.drawCard();
             }
             CardsAsideList.forEach(cardAside -> p.discardCard(cardAside));
         }

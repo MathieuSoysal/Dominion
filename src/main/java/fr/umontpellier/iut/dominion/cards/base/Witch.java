@@ -1,11 +1,7 @@
 package fr.umontpellier.iut.dominion.cards.base;
 
-import fr.umontpellier.iut.dominion.CardType;
 import fr.umontpellier.iut.dominion.Player;
-import fr.umontpellier.iut.dominion.cards.Type.AttackCards;
-
-import java.util.Arrays;
-import java.util.List;
+import fr.umontpellier.iut.dominion.cards.Type.Attack;
 
 /**
  * Carte Sorcière (Witch)
@@ -13,7 +9,7 @@ import java.util.List;
  * +2 Cartes.
  * Tous vos adversaires recoivent une carte Curse.
  */
-public class Witch extends AttackCards {
+public class Witch extends Attack {
     public Witch() {
         super("Witch", 5);
     }

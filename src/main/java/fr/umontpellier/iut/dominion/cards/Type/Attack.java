@@ -9,14 +9,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public abstract class AttackCards extends Action {
+public abstract class Attack extends Action {
 
     /**
      * Liste des joueurs protégés par Moat
      */
     private List<Player> protectedPlayers;
 
-    public AttackCards(String cardName, int cost) {
+    public Attack(String cardName, int cost) {
         super(cardName,cost);
         protectedPlayers = new ArrayList<>();
     }

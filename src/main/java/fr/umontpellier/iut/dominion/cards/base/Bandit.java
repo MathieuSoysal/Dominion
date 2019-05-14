@@ -4,10 +4,7 @@ import fr.umontpellier.iut.dominion.CardType;
 import fr.umontpellier.iut.dominion.ListOfCards;
 import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.Card;
-import fr.umontpellier.iut.dominion.cards.Type.AttackCards;
-
-import java.util.Arrays;
-import java.util.List;
+import fr.umontpellier.iut.dominion.cards.Type.Attack;
 
 /**
  * Carte Bandit
@@ -15,7 +12,7 @@ import java.util.List;
  * Gagnez un Or.
  * Chaque joueur révèle les deux premières cartes de son deck, écarte un trésor autre que Cuivre et défausse le reste.
  */
-public class Bandit extends AttackCards {
+public class Bandit extends Attack {
     public Bandit() {
         super("Bandit", 5);
     }

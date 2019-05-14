@@ -3,10 +3,7 @@ package fr.umontpellier.iut.dominion.cards.base;
 import fr.umontpellier.iut.dominion.CardType;
 import fr.umontpellier.iut.dominion.ListOfCards;
 import fr.umontpellier.iut.dominion.Player;
-import fr.umontpellier.iut.dominion.cards.Type.AttackCards;
-
-import java.util.Arrays;
-import java.util.List;
+import fr.umontpellier.iut.dominion.cards.Type.Attack;
 
 /**
  * Carte Bureaucrate (Bureaucrat)
@@ -15,7 +12,7 @@ import java.util.List;
  * dévoilent une carte Victoire et la placent sur leur deck (sinon ils dévoilent
  * leur main afin que vous puissiez voir qu'ils n'ont pas de cartes Victoire).
  */
-public class Bureaucrat extends AttackCards {
+public class Bureaucrat extends Attack {
     public Bureaucrat() {
         super("Bureaucrat", 4);
     }

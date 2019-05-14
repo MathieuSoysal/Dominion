@@ -22,7 +22,7 @@ Je leur remercie d'avoir été patient, un grand merci à eux sans qui le projet
 
 #### Moat
 
-Pour Moat nous avons crée une nouvelle classe `AttackCards` dans le package `fr.umontpellier.iut.dominion.cards`.
+Pour Moat nous avons crée une nouvelle classe `Attack` dans le package `fr.umontpellier.iut.dominion.cards`.
 Cette classe hérite de `Card` et est parente de toutes les cartes de type `Attack`. 
 Nous avons alors rédéfinis :
 ```java

@@ -1,11 +1,7 @@
 package fr.umontpellier.iut.dominion.cards.base;
 
-import fr.umontpellier.iut.dominion.CardType;
 import fr.umontpellier.iut.dominion.Player;
-import fr.umontpellier.iut.dominion.cards.Type.AttackCards;
-
-import java.util.Arrays;
-import java.util.List;
+import fr.umontpellier.iut.dominion.cards.Type.Attack;
 
 /**
  * Carte Milice (Militia)
@@ -13,7 +9,7 @@ import java.util.List;
  * 2 Pièces. Tous vos adversaires défaussent leurs cartes de façon à n'avoir que
  * 3 cartes en main.
  */
-public class Militia extends AttackCards {
+public class Militia extends Attack {
     public Militia() {
         super("Militia", 4);
     }

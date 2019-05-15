@@ -11,6 +11,7 @@ vu via les commits.
 
 ### Amaury JASPAR
 
+Aucune remarque.
 
 ### Mathieu SOYSAL
 
@@ -20,9 +21,9 @@ Je leur remercie d'avoir été patient, un grand merci à eux sans qui le projet
 
 ## Code
 
-#### Moat
+#### Moat
 
-Pour Moat nous avons crée une nouvelle classe `Attack` dans le package `fr.umontpellier.iut.dominion.cards`.
+Pour Moat nous avons crée une nouvelle classe `Attack` dans le package `fr.umontpellier.iut.dominion.cards.Type`
 Cette classe hérite de `Card` et est parente de toutes les cartes de type `Attack`. 
 Nous avons alors rédéfinis :
 ```java

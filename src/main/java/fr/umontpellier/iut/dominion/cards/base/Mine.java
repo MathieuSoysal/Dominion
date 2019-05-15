@@ -5,9 +5,6 @@ import fr.umontpellier.iut.dominion.ListOfCards;
 import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.Type.Action;
 
-import java.util.Arrays;
-import java.util.List;
-
 /**
  * Carte Mine
  *

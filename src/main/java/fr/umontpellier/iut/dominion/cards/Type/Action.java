@@ -20,6 +20,6 @@ public abstract class Action extends Card {
 
     @Override
     public List<CardType> getTypes() {
-        return Arrays.asList(CardType.Action);
+        return Arrays.asList(CardType.ACTION);
     }
 }

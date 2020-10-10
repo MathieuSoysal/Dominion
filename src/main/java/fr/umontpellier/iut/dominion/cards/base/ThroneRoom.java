@@ -23,7 +23,7 @@ public class ThroneRoom extends Action {
         ListOfCards cardsActionInHand = new ListOfCards();
 
         p.getCardsInHand().forEach(cardInHand -> {
-            if (cardInHand.getTypes().contains(CardType.Action))
+            if (cardInHand.getTypes().contains(CardType.ACTION))
                 cardsActionInHand.add(cardInHand);
         });
 

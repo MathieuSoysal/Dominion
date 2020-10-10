@@ -26,7 +26,7 @@ public class Bureaucrat extends Attack {
         for (Player otherP : super.getAffectedPlayers(p)) {
 
             otherP.getCardsInHand().forEach(cardInHand -> {
-                if (cardInHand.getTypes().contains(CardType.Victory))
+                if (cardInHand.getTypes().contains(CardType.VICTORY))
                     cardsVictoryInHand.add(cardInHand);
             });
 

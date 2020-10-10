@@ -26,6 +26,6 @@ public class Moat extends Action {
 
     @Override
     public List<CardType> getTypes() {
-        return Arrays.asList(CardType.Action, CardType.Reaction);
+        return Arrays.asList(CardType.ACTION, CardType.REACTION);
     }
 }

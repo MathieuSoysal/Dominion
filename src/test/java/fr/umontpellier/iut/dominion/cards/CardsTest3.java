@@ -97,7 +97,7 @@ class CardsTest3 {
         p1.getHand().clear();
         p1.getHand().add(new Library());
 
-        p1.playCard("Library");
+        assertAll(() -> p1.playCard("Library"));
     }
 
     @Test
@@ -208,7 +208,7 @@ class CardsTest3 {
 
     // Tests additionnels
 
-        //Personnels
+    // Personnels
 
     @Test
     void testMoatReactionBureaucrat() {
@@ -218,7 +218,7 @@ class CardsTest3 {
         p2.getHand().add(new Moat());
         p2.getHand().add(new Gardens());
 
-        game.setInput("y", "n","Gardens");
+        game.setInput("y", "n", "Gardens");
         p0.playCard("Bureaucrat");
 
         assertNull(p1.getDraw().getCard("Gardens"));
@@ -239,7 +239,7 @@ class CardsTest3 {
 
         assertNotNull(p0.getInPlay().getCard("Silver"));
         assertEquals(2, p0.getNumberOfActions());
-        assertEquals(4,p0.getMoney());
+        assertEquals(4, p0.getMoney());
     }
 
     @Test
@@ -247,7 +247,7 @@ class CardsTest3 {
         p0.getHand().add(new ThroneRoom());
         p0.getHand().add(new Workshop());
 
-        game.setInput("Workshop","Copper","Silver");
+        game.setInput("Workshop", "Copper", "Silver");
 
         p0.playCard("Throne Room");
 
@@ -269,7 +269,7 @@ class CardsTest3 {
         Card c0 = p1.getDraw().get(0);
         p1.getHand().add(new ThroneRoom());
 
-        game.setInput("Harbinger","Gold","Silver");
+        game.setInput("Harbinger", "Gold", "Silver");
 
         p1.playCard("Throne Room");
 
@@ -290,7 +290,7 @@ class CardsTest3 {
 
         p1.playCard("Throne Room");
 
-        assertEquals(2,p1.getInPlay().size());
+        assertEquals(2, p1.getInPlay().size());
     }
 
     @Test
@@ -312,11 +312,11 @@ class CardsTest3 {
 
         game.setInput("Village");
         p1.playCard("Throne Room");
-        assertEquals(4,p1.getNumberOfActions());
+        assertEquals(4, p1.getNumberOfActions());
         p1.playCard("Merchant");
 
-        assertEquals(5,p1.getNumberOfActions());
-        assertEquals(5,p1.getNumberOfActions());
+        assertEquals(5, p1.getNumberOfActions());
+        assertEquals(5, p1.getNumberOfActions());
     }
 
     @Test
@@ -328,22 +328,23 @@ class CardsTest3 {
         Card duchy = new Duchy();
         Card curse = new Curse();
 
-        assertTrue(silver.getTypes().contains(CardType.Treasure));
-        assertEquals(1,silver.getTypes().size());
-        assertTrue(moat.getTypes().contains(CardType.Action));
-        assertTrue(moat.getTypes().contains(CardType.Reaction));
-        assertEquals(2,moat.getTypes().size());
-        assertTrue(bandit.getTypes().contains(CardType.Attack));
-        assertTrue(bandit.getTypes().contains(CardType.Action));
-        assertEquals(2,bandit.getTypes().size());
-        assertTrue(poacher.getTypes().contains(CardType.Action));
-        assertEquals(1,poacher.getTypes().size());
-        assertTrue(duchy.getTypes().contains(CardType.Victory));
-        assertEquals(1,duchy.getTypes().size());
-        assertTrue(curse.getTypes().contains(CardType.Curse));
-        assertEquals(1,curse.getTypes().size());
+        assertTrue(silver.getTypes().contains(CardType.TREASURE));
+        assertEquals(1, silver.getTypes().size());
+        assertTrue(moat.getTypes().contains(CardType.ACTION));
+        assertTrue(moat.getTypes().contains(CardType.REACTION));
+        assertEquals(2, moat.getTypes().size());
+        assertTrue(bandit.getTypes().contains(CardType.ATTACK));
+        assertTrue(bandit.getTypes().contains(CardType.ACTION));
+        assertEquals(2, bandit.getTypes().size());
+        assertTrue(poacher.getTypes().contains(CardType.ACTION));
+        assertEquals(1, poacher.getTypes().size());
+        assertTrue(duchy.getTypes().contains(CardType.VICTORY));
+        assertEquals(1, duchy.getTypes().size());
+        assertTrue(curse.getTypes().contains(CardType.CURSE));
+        assertEquals(1, curse.getTypes().size());
     }
-        //Test d'autres groupes
+
+    // Test d'autres groupes
     @Test
     void testMoatReactionBandit() {
         p0.getHand().add(new Moat());
@@ -377,7 +378,6 @@ class CardsTest3 {
         p2.getHand().add(new Gold());
         p2.getHand().add(new Smithy());
         p2.getHand().add(new Mine());
-
 
         game.setInput("y", "n", "Silver", "Gold");
         p1.playCard("Militia");

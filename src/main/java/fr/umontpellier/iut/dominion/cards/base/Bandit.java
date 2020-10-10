@@ -27,7 +27,7 @@ public class Bandit extends Attack {
             for (int i = 0; i < 2; i++) {
                 Card cardDrawn = otherP.drawCard();
                 if (cardDrawn != null) {
-                    if (cardDrawn.getTypes().contains(CardType.Treasure) && !cardDrawn.getName().equals("Copper")) {
+                    if (cardDrawn.getTypes().contains(CardType.TREASURE) && !cardDrawn.getName().equals("Copper")) {
                         cardDrawnList.add(cardDrawn);
                     } else {
                         otherP.discardCard(cardDrawn);

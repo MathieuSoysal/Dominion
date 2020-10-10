@@ -26,23 +26,22 @@ public class Library extends Action {
             // j'ai mit la condition ici pour pouvoir mettre le drawcard avant la boucle et
             // ainsi vérifier s'il est null en même temps que la boucle while et ce qui me
             // permet aussi d'éviter de faire le getType d'une card null.
-            ListOfCards CardsAsideList = new ListOfCards();
+            ListOfCards cardsAsideList = new ListOfCards();
             List<String> choices = Arrays.asList("y", "n");
             Card cardDrawn = p.drawCard();
 
             while (p.getCardsInHand().size() != 7 && cardDrawn != null) {
 
                 String instruction = "Voulez-vous mettre de côté la carte " + cardDrawn.getName() + " ?";
-                boolean cardIsAction = cardDrawn.getTypes().contains(CardType.Action);
+                boolean cardIsAction = cardDrawn.getTypes().contains(CardType.ACTION);
 
-                if (cardIsAction && p.chooseOption(instruction, choices, false).equals("y")) {
-                    CardsAsideList.add(cardDrawn);
-                } else {
+                if (cardIsAction && p.chooseOption(instruction, choices, false).equals("y"))
+                    cardsAsideList.add(cardDrawn);
+                else
                     p.addToHand(cardDrawn);
-                }
                 cardDrawn = p.drawCard();
             }
-            CardsAsideList.forEach(cardAside -> p.discardCard(cardAside));
+            cardsAsideList.forEach(p::discardCard);
         }
     }
 }

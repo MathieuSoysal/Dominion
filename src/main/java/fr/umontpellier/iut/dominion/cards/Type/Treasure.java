@@ -14,6 +14,6 @@ public abstract class Treasure extends Card {
 
     @Override
     public List<CardType> getTypes() {
-        return Arrays.asList(CardType.Treasure);
+        return Arrays.asList(CardType.TREASURE);
     }
 }

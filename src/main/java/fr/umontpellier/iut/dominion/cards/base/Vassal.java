@@ -25,14 +25,17 @@ public class Vassal extends Action {
 
         Card cardDrawn = p.drawToHand();
         if (cardDrawn != null) {
-
-        String instruction = "Voulez-vous jouer la carte " + cardDrawn.getName() + " ?";
-        List<String> choices = Arrays.asList("y", "n");
-
-        if (cardDrawn.getTypes().contains(CardType.Action) && p.chooseOption(instruction, choices, false).equals("y"))
-            p.playCard(cardDrawn.getName());
-        else
+            if (playerWantsPlayActionCard(p, cardDrawn))
+                p.playCard(cardDrawn.getName());
+            else
                 p.handToDisCard(cardDrawn.getName());
         }
+    }
+
+    private boolean playerWantsPlayActionCard(Player p, Card cardDrawn) {
+        String instruction = "Voulez-vous jouer la carte " + cardDrawn.getName() + " ?";
+        List<String> choices = Arrays.asList("y", "n");
+        return cardDrawn.getTypes().contains(CardType.ACTION)
+                && p.chooseOption(instruction, choices, false).equals("y");
     }
 }

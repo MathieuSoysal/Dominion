@@ -22,7 +22,7 @@ public class Mine extends Action {
         ListOfCards treasureInsupply = new ListOfCards();
 
         p.getCardsInHand().forEach(cardInHand -> {
-            if (cardInHand.getTypes().contains(CardType.Treasure))
+            if (cardInHand.getTypes().contains(CardType.TREASURE))
                 treasureInHand.add(cardInHand);
         });
 
@@ -32,7 +32,7 @@ public class Mine extends Action {
                 int costFinal = p.handToTrash(chosenCardName).getCost() + 3;
 
                 p.getGame().availableSupplyCards().forEach(cardInAvailable -> {
-                    if (cardInAvailable.getTypes().contains(CardType.Treasure)
+                    if (cardInAvailable.getTypes().contains(CardType.TREASURE)
                             && cardInAvailable.getCost() <= costFinal)
                         treasureInsupply.add(cardInAvailable);
                 });

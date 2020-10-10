@@ -86,7 +86,7 @@ public class ListOfCards extends ArrayList<Card> {
     @Override
     public String toString() {
         return this.stream()
-                .map(card -> card.toString())
+                .map(Card::toString)
                 .collect(Collectors.joining(", "));
     }
 

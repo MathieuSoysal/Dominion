@@ -14,7 +14,7 @@ public abstract class Victory extends Card {
 
     @Override
     public List<CardType> getTypes() {
-        return Arrays.asList(CardType.Victory);
+        return Arrays.asList(CardType.VICTORY);
     }
 
 }

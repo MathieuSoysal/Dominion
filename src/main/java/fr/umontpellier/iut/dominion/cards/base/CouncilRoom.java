@@ -17,7 +17,7 @@ public class CouncilRoom extends Action {
 
     @Override
     public void play(Player p) {
-        p.getOtherPlayers().forEach(otherP -> otherP.drawToHand());
+        p.getOtherPlayers().forEach(Player::drawToHand);
         p.drawNCardsToHand(4);
         p.incrementBuys(1);
     }

@@ -67,6 +67,6 @@ public abstract class Attack extends Action {
 
     @Override
     public List<CardType> getTypes() {
-        return Arrays.asList(CardType.Action, CardType.Attack);
+        return Arrays.asList(CardType.ACTION, CardType.ATTACK);
     }
 }

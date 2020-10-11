@@ -23,25 +23,28 @@ public class Library extends Action {
     @Override
     public void play(Player p) {
         if (p.getCardsInHand().size() < 7) {
-            // j'ai mit la condition ici pour pouvoir mettre le drawcard avant la boucle et
-            // ainsi vérifier s'il est null en même temps que la boucle while et ce qui me
-            // permet aussi d'éviter de faire le getType d'une card null.
             ListOfCards cardsAsideList = new ListOfCards();
-            List<String> choices = Arrays.asList("y", "n");
-            Card cardDrawn = p.drawCard();
-
-            while (p.getCardsInHand().size() != 7 && cardDrawn != null) {
-
-                String instruction = "Voulez-vous mettre de côté la carte " + cardDrawn.getName() + " ?";
-                boolean cardIsAction = cardDrawn.getTypes().contains(CardType.ACTION);
-
-                if (cardIsAction && p.chooseOption(instruction, choices, false).equals("y"))
+            for (Card cardDrawn = p.drawCard(); playerCanDrawCard(p, cardDrawn); cardDrawn = p.drawCard()) {
+                if (isActionCard(cardDrawn) && playerWantsPutCardAside(p, cardDrawn))
                     cardsAsideList.add(cardDrawn);
                 else
                     p.addToHand(cardDrawn);
-                cardDrawn = p.drawCard();
             }
             cardsAsideList.forEach(p::discardCard);
         }
+    }
+
+    private boolean playerCanDrawCard(Player p, Card cardDrawn) {
+        return p.getCardsInHand().size() != 7 && cardDrawn != null;
+    }
+
+    private boolean playerWantsPutCardAside(Player p, Card cardDrawn) {
+        String instruction = "Voulez-vous mettre de côté la carte " + cardDrawn.getName() + " ?";
+        List<String> choices = Arrays.asList("y", "n");
+        return p.chooseOption(instruction, choices, false).equals("y");
+    }
+
+    private boolean isActionCard(Card cardDrawn) {
+        return cardDrawn.getTypes().contains(CardType.ACTION);
     }
 }

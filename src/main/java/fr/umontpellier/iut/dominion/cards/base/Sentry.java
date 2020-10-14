@@ -2,15 +2,15 @@ package fr.umontpellier.iut.dominion.cards.base;
 
 import fr.umontpellier.iut.dominion.ListOfCards;
 import fr.umontpellier.iut.dominion.Player;
+import fr.umontpellier.iut.dominion.cards.Card;
 import fr.umontpellier.iut.dominion.cards.Type.Action;
 
 /**
  * Carte Sentinelle (Sentry)
  *
- * +1 Carte.
- * +1 Action.
- * Regardez les 2 premières cartes de votre deck. Écartez et/ou défaussez celles que vous voulez.
- * Replacez les autres sur votre deck dans l'ordre de votre choix.
+ * +1 Carte. +1 Action. Regardez les 2 premières cartes de votre deck. Écartez
+ * et/ou défaussez celles que vous voulez. Replacez les autres sur votre deck
+ * dans l'ordre de votre choix.
  */
 public class Sentry extends Action {
     public Sentry() {
@@ -21,52 +21,47 @@ public class Sentry extends Action {
     public void play(Player p) {
         p.drawToHand();
         p.incrementActions(1);
-        ListOfCards cardsDrawn = new ListOfCards();
-        String chosenCard;
-        String instruction;
-        //int phase = 0;
+        ListOfCards cardsDrawn = drawTwoCard(p);
+        trashCardsDrawnIfPlayerWants(p, cardsDrawn);
+        discardCardsDrawnIfPlayerWants(p, cardsDrawn);
+        replaceInDeckCardsDrawn(p, cardsDrawn);
+    }
 
-        while (cardsDrawn.size() != 2)
-            cardsDrawn.addNullSafe(p.drawCard());
-
-        instruction = "Écartez l" + (cardsDrawn.size() > 1 ? "es cartes que" : "a carte si") + " vous voulez";
-        chosenCard = p.chooseCard(instruction, cardsDrawn, true);
-
-        while (!chosenCard.equals("")) {
-            p.getGame().addToTrash(cardsDrawn.remove(chosenCard));
-            chosenCard = p.chooseCard("Écartez la carte si vous voulez", cardsDrawn, true);
-        }
-
-        instruction = "Défausser l" + (cardsDrawn.size() > 1 ? "es cartes que" : "a carte si") + " vous voulez";
-        chosenCard = p.chooseCard(instruction, cardsDrawn, true);
-
-        while (!chosenCard.equals("")) {
-            p.discardCard(cardsDrawn.remove(chosenCard));
-            chosenCard = p.chooseCard("Défausser la si vous voulez", cardsDrawn, true);
-        }
-
-        // Pour les instructeurs :
-        //Si mon code se répéte trop :
-        //
-        //  instruction = "Écartez l" + (cardsDrawn.size() > 1 ? "es cartes que" : "a carte si") + " vous voulez";
-        //  chosenCard = p.chooseCard(instruction, cardsDrawn, true);
-        //
-        // while (!chosenCard.equals("") && phase++ != 0) {      autre possibilité : for (String chosenCard = p.chooseCard("Écartez l" + (cardsDrawn.size() > 1 ? "es cartes que" : "a carte si") + " vous voulez", cardsDrawn,true); !chosenCard.equals("") && phase++ != 0;chosenCard = p.chooseCard(instruction, cardsDrawn, true))
-        //     Card cardRemove = cardsDrawn.remove(chosenCard);
-
-        //     if (phase == 0) {
-        //         p.getGame().addToTrash(cardRemove);
-        //     } else {
-        //         p.discardCard(cardsDrawn.remove(chosenCard));                
-        //     }
-            
-        //     instruction = (phase > 0 ? "Défausser" : "Écartez") + " l"
-        //             + (cardsDrawn.size() > 1 ? "es cartes que" : "a carte si") + " vous voulez";
-        //     chosenCard = p.chooseCard(instruction, cardsDrawn, true);
-        // }
-
+    private void replaceInDeckCardsDrawn(Player p, ListOfCards cardsDrawn) {
         while (!cardsDrawn.isEmpty())
             p.addToDraw(cardsDrawn.remove(
                     p.chooseCard("Replacez les sur votre deck dans l'ordre de votre choix :", cardsDrawn, false)));
+    }
+
+    private ListOfCards drawTwoCard(Player p) {
+        ListOfCards cardsDrawn = new ListOfCards();
+        while (cardsDrawn.size() != 2)
+            cardsDrawn.addNullSafe(p.drawCard());
+        return cardsDrawn;
+    }
+
+    private void trashCardsDrawnIfPlayerWants(Player p, ListOfCards cardsDrawn) {
+        for (String chosenCard = chooseACardInCardsDrawn(p, cardsDrawn, "Écartez"); //
+                playerHasChosenCard(chosenCard); //
+                chosenCard = chooseACardInCardsDrawn(p, cardsDrawn, "Écartez")) {
+            p.getGame().addToTrash(cardsDrawn.remove(chosenCard));
+        }
+    }
+
+    private void discardCardsDrawnIfPlayerWants(Player p, ListOfCards cardsDrawn) {
+        for (String chosenCard = chooseACardInCardsDrawn(p, cardsDrawn, "Défausser"); //
+                playerHasChosenCard(chosenCard); //
+                chosenCard = chooseACardInCardsDrawn(p, cardsDrawn, "Défausser")) {
+            p.discardCard(cardsDrawn.remove(chosenCard));
+        }
+    }
+
+    private boolean playerHasChosenCard(String chosenCard) {
+        return !chosenCard.equals("");
+    }
+
+    private String chooseACardInCardsDrawn(Player p, ListOfCards cardsDrawn, String action) {
+        String instruction = action + " l" + (cardsDrawn.size() > 1 ? "es cartes que" : "a carte si") + " vous voulez";
+        return p.chooseCard(instruction, cardsDrawn, true);
     }
 }

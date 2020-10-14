@@ -22,23 +22,20 @@ public class Mine extends Action {
         ListOfCards treasureInsupply = new ListOfCards();
 
         p.getCardsInHand().forEach(cardInHand -> {
-            if (cardInHand.getTypes().contains(CardType.TREASURE))
+            if (cardInHand.isOfType(CardType.TREASURE))
                 treasureInHand.add(cardInHand);
         });
 
-            String chosenCardName = p.chooseCard("Choisissez une carte Trésor à écarter :", treasureInHand, true);
+        String chosenCardName = p.chooseCard("Choisissez une carte Trésor à écarter :", treasureInHand, true);
 
-            if (!chosenCardName.equals("")) {
-                int costFinal = p.handToTrash(chosenCardName).getCost() + 3;
-
-                p.getGame().availableSupplyCards().forEach(cardInAvailable -> {
-                    if (cardInAvailable.getTypes().contains(CardType.TREASURE)
-                            && cardInAvailable.getCost() <= costFinal)
-                        treasureInsupply.add(cardInAvailable);
-                });
-
-                p.addToHand(p.getGame().removeFromSupply(p.chooseCard(
-                        "Choisissez une carte Trésor coutant jusqu'à " + costFinal + "$ :", treasureInsupply, false)));
+        if (!chosenCardName.equals("")) {
+            int costFinal = p.handToTrash(chosenCardName).getCost() + 3;
+            p.getGame().availableSupplyCards().forEach(cardInAvailable -> {
+                if (cardInAvailable.isOfType(CardType.TREASURE) && cardInAvailable.getCost() <= costFinal)
+                    treasureInsupply.add(cardInAvailable);
+            });
+            p.addToHand(p.getGame().removeFromSupply(p.chooseCard(
+                    "Choisissez une carte Trésor coutant jusqu'à " + costFinal + "$ :", treasureInsupply, false)));
         }
     }
 }

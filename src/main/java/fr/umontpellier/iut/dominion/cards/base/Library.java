@@ -23,14 +23,14 @@ public class Library extends Action {
     @Override
     public void play(Player p) {
         if (p.getCardsInHand().size() < 7) {
-            ListOfCards cardsAsideList = new ListOfCards();
+            ListOfCards cardsAside = new ListOfCards();
             for (Card cardDrawn = p.drawCard(); playerCanDrawCard(p, cardDrawn); cardDrawn = p.drawCard()) {
-                if (isActionCard(cardDrawn) && playerWantsPutCardAside(p, cardDrawn))
-                    cardsAsideList.add(cardDrawn);
+                if (cardDrawn.isOfType(CardType.ACTION) && playerWantsPutCardAside(p, cardDrawn))
+                    cardsAside.add(cardDrawn);
                 else
                     p.addToHand(cardDrawn);
             }
-            cardsAsideList.forEach(p::discardCard);
+            cardsAside.forEach(p::discardCard);
         }
     }
 
@@ -42,9 +42,5 @@ public class Library extends Action {
         String instruction = "Voulez-vous mettre de côté la carte " + cardDrawn.getName() + " ?";
         List<String> choices = Arrays.asList("y", "n");
         return p.chooseOption(instruction, choices, false).equals("y");
-    }
-
-    private boolean isActionCard(Card cardDrawn) {
-        return cardDrawn.getTypes().contains(CardType.ACTION);
     }
 }

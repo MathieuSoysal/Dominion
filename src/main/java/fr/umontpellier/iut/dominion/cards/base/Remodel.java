@@ -16,13 +16,16 @@ public class Remodel extends Action {
 
     @Override
     public void play(Player p) {
-        String chosenCardName = p.chooseCard("Choisissez une carte à sacrifier :", p.getCardsInHand(), false);
-        int costToAdd = p.handToTrash(chosenCardName).getCost() + 2;
-
-        if (!chosenCardName.equals("")) {
-            chosenCardName = p.chooseCard("Choisissez une carte coutant jusqu'à " + costToAdd + " :",
-                    p.listCardCostingUpTo(costToAdd), false);
+        String sacrificedCardName = p.chooseCard("Choisissez une carte à sacrifier :", p.getCardsInHand(), false);
+        if (!sacrificedCardName.equals("")) {
+            String chosenCardName = playerChoosesCardBasedOnCostOfSacrificedCard(p, sacrificedCardName);
             p.gainFromSupply(chosenCardName);
         }
+    }
+
+    private String playerChoosesCardBasedOnCostOfSacrificedCard(Player p, String sacrificedCardName) {
+        int costToAdd = p.handToTrash(sacrificedCardName).getCost() + 2;
+        String instruction = "Choisissez une carte coutant jusqu'à " + costToAdd + " :";
+        return p.chooseCard(instruction, p.listCardCostingUpTo(costToAdd), false);
     }
 }

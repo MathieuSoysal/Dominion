@@ -43,6 +43,19 @@ public abstract class Card {
     }
 
     /**
+     * Retourne {@code true} si {@value carName} correspond au nom de cette carte.
+     * 
+     * @param cardName qui doit correspondre
+     * 
+     * @return {@code boolean} true si le nom correspond 
+     * 
+     * @see Card#name
+     */
+    public boolean nameIs(String cardName){
+        return name.equals(cardName);
+    }
+
+    /**
      * Renvoie une liste des types de la carte (éléments de {@code CardType})
      *
      * Le type d'une carte dépend de la sous-classe de {@code Card} à laquelle
@@ -51,6 +64,19 @@ public abstract class Card {
      */
     public List<CardType> getTypes() {
         return new ArrayList<>();
+    }
+
+    /**
+     * Retourne vrai si this est de même type que {@value cardType}
+     * 
+     * @param cardType le {@code CardType} qui doit être vérifié
+     * 
+     * @return {@code boolean} vrai si du même type
+     * 
+     * @see Card#getTypes()
+     */
+    public boolean isOfType(CardType cardType){
+        return getTypes().contains(cardType);
     }
 
     /**

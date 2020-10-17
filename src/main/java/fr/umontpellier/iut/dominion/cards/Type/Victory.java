@@ -1,6 +1,7 @@
 package fr.umontpellier.iut.dominion.cards.Type;
 
 import fr.umontpellier.iut.dominion.CardType;
+import fr.umontpellier.iut.dominion.Player;
 import fr.umontpellier.iut.dominion.cards.Card;
 
 import java.util.Arrays;
@@ -13,8 +14,11 @@ public abstract class Victory extends Card {
     }
 
     @Override
+    public abstract int getVictoryValue(Player p);
+
+    @Override
     public List<CardType> getTypes() {
-        return Arrays.asList(CardType.Victory);
+        return Arrays.asList(CardType.VICTORY);
     }
 
 }

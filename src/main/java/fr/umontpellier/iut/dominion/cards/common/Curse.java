@@ -24,6 +24,6 @@ public class Curse extends Card {
 
     @Override
     public List<CardType> getTypes() {
-        return Arrays.asList(CardType.Curse);
+        return Arrays.asList(CardType.CURSE);
     }
 }

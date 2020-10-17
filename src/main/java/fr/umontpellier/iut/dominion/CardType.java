@@ -7,5 +7,5 @@ package fr.umontpellier.iut.dominion;
  * Action/Attaque ou Action/Réaction
  */
 public enum CardType {
-    Treasure, Action, Victory, Curse, Reaction, Attack
+    TREASURE, ACTION, VICTORY, CURSE, REACTION, ATTACK
 }

@@ -349,12 +349,12 @@ public class Player {
      */
     @Override
     public String toString() {
-        String r = String.format("     -- %s --\n", name);
-        r += String.format("Actions: %d     Money: %d     Buys: %d     Draw: %d     Discard: %d\n",
+        String r = String.format("     -- %s --%n", name);
+        r += String.format("Actions: %d     Money: %d     Buys: %d     Draw: %d     Discard: %d%n",
                 numberOfActions,
                 money, numberOfBuys, draw.size(), discard.size());
-        r += String.format("In play: %s\n", inPlay.toString());
-        r += String.format("Hand: %s\n", hand.toString());
+        r += String.format("In play: %s%n", inPlay.toString());
+        r += String.format("Hand: %s%n", hand.toString());
         return r;
     }
 
@@ -703,7 +703,7 @@ public class Player {
         while (numberOfActions > 0) {
             ListOfCards choices = new ListOfCards();
             for (Card c : getCardsInHand()) //Modifié comme pour Trésor
-                if (c.getTypes().contains(CardType.Action))
+                if (c.getTypes().contains(CardType.ACTION))
                     choices.add(c);
             input = chooseCard("Action phase (ENTER to pass).", choices, true);
             if (input.equals(""))
@@ -716,7 +716,7 @@ public class Player {
 
         // 3. (Trésor)
         for (Card c : getCardsInHand()){ //Modification pour pouvoir lancer la partie (original --> Card c : hand)
-            if (c.getTypes().contains(CardType.Treasure))
+            if (c.getTypes().contains(CardType.TREASURE))
                 playCard(c);
         }
 

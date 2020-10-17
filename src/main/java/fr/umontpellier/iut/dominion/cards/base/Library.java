@@ -23,26 +23,24 @@ public class Library extends Action {
     @Override
     public void play(Player p) {
         if (p.getCardsInHand().size() < 7) {
-            // j'ai mit la condition ici pour pouvoir mettre le drawcard avant la boucle et
-            // ainsi vérifier s'il est null en même temps que la boucle while et ce qui me
-            // permet aussi d'éviter de faire le getType d'une card null.
-            ListOfCards CardsAsideList = new ListOfCards();
-            List<String> choices = Arrays.asList("y", "n");
-            Card cardDrawn = p.drawCard();
-
-            while (p.getCardsInHand().size() != 7 && cardDrawn != null) {
-
-                String instruction = "Voulez-vous mettre de côté la carte " + cardDrawn.getName() + " ?";
-                boolean cardIsAction = cardDrawn.getTypes().contains(CardType.Action);
-
-                if (cardIsAction && p.chooseOption(instruction, choices, false).equals("y")) {
-                    CardsAsideList.add(cardDrawn);
-                } else {
+            ListOfCards cardsAside = new ListOfCards();
+            for (Card cardDrawn = p.drawCard(); playerCanDrawCard(p, cardDrawn); cardDrawn = p.drawCard()) {
+                if (cardDrawn.isOfType(CardType.ACTION) && playerWantsPutCardAside(p, cardDrawn))
+                    cardsAside.add(cardDrawn);
+                else
                     p.addToHand(cardDrawn);
-                }
-                cardDrawn = p.drawCard();
             }
-            CardsAsideList.forEach(cardAside -> p.discardCard(cardAside));
+            cardsAside.forEach(p::discardCard);
         }
+    }
+
+    private boolean playerCanDrawCard(Player p, Card cardDrawn) {
+        return p.getCardsInHand().size() != 7 && cardDrawn != null;
+    }
+
+    private boolean playerWantsPutCardAside(Player p, Card cardDrawn) {
+        String instruction = "Voulez-vous mettre de côté la carte " + cardDrawn.getName() + " ?";
+        List<String> choices = Arrays.asList("y", "n");
+        return p.chooseOption(instruction, choices, false).equals("y");
     }
 }

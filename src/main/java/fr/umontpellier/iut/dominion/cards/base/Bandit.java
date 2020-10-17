@@ -17,31 +17,33 @@ public class Bandit extends Attack {
         super("Bandit", 5);
     }
 
+    @Override
     public void play(Player p) {
         super.play(p);
         p.gain(p.getGame().removeFromSupply("Gold"));
-
         for (Player otherP : super.getAffectedPlayers(p)) {
-            ListOfCards cardDrawnList = new ListOfCards();
-
-            for (int i = 0; i < 2; i++) {
-                Card cardDrawn = otherP.drawCard();
-                if (cardDrawn != null) {
-                    if (cardDrawn.getTypes().contains(CardType.Treasure) && !cardDrawn.getName().equals("Copper")) {
-                        cardDrawnList.add(cardDrawn);
-                    } else {
-                        otherP.discardCard(cardDrawn);
-                    }
-                }
-            }
-
-            if (!cardDrawnList.isEmpty()) {
-                String chosenCardName = otherP.chooseCard("Ecarte un trésor", cardDrawnList, false);
-                otherP.getGame().addToTrash(cardDrawnList.remove(chosenCardName));
-
-                if (!cardDrawnList.isEmpty())
-                    otherP.discardCard(cardDrawnList.get(0));
+            ListOfCards trasureCardsDrawn = getTwocardsFromDeckThatAreTreasureDiscardRest(otherP);
+            if (!trasureCardsDrawn.isEmpty()) {
+                String chosenCardName = otherP.chooseCard("Ecarte un trésor", trasureCardsDrawn, false);
+                otherP.getGame().addToTrash(trasureCardsDrawn.remove(chosenCardName));
+                if (!trasureCardsDrawn.isEmpty())
+                    otherP.discardCard(trasureCardsDrawn.get(0));
             }
         }
+    }
+
+    private ListOfCards getTwocardsFromDeckThatAreTreasureDiscardRest(Player otherP) {
+        ListOfCards trasureCardsDrawn = new ListOfCards();
+        for (int i = 0; i < 2; i++) {
+            Card cardDrawn = otherP.drawCard();
+            if (cardDrawn != null) {
+                if (cardDrawn.isOfType(CardType.TREASURE) && !cardDrawn.nameIs("Copper")) {
+                    trasureCardsDrawn.add(cardDrawn);
+                } else {
+                    otherP.discardCard(cardDrawn);
+                }
+            }
+        }
+        return trasureCardsDrawn;
     }
 }

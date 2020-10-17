@@ -10,16 +10,14 @@ import java.util.List;
 public abstract class Action extends Card {
 
     public Action(String cardName, int cost) {
-        super(cardName,cost);
+        super(cardName, cost);
     }
 
     @Override
-    public void play(Player p) {
-        super.play(p);
-    }
+    public abstract void play(Player p);
 
     @Override
     public List<CardType> getTypes() {
-        return Arrays.asList(CardType.Action);
+        return Arrays.asList(CardType.ACTION);
     }
 }

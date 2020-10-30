@@ -1,3 +1,6 @@
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=MathieuSoysal_Dominion&metric=coverage)](https://sonarcloud.io/dashboard?id=MathieuSoysal_Dominion)  [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=MathieuSoysal_Dominion&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=MathieuSoysal_Dominion)  [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=MathieuSoysal_Dominion&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=MathieuSoysal_Dominion) <a href="https://gitmoji.carloscuesta.me">
+  <img src="https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg?style=flat-square" alt="Gitmoji">
+</a>
 # ![](ressources/logo.jpeg) Bases de la programmation orientée objet 
 
 ### IUT Montpellier-Sète – Département Informatique
